@@ -21,7 +21,7 @@ export default function CtaBanner() {
 
       <Container className="relative flex flex-col items-center gap-6 text-center">
         <Reveal>
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-terracotta-400">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-terracotta-300">
             Ready When You Are
           </span>
         </Reveal>

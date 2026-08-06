@@ -100,7 +100,7 @@ export default function Navbar() {
               >
                 {link.label}
                 {active && (
-                  <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-terracotta-400" />
+                  <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-terracotta-300" />
                 )}
               </Link>
             );

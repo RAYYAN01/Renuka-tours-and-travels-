@@ -10,6 +10,7 @@ import Reveal from "@/components/ui/Reveal";
 import StatBlock from "@/components/StatBlock";
 import { site } from "@/lib/site";
 import { coreStats } from "@/lib/stats";
+import { timeline } from "@/lib/timeline";
 import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
 
 const aboutDescription = `Renuka Tours & Travels has been moving families, corporates and pilgrims across South India since ${site.founded} — verified drivers, insured fleet, honest pricing.`;
@@ -32,14 +33,6 @@ const aboutJsonLd = {
 };
 
 const stats = [...coreStats, { value: 60, suffix: "+", label: "Verified Drivers" }];
-
-const timeline = [
-  { year: `${site.founded}`, text: "Started with two sedans serving Bengaluru's IT corridor." },
-  { year: `${site.founded + 4}`, text: "Added our first SUVs and tempo travellers for group travel." },
-  { year: `${site.founded + 8}`, text: "Crossed 10,000 trips; launched corporate retainer plans." },
-  { year: `${site.founded + 12}`, text: "Expanded the fleet with premium vans and mini coaches." },
-  { year: `${new Date().getFullYear()}`, text: "40+ vehicles, serving families, corporates and pilgrims daily." },
-];
 
 const safety = [
   { icon: ShieldCheck, title: "Driver Verification", text: "Background checks, licence validation and in-person interviews for every driver." },
@@ -108,7 +101,7 @@ export default function AboutPage() {
             {timeline.map((item, i) => (
               <Reveal key={item.year} delay={70 * i}>
                 <div className="flex flex-col gap-2 border-l-2 border-terracotta-500 pl-4">
-                  <span className="font-serif-luxury text-2xl text-terracotta-400">
+                  <span className="font-serif-luxury text-2xl text-terracotta-300">
                     {item.year}
                   </span>
                   <p className="text-sm text-ivory/80">{item.text}</p>

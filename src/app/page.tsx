@@ -6,6 +6,7 @@ import FeaturedFleet from "@/components/home/FeaturedFleet";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Destinations from "@/components/home/Destinations";
 import Stats from "@/components/home/Stats";
+import Timeline from "@/components/home/Timeline";
 import Testimonials from "@/components/home/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import CtaBanner from "@/components/home/CtaBanner";
@@ -29,6 +30,7 @@ export default function Home() {
       <WhyChooseUs />
       <Destinations />
       <Stats />
+      <Timeline />
       <Testimonials />
       <FAQSection />
       <CtaBanner />
