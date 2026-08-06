@@ -1,0 +1,8 @@
+# Vercel builds fresh in the cloud — none of this local-only stuff should
+# ever be part of the upload. Mirrors .gitignore, but explicit here since
+# `vercel deploy`'s local upload has been seen not to fully honor
+# .gitignore for large local-only directories (media-source, .next cache).
+node_modules
+.next
+media-source
+.git
