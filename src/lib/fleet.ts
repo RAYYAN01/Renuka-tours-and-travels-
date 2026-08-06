@@ -1,0 +1,222 @@
+export type FleetCategory = "sedan" | "suv" | "traveller" | "luxury-van" | "coach";
+
+export const fleetCategories: { id: FleetCategory; label: string }[] = [
+  { id: "sedan", label: "Sedans" },
+  { id: "suv", label: "SUVs" },
+  { id: "traveller", label: "Tempo Travellers" },
+  { id: "luxury-van", label: "Luxury Vans" },
+  { id: "coach", label: "Coaches" },
+];
+
+export interface FleetVehicle {
+  slug: string;
+  name: string;
+  tagline: string;
+  category: FleetCategory;
+  categoryLabel: string;
+  seats: number;
+  luggage: string;
+  ac: boolean;
+  fuel: string;
+  driverIncluded: boolean;
+  priceFrom: number;
+  priceUnit: string;
+  image: string;
+  gallery: string[];
+  featured?: boolean;
+}
+
+export const fleet: FleetVehicle[] = [
+  {
+    slug: "toyota-etios",
+    name: "Toyota Etios",
+    tagline: "Nimble, efficient, effortless city rides",
+    category: "sedan",
+    categoryLabel: "Sedan",
+    seats: 4,
+    luggage: "2 bags",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 11,
+    priceUnit: "per km",
+    image: "/fleet/etios-front-01.jpeg",
+    gallery: [
+      "/fleet/etios-front-01.jpeg",
+      "/fleet/etios-side-01.jpeg",
+      "/fleet/etios-interior-01.jpeg",
+      "/fleet/etios-interior-02.jpeg",
+      "/fleet/etios-rear-01.jpeg",
+    ],
+    featured: true,
+  },
+  {
+    slug: "toyota-innova-crysta",
+    name: "Toyota Innova Crysta",
+    tagline: "The gold standard for family & group travel",
+    category: "suv",
+    categoryLabel: "SUV",
+    seats: 7,
+    luggage: "4 bags",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 16,
+    priceUnit: "per km",
+    image: "/fleet/innova-crysta-front-01.jpeg",
+    gallery: [
+      "/fleet/innova-crysta-front-01.jpeg",
+      "/fleet/innova-crysta-rear-01.jpeg",
+      "/fleet/innova-crysta-dashboard-01.jpeg",
+    ],
+    featured: true,
+  },
+  {
+    slug: "toyota-innova-hycross",
+    name: "Toyota Innova HyCross",
+    tagline: "Hybrid refinement for the discerning traveller",
+    category: "suv",
+    categoryLabel: "SUV · Premium",
+    seats: 7,
+    luggage: "4 bags",
+    ac: true,
+    fuel: "Hybrid",
+    driverIncluded: true,
+    priceFrom: 21,
+    priceUnit: "per km",
+    image: "/fleet/innova-hycross-front-01.jpeg",
+    gallery: [
+      "/fleet/innova-hycross-front-01.jpeg",
+      "/fleet/innova-hycross-front-02.jpeg",
+      "/fleet/innova-hycross-interior-01.jpeg",
+      "/fleet/innova-hycross-interior-02.jpeg",
+      "/fleet/innova-hycross-interior-03.jpeg",
+    ],
+    featured: true,
+  },
+  {
+    slug: "toyota-innova-2011",
+    name: "Toyota Innova",
+    tagline: "The dependable classic, meticulously maintained",
+    category: "suv",
+    categoryLabel: "SUV",
+    seats: 7,
+    luggage: "3 bags",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 14,
+    priceUnit: "per km",
+    image: "/fleet/innova-2011-front-01.jpeg",
+    gallery: [
+      "/fleet/innova-2011-front-01.jpeg",
+      "/fleet/innova-2011-front-02.jpeg",
+      "/fleet/innova-2011-dashboard-01.jpeg",
+      "/fleet/innova-2011-interior-01.jpeg",
+    ],
+  },
+  {
+    slug: "force-traveller-17",
+    name: "Force Traveller",
+    tagline: "17-seater comfort for groups on the move",
+    category: "traveller",
+    categoryLabel: "Tempo Traveller · 17 Seater",
+    seats: 17,
+    luggage: "Roof carrier",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 24,
+    priceUnit: "per km",
+    image: "/fleet/force-traveller-c-front-01.jpeg",
+    gallery: [
+      "/fleet/force-traveller-c-front-01.jpeg",
+      "/fleet/force-traveller-c-front-02.jpeg",
+      "/fleet/force-traveller-c-side-01.jpeg",
+      "/fleet/force-traveller-c-interior-01.jpeg",
+      "/fleet/force-traveller-c-interior-02.jpeg",
+      "/fleet/force-traveller-c-interior-03.jpeg",
+      "/fleet/force-traveller-c-rear-02.jpeg",
+    ],
+    featured: true,
+  },
+  {
+    slug: "force-traveller-yaksha",
+    name: "Force Traveller Yaksha",
+    tagline: "Premium 12-seater for executive groups",
+    category: "traveller",
+    categoryLabel: "Tempo Traveller · 12 Seater",
+    seats: 12,
+    luggage: "Roof carrier",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 22,
+    priceUnit: "per km",
+    image: "/fleet/force-traveller-yaksha-front-01.jpeg",
+    gallery: [
+      "/fleet/force-traveller-yaksha-front-01.jpeg",
+      "/fleet/force-traveller-yaksha-front-02.jpeg",
+      "/fleet/force-traveller-yaksha-front-03.jpeg",
+      "/fleet/force-traveller-yaksha-interior-01.jpeg",
+      "/fleet/force-traveller-yaksha-interior-02.jpeg",
+      "/fleet/force-traveller-yaksha-interior-03.jpeg",
+      "/fleet/force-traveller-yaksha-rear-01.jpeg",
+    ],
+  },
+  {
+    slug: "force-urbania",
+    name: "Force Urbania",
+    tagline: "Our most luxurious tempo traveller — plush, panoramic, quiet",
+    category: "luxury-van",
+    categoryLabel: "Luxury Van · 12–17 Seater",
+    seats: 17,
+    luggage: "Rear + roof",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 32,
+    priceUnit: "per km",
+    image: "/fleet/force-urbania-front-01.jpeg",
+    gallery: [
+      "/fleet/force-urbania-front-01.jpeg",
+      "/fleet/force-urbania-front-02.jpeg",
+      "/fleet/force-urbania-interior-01.jpeg",
+      "/fleet/force-urbania-interior-02.jpeg",
+      "/fleet/force-urbania-interior-03.jpeg",
+      "/fleet/force-urbania-interior-04.jpeg",
+      "/fleet/force-urbania-interior-05.jpeg",
+      "/fleet/force-urbania-interior-06.jpeg",
+      "/fleet/force-urbania-rear-01.jpeg",
+      "/fleet/force-urbania-rear-02.jpeg",
+    ],
+    featured: true,
+  },
+  {
+    slug: "coach-sgr",
+    name: "SGR Coach",
+    tagline: "26–35 seater luxury coach for large groups & pilgrimages",
+    category: "coach",
+    categoryLabel: "Mini Coach · 26 Seater",
+    seats: 26,
+    luggage: "Under-deck hold",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: 45,
+    priceUnit: "per km",
+    image: "/fleet/coach-sgr-front-01.jpeg",
+    gallery: [
+      "/fleet/coach-sgr-front-01.jpeg",
+      "/fleet/coach-sgr-front-02.jpeg",
+      "/fleet/coach-sgr-front-03.jpeg",
+      "/fleet/coach-sgr-interior-01.jpeg",
+      "/fleet/coach-sgr-interior-02.jpeg",
+      "/fleet/coach-sgr-interior-03.jpeg",
+      "/fleet/coach-sgr-rear-01.jpeg",
+      "/fleet/coach-sgr-rear-02.jpeg",
+    ],
+  },
+];
+
+export const featuredFleet = fleet.filter((v) => v.featured);

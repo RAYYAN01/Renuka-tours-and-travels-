@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw source footage (not shipped — see public/hero-loop.mp4 for the optimized web version)
+/media-source
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

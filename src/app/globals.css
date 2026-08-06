@@ -1,26 +1,598 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm editorial palette (kept for brand classes) */
+  --color-ivory: #f7f3ec;
+  --color-ivory-50: #fffdf8;
+  --color-sand-200: #ece3d3;
+  --color-sand-300: #ddccae;
+
+  --color-forest-950: #0e1c14;
+  --color-forest-900: #14261b;
+  --color-forest-800: #1f3d2b;
+  --color-forest-700: #2a4f38;
+  --color-forest-600: #396a4a;
+
+  --color-terracotta-700: #9c4d24;
+  --color-terracotta-600: #c1622e;
+  --color-terracotta-500: #d97a46;
+  --color-terracotta-300: #efc1a3;
+  --color-terracotta-200: #f3d7c0;
+
+  --color-clay-100: #f1e4d3;
+
+  --color-whatsapp: #3da35d;
+
+  --color-ink: #221f1a;
+  --color-paper: var(--color-ivory);
+
+  --background: var(--color-ivory);
+  --foreground: var(--color-ink);
+
+  /* ── Material 3 colour system (branded warm theme) ─────────── */
+  --md-primary: #9c4d24;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #ffdbc6;
+  --md-on-primary-container: #3a1500;
+
+  --md-secondary: #3b6b47;
+  --md-on-secondary: #ffffff;
+  --md-secondary-container: #c8edd0;
+  --md-on-secondary-container: #0c2f17;
+
+  --md-tertiary: #6e6030;
+  --md-on-tertiary: #ffffff;
+  --md-tertiary-container: #efe0b6;
+  --md-on-tertiary-container: #261c00;
+
+  --md-surface: #fbf7f0;
+  --md-on-surface: #211d18;
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #f5efe5;
+  --md-surface-container: #efe9de;
+  --md-surface-container-high: #e9e2d5;
+  --md-surface-container-highest: #e3dccf;
+
+  --md-on-surface-variant: #5f584c;
+  --md-on-surface-variant-2: #767060;
+  --md-outline: #7e7667;
+  --md-outline-variant: #d5c9b8;
+
+  --md-inverse-surface: #36302a;
+  --md-inverse-on-surface: #faf3ea;
+  --md-inverse-primary: #ffb691;
+
+  --md-error: #b3261e;
+  --md-on-error: #ffffff;
+  --md-error-container: #f9dedc;
+  --md-on-error-container: #410e0b;
+
+  /* Material elevations */
+  --md-elevation-1: 0 1px 2px 0 rgba(33, 29, 24, 0.3), 0 1px 3px 1px rgba(33, 29, 24, 0.15);
+  --md-elevation-2: 0 1px 2px 0 rgba(33, 29, 24, 0.3), 0 2px 6px 2px rgba(33, 29, 24, 0.15);
+  --md-elevation-3: 0 4px 8px 3px rgba(33, 29, 24, 0.15), 0 1px 3px 0 rgba(33, 29, 24, 0.3);
+
+  --shadow-luxury: var(--md-elevation-3);
+  --shadow-luxury-sm: var(--md-elevation-1);
+  --shadow-terracotta: 0 12px 34px -12px rgba(193, 98, 46, 0.45);
+
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-ivory-50: var(--color-ivory-50);
+  --color-sand-200: var(--color-sand-200);
+  --color-sand-300: var(--color-sand-300);
+
+  --color-forest-950: var(--color-forest-950);
+  --color-forest-900: var(--color-forest-900);
+  --color-forest-800: var(--color-forest-800);
+  --color-forest-700: var(--color-forest-700);
+  --color-forest-600: var(--color-forest-600);
+
+  --color-terracotta-700: var(--color-terracotta-700);
+  --color-terracotta-600: var(--color-terracotta-600);
+  --color-terracotta-500: var(--color-terracotta-500);
+  --color-terracotta-300: var(--color-terracotta-300);
+  --color-terracotta-200: var(--color-terracotta-200);
+
+  --color-clay-100: var(--color-clay-100);
+  --color-whatsapp: var(--color-whatsapp);
+
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --container-8xl: 96rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--md-surface);
+  color: var(--md-on-surface);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" 1, "cv11" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+
+:focus-visible {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--md-outline);
+  border-radius: 999px;
+  border: 2px solid var(--md-surface);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.font-serif-luxury {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.text-gradient-terracotta {
+  background: linear-gradient(
+    100deg,
+    var(--color-terracotta-300) 0%,
+    var(--color-terracotta-600) 50%,
+    var(--color-terracotta-500) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Glassmorphism core ─────────────────────────────────────── */
+/* Frosted panel over light/photo/video content */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px -8px rgba(20, 20, 16, 0.18);
+}
+/* Frosted panel tuned for dark/video backdrops */
+.glass-dark {
+  background: rgba(14, 28, 20, 0.4);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.45);
+  color: var(--color-ivory);
+}
+/* Small overlay chips/badges on top of photography */
+.glass-chip {
+  background: rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.glass-chip-light {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-forest-950);
+  text-shadow: none;
+}
+/* Highest-blur variant for the hero search bar */
+.glass-strong {
+  background: rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 60px -16px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Material 3 components ──────────────────────────────────── */
+
+/* Elevated top app bar — permanently translucent so content peeks through on scroll */
+.glass-nav,
+.md-app-bar {
+  background: rgba(247, 243, 236, 0.6);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  color: var(--md-on-surface);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.glass-nav-dark {
+  background: rgba(14, 28, 20, 0.35);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  color: var(--color-ivory);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Surfaces */
+.md-surface-low {
+  background: var(--md-surface-container-low);
+  color: var(--md-on-surface);
+}
+.md-surface-container {
+  background: var(--md-surface-container);
+  color: var(--md-on-surface);
+}
+.md-surface-high {
+  background: var(--md-surface-container-high);
+  color: var(--md-on-surface);
+}
+.md-inverse {
+  background: var(--md-inverse-surface);
+  color: var(--md-inverse-on-surface);
+}
+
+/* Card */
+.md-card {
+  background: var(--md-surface-container-low);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 1rem;
+  color: var(--md-on-surface);
+  box-shadow: var(--md-elevation-1);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.md-card-hover:hover {
+  box-shadow: var(--md-elevation-3);
+  transform: translateY(-2px);
+}
+
+/* Elevation helpers */
+.md-elev-1 {
+  box-shadow: var(--md-elevation-1);
+}
+.md-elev-2 {
+  box-shadow: var(--md-elevation-2);
+}
+.md-elev-3 {
+  box-shadow: var(--md-elevation-3);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.md-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Flat state-layer overlay with currentColor — no shadow, no lift */
+.md-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.14s ease;
+  pointer-events: none;
+}
+.md-btn:hover::before {
+  opacity: 0.08;
+}
+.md-btn:active::before {
+  opacity: 0.14;
+}
+
+.md-btn-filled {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+}
+
+.md-btn-tonal {
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+}
+
+.md-btn-outlined {
+  background: transparent;
+  border: 1px solid var(--md-outline);
+  color: var(--md-primary);
+}
+.md-btn-outlined:hover {
+  background: var(--md-surface-container-low);
+}
+
+.md-btn-tertiary {
+  background: var(--md-tertiary-container);
+  color: var(--md-on-tertiary-container);
+}
+
+.md-btn-text {
+  background: transparent;
+  color: var(--md-primary);
+}
+
+.md-btn-whatsapp {
+  background: var(--color-whatsapp);
+  color: #ffffff;
+}
+
+/* Floating action button — flat */
+.md-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+  transition: background-color 0.15s ease;
+}
+.md-fab:hover {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+}
+
+/* ── Filter chip (Material) ─────────────────────────────────── */
+.md-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface-container-lowest);
+  color: var(--md-on-surface-variant);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.md-chip:hover {
+  background: var(--md-surface-container-low);
+  color: var(--md-on-surface);
+}
+.md-chip-selected {
+  background: var(--md-secondary-container);
+  border-color: transparent;
+  color: var(--md-on-secondary-container);
+}
+
+/* ── Text fields (Material filled) ──────────────────────────── */
+.md-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.md-field-label {
+  color: var(--md-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.md-field {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom-color: var(--md-outline);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  color: var(--md-on-surface);
+  transition:
+    border-bottom-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.md-field::placeholder {
+  color: var(--md-on-surface-variant-2);
+}
+.md-field:hover {
+  background: var(--md-surface-container-high);
+}
+.md-field:focus {
+  outline: none;
+  background: var(--md-surface-container-highest);
+  border-bottom-color: var(--md-primary);
+  border-bottom-width: 2px;
+}
+.md-field:focus::placeholder {
+  color: transparent;
+}
+
+/* ── Tabs (Material) ────────────────────────────────────────── */
+.md-tab {
+  flex: 1;
+  position: relative;
+  padding: 0.75rem 0.5rem;
+  color: var(--md-on-surface-variant);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.md-tab:hover {
+  color: var(--md-on-surface);
+}
+.md-tab::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--md-primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.md-tab-active {
+  color: var(--md-primary);
+  font-weight: 600;
+}
+.md-tab-active::after {
+  opacity: 1;
+}
+
+/* Divider */
+.md-divider {
+  height: 1px;
+  border: 0;
+  background: var(--md-outline-variant);
+}
+.md-divider-strong {
+  background: var(--md-outline);
+}
+
+/* Eyebrow label */
+.md-eyebrow {
+  color: var(--md-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.md-eyebrow-light {
+  color: var(--md-inverse-primary);
+}
+
+/* Image media shape */
+.md-media {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+
+/* ── Glass accents (replaces the old skeuomorphic pass) ───────── */
+
+/* Inset track for filter pill groups */
+.surface-press {
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 2px 6px rgba(33, 29, 24, 0.14),
+    inset 0 1px 2px rgba(33, 29, 24, 0.1);
+}
+
+/* Raised glass pill button */
+.btn-skeuo {
+  box-shadow:
+    0 4px 10px -3px rgba(20, 20, 16, 0.35),
+    0 1px 2px rgba(20, 20, 16, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.btn-skeuo-forest {
+  background: linear-gradient(180deg, var(--color-forest-800), var(--color-forest-950));
+}
+
+/* Glass icon/badge plate */
+.plate-skeuo {
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 14px -4px rgba(33, 29, 24, 0.2);
+}
+
+/* Glass bezel frame around media */
+.frame-skeuo {
+  padding: 0.4rem;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--md-elevation-2);
+}
+
+/* Raised glass card surface */
+.surface-raised {
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--md-elevation-1);
+}
+
+/* Dark glass section background */
+.leather-dark {
+  background:
+    radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.05), transparent 45%),
+    linear-gradient(160deg, var(--color-forest-900), var(--color-forest-950));
+}
+.stitch {
+  position: relative;
+}
+.stitch::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+/* Soft-lit text on dark glass surfaces */
+.engrave-dark {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
