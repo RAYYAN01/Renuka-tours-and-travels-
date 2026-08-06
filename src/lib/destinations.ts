@@ -1,3 +1,24 @@
+import type { FleetCategory } from "@/lib/fleet";
+
+const VEHICLE_TEXT_TO_CATEGORY: Record<string, FleetCategory> = {
+  Sedan: "sedan",
+  SUV: "suv",
+  "Tempo Traveller": "traveller",
+  "Luxury Van": "luxury-van",
+  Coach: "coach",
+};
+
+/** Parses a free-text `recommendedVehicle` string (e.g. "SUV or Tempo
+ * Traveller") into the fleet categories it mentions, for linking each one to
+ * its filtered `/fleet?category=` listing. */
+export function recommendedVehicleCategories(
+  recommendedVehicle: string
+): { label: string; category: FleetCategory }[] {
+  return Object.entries(VEHICLE_TEXT_TO_CATEGORY)
+    .filter(([label]) => recommendedVehicle.includes(label))
+    .map(([label, category]) => ({ label, category }));
+}
+
 export interface Destination {
   slug: string;
   name: string;

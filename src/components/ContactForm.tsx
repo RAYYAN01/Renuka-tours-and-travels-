@@ -1,17 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { FormField, FormTextArea } from "@/components/ui/FormField";
-import { whatsappHref } from "@/lib/site";
+import { useWhatsAppSubmit } from "@/lib/useWhatsAppSubmit";
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
+  const { sent, handleSubmit } = useWhatsAppSubmit((form) => {
     const lines = [
       `Name: ${form.get("name")}`,
       `Phone: ${form.get("phone")}`,
@@ -19,10 +14,8 @@ export default function ContactForm() {
       form.get("subject") && `Subject: ${form.get("subject")}`,
       `Message: ${form.get("message")}`,
     ].filter(Boolean);
-
-    window.open(whatsappHref(lines.join("\n")), "_blank", "noopener,noreferrer");
-    setSent(true);
-  }
+    return lines.join("\n");
+  });
 
   if (sent) {
     return (

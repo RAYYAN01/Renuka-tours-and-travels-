@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/SplitReveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { destinations } from "@/lib/destinations";
+import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
 import { absoluteUrl, jsonLdScriptProps, parseLowerBoundPrice } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -60,8 +60,9 @@ export default async function DestinationDetailPage({
     { icon: MapPin, label: "Distance", value: destination.distance },
     { icon: Clock, label: "Duration", value: destination.duration },
     { icon: Wallet, label: "Estimated Cost", value: destination.estimatedCost },
-    { icon: Car, label: "Recommended Vehicle", value: destination.recommendedVehicle },
   ];
+
+  const recommendedVehicles = recommendedVehicleCategories(destination.recommendedVehicle);
 
   return (
     <section className="relative overflow-hidden pb-24 pt-36 text-ivory sm:pt-44">
@@ -113,13 +114,32 @@ export default async function DestinationDetailPage({
                 <span className="text-sm font-medium">{fact.value}</span>
               </div>
             ))}
+            <div className="flex flex-col gap-1.5">
+              <Car className="h-5 w-5 text-ivory/80" strokeWidth={1.5} />
+              <span className="text-[11px] uppercase tracking-wide text-ivory/55">
+                Recommended Vehicle
+              </span>
+              <span className="flex flex-wrap gap-x-1.5 text-sm font-medium">
+                {recommendedVehicles.map((v, i) => (
+                  <span key={v.category}>
+                    <Link
+                      href={`/fleet?category=${v.category}`}
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {v.label}
+                    </Link>
+                    {i < recommendedVehicles.length - 1 && " or"}
+                  </span>
+                ))}
+              </span>
+            </div>
           </div>
         </Reveal>
 
         <Reveal delay={340}>
           <div className="flex flex-wrap gap-4">
             <Button
-              href={`/booking?destination=${destination.name}`}
+              href={`/booking?destination=${encodeURIComponent(destination.name)}`}
               size="lg"
               icon={<ArrowRight className="h-4 w-4" />}
             >

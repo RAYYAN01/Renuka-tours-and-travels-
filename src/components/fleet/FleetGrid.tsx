@@ -21,6 +21,7 @@ export default function FleetGrid() {
   return (
     <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
       <Container>
+        <h2 className="sr-only">Available Vehicles</h2>
         <div className="surface-press flex flex-wrap gap-1 rounded-full p-1">
           <FilterPill active={active === "all"} onClick={() => setActive("all")}>
             All Vehicles

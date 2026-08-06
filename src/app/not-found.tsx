@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "The page you're looking for doesn't exist. Head back to Renuka Tours & Travels to browse our fleet, destinations and services.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (

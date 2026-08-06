@@ -10,13 +10,25 @@ import Reveal from "@/components/ui/Reveal";
 import StatBlock from "@/components/StatBlock";
 import { site } from "@/lib/site";
 import { coreStats } from "@/lib/stats";
+import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+
+const aboutDescription = `Renuka Tours & Travels has been moving families, corporates and pilgrims across South India since ${site.founded} — verified drivers, insured fleet, honest pricing.`;
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Renuka Tours & Travels has been moving families, corporates and pilgrims across South India since ${site.founded} — verified drivers, insured fleet, honest pricing.`,
+  description: aboutDescription,
   alternates: {
     canonical: "/about",
   },
+};
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: `About ${site.name}`,
+  description: aboutDescription,
+  url: absoluteUrl("/about"),
+  mainEntity: { "@id": `${absoluteUrl("/")}#organization` },
 };
 
 const stats = [...coreStats, { value: 60, suffix: "+", label: "Verified Drivers" }];
@@ -43,6 +55,7 @@ const body = Public_Sans({ subsets: ["latin"], weight: ["400", "500"] });
 export default function AboutPage() {
   return (
     <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(aboutJsonLd)} />
       <AboutHero />
 
       <section className="bg-ivory-50 pb-20 pt-14 sm:pt-16">

@@ -135,6 +135,9 @@ export const fleet: FleetVehicle[] = [
       "/fleet/innova-2011-front-02.jpeg",
       "/fleet/innova-2011-dashboard-01.jpeg",
       "/fleet/innova-2011-interior-01.jpeg",
+      "/fleet/innova-2011-interior-02.jpeg",
+      "/fleet/innova-2011-interior-03.jpeg",
+      "/fleet/innova-2011-interior-08.jpeg",
     ],
   },
   {
@@ -183,6 +186,7 @@ export const fleet: FleetVehicle[] = [
       "/fleet/force-traveller-yaksha-interior-01.jpeg",
       "/fleet/force-traveller-yaksha-interior-02.jpeg",
       "/fleet/force-traveller-yaksha-interior-03.jpeg",
+      "/fleet/force-traveller-yaksha-front-05.jpeg",
       "/fleet/force-traveller-yaksha-rear-01.jpeg",
     ],
   },
@@ -242,3 +246,21 @@ export const fleet: FleetVehicle[] = [
 ];
 
 export const featuredFleet = fleet.filter((v) => v.featured);
+
+const VIEW_LABELS: Record<string, string> = {
+  front: "front exterior",
+  side: "side profile",
+  rear: "rear exterior",
+  interior: "interior seating",
+  dashboard: "dashboard and controls",
+};
+
+/** Descriptive per-image alt text derived from the file's view-angle segment
+ * (e.g. "etios-interior-01.jpeg" → "Toyota Etios — interior seating"),
+ * so adjacent gallery thumbnails don't all share identical alt text. */
+export function vehicleImageAlt(vehicle: Pick<FleetVehicle, "name">, imagePath: string): string {
+  const filename = imagePath.split("/").pop() ?? "";
+  const match = filename.match(/-(front|side|rear|interior|dashboard)-\d+/);
+  const view = match ? VIEW_LABELS[match[1]] : undefined;
+  return view ? `${vehicle.name} — ${view}` : vehicle.name;
+}

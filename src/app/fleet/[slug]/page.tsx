@@ -7,7 +7,8 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { fleet } from "@/lib/fleet";
+import { fleet, vehicleImageAlt } from "@/lib/fleet";
+import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
 import { whatsappHref } from "@/lib/site";
 import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
 
@@ -75,6 +76,10 @@ export default async function FleetDetailPage({
     },
   ];
 
+  const suitedDestinations = destinations.filter((d) =>
+    recommendedVehicleCategories(d.recommendedVehicle).some((v) => v.category === vehicle.category)
+  );
+
   return (
     <section className="bg-ivory pb-24 pt-32 sm:pt-40">
       <Container>
@@ -93,7 +98,7 @@ export default async function FleetDetailPage({
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-luxury">
               <Image
                 src={vehicle.image}
-                alt={vehicle.name}
+                alt={vehicleImageAlt(vehicle, vehicle.image)}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
@@ -108,7 +113,7 @@ export default async function FleetDetailPage({
                   key={img}
                   className="relative aspect-square overflow-hidden rounded-xl border border-forest-950/8"
                 >
-                  <Image src={img} alt={vehicle.name} fill sizes="120px" className="object-cover" />
+                  <Image src={img} alt={vehicleImageAlt(vehicle, img)} fill sizes="120px" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -178,6 +183,27 @@ export default async function FleetDetailPage({
               </Button>
             </div>
           </Reveal>
+
+          {suitedDestinations.length > 0 && (
+            <Reveal delay={340}>
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-900/50">
+                  Well suited for
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {suitedDestinations.map((d) => (
+                    <Link
+                      key={d.slug}
+                      href={`/destinations/${d.slug}`}
+                      className="rounded-full border border-forest-950/12 px-3 py-1.5 text-sm font-medium text-forest-900/75 transition-colors hover:border-terracotta-500 hover:text-terracotta-600"
+                    >
+                      {d.name} trips
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          )}
 
           <Reveal delay={360}>
             <Link

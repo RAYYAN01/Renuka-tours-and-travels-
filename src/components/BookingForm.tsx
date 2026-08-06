@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { FormField, FormTextArea } from "@/components/ui/FormField";
 import { fleet } from "@/lib/fleet";
 import { services } from "@/lib/services";
-import { whatsappHref } from "@/lib/site";
+import { useWhatsAppSubmit } from "@/lib/useWhatsAppSubmit";
 
 const tripLabels: Record<string, string> = {
   outstation: "Outstation",
@@ -17,7 +16,6 @@ const tripLabels: Record<string, string> = {
 
 export default function BookingForm() {
   const params = useSearchParams();
-  const [confirmed, setConfirmed] = useState(false);
 
   const vehicleSlug = params.get("vehicle");
   const serviceId = params.get("service");
@@ -33,9 +31,7 @@ export default function BookingForm() {
     trip: params.get("trip") ?? "",
   };
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
+  const { sent: confirmed, handleSubmit } = useWhatsAppSubmit((form) => {
     const lines = [
       "Hi, I'd like to request a booking.",
       vehicle && `Vehicle: ${vehicle.name}`,
@@ -49,10 +45,8 @@ export default function BookingForm() {
       form.get("passengers") && `Passengers: ${form.get("passengers")}`,
       form.get("notes") && `Notes: ${form.get("notes")}`,
     ].filter(Boolean);
-
-    window.open(whatsappHref(lines.join("\n")), "_blank", "noopener,noreferrer");
-    setConfirmed(true);
-  }
+    return lines.join("\n");
+  });
 
   if (confirmed) {
     return (
@@ -71,7 +65,7 @@ export default function BookingForm() {
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr]">
       <div className="flex flex-col gap-4 rounded-2xl border border-forest-950/8 bg-ivory-50 p-6">
-        <h3 className="font-serif-luxury text-lg text-forest-950">Your Trip Summary</h3>
+        <h2 className="font-serif-luxury text-lg text-forest-950">Your Trip Summary</h2>
         <dl className="flex flex-col gap-3 text-sm">
           {vehicle && (
             <Row label="Vehicle" value={vehicle.name} />

@@ -40,6 +40,7 @@ export default function ContactPage() {
 
       <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
         <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <h2 className="sr-only">Contact Details &amp; Enquiry Form</h2>
           <Reveal>
             <div className="flex flex-col gap-6">
               {details.map((d) => {

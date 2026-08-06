@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Users, Snowflake, ArrowUpRight } from "lucide-react";
 import Tilt from "@/components/ui/Tilt";
-import type { FleetVehicle } from "@/lib/fleet";
+import { vehicleImageAlt, type FleetVehicle } from "@/lib/fleet";
 
 export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
   return (
@@ -14,7 +14,7 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-forest-900">
           <Image
             src={vehicle.image}
-            alt={vehicle.name}
+            alt={vehicleImageAlt(vehicle, vehicle.image)}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"

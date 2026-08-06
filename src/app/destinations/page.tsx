@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import DestinationCard from "@/components/DestinationCard";
 import { destinations } from "@/lib/destinations";
+import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Destinations",
@@ -20,12 +21,30 @@ export const metadata: Metadata = {
 const heading = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"] });
 const body = Manrope({ subsets: ["latin"], weight: ["400", "500"] });
 
+const destinationsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: destinations.map((d, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: absoluteUrl(`/destinations/${d.slug}`),
+    item: {
+      "@type": "TouristTrip",
+      name: `${d.name} trip from Bengaluru`,
+      image: absoluteUrl(d.image),
+      url: absoluteUrl(`/destinations/${d.slug}`),
+    },
+  })),
+};
+
 export default function DestinationsPage() {
   return (
     <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(destinationsJsonLd)} />
       <DestinationsHero />
       <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
         <Container>
+          <h2 className="sr-only">Popular Destinations from Bengaluru</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {destinations.map((d, i) => (
               <Reveal key={d.slug} delay={50 * (i % 3)}>

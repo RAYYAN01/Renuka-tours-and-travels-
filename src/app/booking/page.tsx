@@ -3,19 +3,36 @@ import { Suspense } from "react";
 import PageHeader from "@/components/PageHeader";
 import Container from "@/components/ui/Container";
 import BookingForm from "@/components/BookingForm";
+import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+
+const bookingDescription =
+  "Book your car, SUV, tempo traveller or coach with Renuka Tours & Travels — transparent pricing, verified drivers, confirmed within the hour.";
 
 export const metadata: Metadata = {
   title: "Book a Ride",
-  description:
-    "Book your car, SUV, tempo traveller or coach with Renuka Tours & Travels — transparent pricing, verified drivers, confirmed within the hour.",
+  description: bookingDescription,
   alternates: {
     canonical: "/booking",
+  },
+};
+
+const bookingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Book a Ride",
+  description: bookingDescription,
+  url: absoluteUrl("/booking"),
+  provider: { "@id": `${absoluteUrl("/")}#organization` },
+  potentialAction: {
+    "@type": "ReserveAction",
+    target: absoluteUrl("/booking"),
   },
 };
 
 export default function BookingPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(bookingJsonLd)} />
       <PageHeader
         eyebrow="Book a Ride"
         title="Let's get you moving"
