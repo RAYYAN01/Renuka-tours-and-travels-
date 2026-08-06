@@ -8,7 +8,7 @@ export const site = {
   phone: "+91 95133 30099",
   phoneRaw: "+919513330099",
   whatsapp: "+919513330099",
-  email: "bookings@renukatravels.example",
+  email: "renukatourstravels01@gmail.com",
   address: {
     line1: "12, MG Road",
     city: "Bengaluru",
