@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
 import { site } from "@/lib/site";
 import { siteUrl, organizationJsonLd, jsonLdScriptProps } from "@/lib/seo";
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>
         <Footer />
         <MobileCtaBar />
+        <WhatsAppButton />
       </body>
     </html>
   );

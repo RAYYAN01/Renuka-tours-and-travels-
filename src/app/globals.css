@@ -470,6 +470,10 @@ body {
 .md-fab:active {
   filter: brightness(0.96);
 }
+.md-fab-whatsapp {
+  border-radius: 9999px;
+  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 56%, transparent);
+}
 
 /* ── Filter chip (Material) ─────────────────────────────────── */
 .md-chip {

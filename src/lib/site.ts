@@ -5,9 +5,9 @@ export const site = {
   tagline: "Journeys, Chauffeured to Perfection",
   description:
     "Premium self-drive and chauffeur-driven car rentals, tempo travellers and coaches for outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours.",
-  phone: "+91 98765 43210",
-  phoneRaw: "+919876543210",
-  whatsapp: "+919876543210",
+  phone: "+91 95133 30099",
+  phoneRaw: "+919513330099",
+  whatsapp: "+919513330099",
   email: "bookings@renukatravels.example",
   address: {
     line1: "12, MG Road",
