@@ -1,14 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Reveal from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import { timeline } from "@/lib/timeline";
 
+// Vertical alternating ("zig-zag") timeline: a spine down the middle (left
+// edge on mobile), milestones alternating left/right as you scroll down.
+// The spine fills and each dot lights up as its milestone crosses the
+// viewport centre — an IntersectionObserver drives that, no scroll-jank
+// listeners.
 export default function Timeline() {
-  const [active, setActive] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const index = Number(entry.target.getAttribute("data-index"));
+          setActiveIndex((current) => Math.max(current, index));
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    for (const el of itemRefs.current) {
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  const progress = (activeIndex / (timeline.length - 1)) * 100;
 
   return (
     <section className="relative overflow-hidden bg-forest-950 py-24 text-ivory sm:py-32">
@@ -18,60 +43,71 @@ export default function Timeline() {
         <SectionHeading
           eyebrow="Our Journey"
           tone="light"
+          align="center"
           title="A decade-plus on the road"
-          description="Click through the milestones — from two sedans to a full-service fleet trusted across South India."
+          description="Scroll through the milestones — from two sedans to a full-service fleet trusted across South India."
         />
 
-        <Reveal delay={140}>
-          <div className="mt-16">
-            {/* Year markers with a connecting progress line */}
-            <div
-              role="tablist"
-              aria-label="Company milestones"
-              className="relative flex justify-between"
-            >
-              <div className="absolute left-0 right-0 top-[9px] h-px bg-ivory/15" />
-              <div
-                className="absolute left-0 top-[9px] h-px bg-terracotta-500 transition-all duration-500 ease-out"
-                style={{ width: `${(active / (timeline.length - 1)) * 100}%` }}
-              />
-              {timeline.map((item, i) => (
-                <button
+        <div className="relative mx-auto mt-20 max-w-3xl">
+          {/* Spine — left edge on mobile, centered from sm up */}
+          <div className="absolute left-[7px] top-0 h-full w-px bg-ivory/15 sm:left-1/2 sm:-translate-x-1/2" />
+          <div
+            className="absolute left-[7px] top-0 w-px bg-terracotta-500 transition-[height] duration-700 ease-out sm:left-1/2 sm:-translate-x-1/2"
+            style={{ height: `${progress}%` }}
+          />
+
+          <div className="flex flex-col gap-16 sm:gap-4">
+            {timeline.map((item, i) => {
+              const isLeft = i % 2 === 0;
+              const passed = i <= activeIndex;
+
+              const content = (
+                <>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ivory/40">
+                    Milestone {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 font-serif-luxury text-3xl text-ivory sm:text-4xl">
+                    {item.year}
+                  </h3>
+                  <p className="mt-3 text-ivory/70">{item.text}</p>
+                </>
+              );
+
+              return (
+                <div
                   key={item.year}
-                  role="tab"
-                  aria-selected={i === active}
-                  onClick={() => setActive(i)}
-                  onMouseEnter={() => setActive(i)}
-                  className="group relative z-10 flex flex-col items-center gap-3 rounded-full"
+                  ref={(el) => {
+                    itemRefs.current[i] = el;
+                  }}
+                  data-index={i}
+                  className="relative sm:grid sm:grid-cols-2 sm:gap-x-12 sm:py-6"
                 >
+                  {/* Dot */}
                   <span
                     className={cn(
-                      "h-[19px] w-[19px] rounded-full border-2 transition-colors duration-300",
-                      i === active
+                      "absolute left-[7px] top-1.5 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 transition-colors duration-300 sm:left-1/2 sm:top-1/2 sm:-translate-y-1/2",
+                      passed
                         ? "border-terracotta-500 bg-terracotta-500"
-                        : "border-ivory/30 bg-forest-950 group-hover:border-ivory/60"
+                        : "border-ivory/30 bg-forest-950"
                     )}
                   />
-                  <span
-                    className={cn(
-                      "font-serif-luxury text-base transition-colors duration-300 sm:text-lg",
-                      i === active ? "text-terracotta-300" : "text-ivory/45 group-hover:text-ivory/70"
-                    )}
-                  >
-                    {item.year}
-                  </span>
-                </button>
-              ))}
-            </div>
 
-            {/* Active milestone detail — remounts on change to retrigger the fade */}
-            <div className="mt-10 min-h-[7rem] rounded-2xl border border-ivory/10 bg-ivory/5 p-6 sm:p-8">
-              <p key={active} className="timeline-fade text-balance text-lg leading-relaxed text-ivory/85 sm:text-xl">
-                {timeline[active].text}
-              </p>
-            </div>
+                  {isLeft ? (
+                    <>
+                      <div className="pl-8 sm:pl-0 sm:pr-12 sm:text-right">{content}</div>
+                      <div className="hidden sm:block" />
+                    </>
+                  ) : (
+                    <>
+                      <div className="hidden sm:block" />
+                      <div className="pl-8 sm:pl-12 sm:text-left">{content}</div>
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );
