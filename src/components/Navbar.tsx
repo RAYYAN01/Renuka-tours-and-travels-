@@ -8,7 +8,6 @@ import { animate, stagger, createScope, type Scope } from "animejs";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/cn";
 import Button from "@/components/ui/Button";
-import Magnetic from "@/components/ui/Magnetic";
 import { site, telHref } from "@/lib/site";
 
 const links = [
@@ -121,16 +120,14 @@ export default function Navbar() {
           </Button>
         </div>
 
-        <Magnetic strength={0.5} className="lg:hidden">
-          <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-ivory transition-colors hover:bg-white/10"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </Magnetic>
+        <button
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="flex h-11 w-11 items-center justify-center rounded-full text-ivory transition-colors hover:bg-white/10 lg:hidden"
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </div>
 
       {open && (
@@ -164,7 +161,6 @@ export default function Navbar() {
                 href="/booking"
                 size="lg"
                 className="w-full"
-                magnetic={false}
                 onClick={() => setOpen(false)}
               >
                 Book a Ride

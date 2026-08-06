@@ -17,7 +17,7 @@ export default function FeaturedFleet() {
             description="From nimble sedans for the city to luxury vans for the whole family — every vehicle is sanitised, serviced and driven by a verified chauffeur."
           />
           <Reveal delay={200}>
-            <Button href="/fleet" variant="text" magnetic={false}>
+            <Button href="/fleet" variant="text">
               View Full Fleet <ArrowUpRight className="h-4 w-4" />
             </Button>
           </Reveal>

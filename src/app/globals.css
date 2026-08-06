@@ -200,12 +200,37 @@ body {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 .glass-chip-light {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.72);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   color: var(--color-forest-950);
   text-shadow: none;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -6px 10px -6px rgba(0, 0, 0, 0.08),
+    0 6px 16px -8px rgba(20, 14, 8, 0.35);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+.glass-chip-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 55%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.glass-chip-light > * {
+  position: relative;
+  z-index: 2;
+}
+.group:hover .glass-chip-light {
+  filter: brightness(1.03);
 }
 /* Highest-blur variant for the hero search bar */
 .glass-strong {
@@ -280,7 +305,12 @@ body {
   box-shadow: var(--md-elevation-3);
 }
 
-/* ── Buttons ────────────────────────────────────────────────── */
+/* ── Buttons — liquid glass ─────────────────────────────────────
+   Frosted, refractive material: backdrop blur + saturation, a
+   specular highlight along the top edge, a soft concave inner
+   shadow beneath it for depth, and a floating drop shadow. Tinted
+   per-variant via color-mix() so the same recipe works over both
+   light sections and dark video heroes. */
 .md-btn {
   position: relative;
   isolation: isolate;
@@ -292,77 +322,153 @@ body {
   border-radius: 999px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -10px 16px -10px rgba(0, 0, 0, 0.14),
+    0 8px 18px -12px rgba(20, 14, 8, 0.35);
+  transition:
+    box-shadow 0.35s ease,
+    filter 0.25s ease;
 }
 
-/* Flat state-layer overlay with currentColor — no shadow, no lift */
-.md-btn::before {
+/* Static top sheen — reads as light curving over the glass surface */
+.md-btn::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   border-radius: inherit;
-  background: currentColor;
-  opacity: 0;
-  transition: opacity 0.14s ease;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 55%);
+  mix-blend-mode: overlay;
   pointer-events: none;
 }
-.md-btn:hover::before {
-  opacity: 0.08;
-}
-.md-btn:active::before {
-  opacity: 0.14;
+
+/* Button label/icon content sits above the sheen layer */
+.md-btn > * {
+  position: relative;
+  z-index: 2;
 }
 
+.md-btn:hover {
+  filter: brightness(1.02);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -10px 16px -10px rgba(0, 0, 0, 0.15),
+    0 10px 22px -12px rgba(20, 14, 8, 0.4);
+}
+
+/* Press feedback only — buttons never drift toward the cursor or resize on hover */
+.md-btn:active {
+  filter: brightness(0.97);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* Filled/whatsapp fills are mixed toward white first — a muted, dusty tone
+   rather than the raw saturated brand color — then blended to translucent. */
 .md-btn-filled {
-  background: var(--md-primary);
-  color: var(--md-on-primary);
+  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 65%, white) 50%, transparent);
+  color: #ffffff;
+}
+.md-btn-filled:hover {
+  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 65%, white) 58%, transparent);
 }
 
 .md-btn-tonal {
-  background: var(--md-secondary-container);
+  background: color-mix(in srgb, var(--md-secondary) 20%, rgba(255, 255, 255, 0.65));
   color: var(--md-on-secondary-container);
+}
+.md-btn-tonal:hover {
+  background: color-mix(in srgb, var(--md-secondary) 26%, rgba(255, 255, 255, 0.65));
 }
 
 .md-btn-outlined {
-  background: transparent;
-  border: 1px solid var(--md-outline);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: color-mix(in srgb, var(--md-primary) 35%, rgba(255, 255, 255, 0.5));
   color: var(--md-primary);
 }
 .md-btn-outlined:hover {
-  background: var(--md-surface-container-low);
+  background: color-mix(in srgb, var(--md-primary) 8%, rgba(255, 255, 255, 0.3));
 }
 
 .md-btn-tertiary {
-  background: var(--md-tertiary-container);
+  background: color-mix(in srgb, var(--md-tertiary) 20%, rgba(255, 255, 255, 0.65));
   color: var(--md-on-tertiary-container);
 }
+.md-btn-tertiary:hover {
+  background: color-mix(in srgb, var(--md-tertiary) 26%, rgba(255, 255, 255, 0.65));
+}
 
+/* Plain text link-style button — no glass material, just the hover/press feel */
 .md-btn-text {
   background: transparent;
+  border-color: transparent;
   color: var(--md-primary);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.md-btn-text::after {
+  display: none;
+}
+.md-btn-text:hover {
+  filter: none;
+  background: color-mix(in srgb, var(--md-primary) 8%, transparent);
 }
 
 .md-btn-whatsapp {
-  background: var(--color-whatsapp);
+  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 50%, transparent);
   color: #ffffff;
+}
+.md-btn-whatsapp:hover {
+  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 58%, transparent);
 }
 
 /* Floating action button — flat */
 .md-fab {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1rem;
-  background: var(--md-primary-container);
-  color: var(--md-on-primary-container);
-  transition: background-color 0.15s ease;
+  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 65%, white) 56%, transparent);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -10px 14px -10px rgba(0, 0, 0, 0.18),
+    0 10px 22px -10px rgba(20, 14, 8, 0.45);
+  transition: box-shadow 0.35s ease, filter 0.25s ease;
+}
+.md-fab::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 55%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.md-fab > * {
+  position: relative;
+  z-index: 2;
 }
 .md-fab:hover {
-  background: var(--md-primary);
-  color: var(--md-on-primary);
+  filter: brightness(1.02);
+}
+.md-fab:active {
+  filter: brightness(0.96);
 }
 
 /* ── Filter chip (Material) ─────────────────────────────────── */
@@ -511,15 +617,39 @@ body {
     inset 0 1px 2px rgba(33, 29, 24, 0.1);
 }
 
-/* Raised glass pill button */
+/* Raised liquid-glass pill button (active filter state) */
 .btn-skeuo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  backdrop-filter: blur(14px) saturate(180%);
   box-shadow:
-    0 4px 10px -3px rgba(20, 20, 16, 0.35),
-    0 1px 2px rgba(20, 20, 16, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -8px 12px -8px rgba(0, 0, 0, 0.35),
+    0 8px 20px -8px rgba(20, 20, 16, 0.5);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+.btn-skeuo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 55%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.btn-skeuo > * {
+  position: relative;
+  z-index: 2;
+}
+.btn-skeuo:active {
+  filter: brightness(0.94);
 }
 .btn-skeuo-forest {
-  background: linear-gradient(180deg, var(--color-forest-800), var(--color-forest-950));
+  background: color-mix(in srgb, var(--color-forest-900) 78%, transparent);
 }
 
 /* Glass icon/badge plate */

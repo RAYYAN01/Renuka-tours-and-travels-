@@ -58,7 +58,7 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
                 </p>
               </div>
               <span className="glass-chip-light flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold">
-                Book Now
+                <span>Book Now</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </div>

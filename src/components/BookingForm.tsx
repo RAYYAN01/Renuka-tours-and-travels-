@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import Magnetic from "@/components/ui/Magnetic";
+import Button from "@/components/ui/Button";
 import { FormField, FormTextArea } from "@/components/ui/FormField";
 import { fleet } from "@/lib/fleet";
 import { services } from "@/lib/services";
@@ -113,15 +113,14 @@ export default function BookingForm() {
           <FormField label="Passengers" name="passengers" type="number" defaultValue={prefill.passengers} />
         </div>
         <FormTextArea label="Additional Notes" name="notes" rows={3} />
-        <Magnetic strength={0.2} className="self-start">
-          <button
-            type="submit"
-            className="group flex items-center gap-2 rounded-full bg-terracotta-600 px-6 py-3 text-sm font-semibold text-ivory-50 shadow-terracotta transition-colors hover:bg-terracotta-700"
-          >
-            Confirm Booking Request
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </button>
-        </Magnetic>
+        <Button
+          type="submit"
+          size="lg"
+          className="self-start"
+          icon={<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
+        >
+          Confirm Booking Request
+        </Button>
       </form>
     </div>
   );

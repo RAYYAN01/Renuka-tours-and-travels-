@@ -17,7 +17,7 @@ export default function Destinations() {
             description="Hand-picked routes from Bengaluru with the right vehicle and estimated cost pre-calculated for you."
           />
           <Reveal delay={200}>
-            <Button href="/destinations" variant="text" magnetic={false}>
+            <Button href="/destinations" variant="text">
               View All Destinations <ArrowUpRight className="h-4 w-4" />
             </Button>
           </Reveal>

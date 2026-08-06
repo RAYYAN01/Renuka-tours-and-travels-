@@ -70,7 +70,7 @@ function FilterPill({
           : "text-forest-900/65 hover:text-forest-950"
       )}
     >
-      {children}
+      <span>{children}</span>
     </button>
   );
 }

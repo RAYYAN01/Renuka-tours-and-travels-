@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
-import Magnetic from "@/components/ui/Magnetic";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -13,7 +12,6 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   icon?: React.ReactNode;
-  magnetic?: boolean;
 };
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
@@ -41,7 +39,6 @@ export default function Button({
   onClick,
   type = "button",
   icon,
-  magnetic = true,
 }: ButtonProps) {
   const classes = cn(
     "group focus-visible:outline-primary focus-visible:outline-2 focus-visible:outline-offset-2 transition-colors",
@@ -50,19 +47,22 @@ export default function Button({
     className
   );
 
-  const content = href ? (
-    <Link href={href} className={classes} target={target} rel={rel} onClick={onClick}>
-      {children}
+  // Wrapped so the label/icon paint above the glass sheen pseudo-element
+  // (see .md-btn::after / .md-btn > * in globals.css).
+  const inner = (
+    <>
+      <span>{children}</span>
       {icon}
+    </>
+  );
+
+  return href ? (
+    <Link href={href} className={classes} target={target} rel={rel} onClick={onClick}>
+      {inner}
     </Link>
   ) : (
     <button type={type} onClick={onClick} className={classes}>
-      {children}
-      {icon}
+      {inner}
     </button>
   );
-
-  if (!magnetic) return content;
-
-  return <Magnetic className="inline-block">{content}</Magnetic>;
 }

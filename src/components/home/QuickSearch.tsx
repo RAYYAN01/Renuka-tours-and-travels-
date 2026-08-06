@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { MapPin, CalendarDays, Users, Search } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import Magnetic from "@/components/ui/Magnetic";
 import { cn } from "@/lib/cn";
 
 const tabs = [
@@ -95,16 +94,14 @@ export default function QuickSearch() {
             />
 
             <div className="p-3 lg:p-0 lg:pl-2">
-              <Magnetic strength={0.3} className="block">
-                <button
-                  type="submit"
-                  aria-label="Search"
-                  className="group flex h-12 w-full items-center justify-center gap-2 rounded-full bg-terracotta-600 px-6 text-sm font-semibold text-ivory-50 transition-colors hover:bg-terracotta-700 lg:w-12 lg:px-0"
-                >
-                  <Search className="h-4.5 w-4.5 shrink-0" strokeWidth={2.25} />
-                  <span className="lg:hidden">Search</span>
-                </button>
-              </Magnetic>
+              <button
+                type="submit"
+                aria-label="Search"
+                className="md-btn md-btn-filled group flex h-12 w-full items-center justify-center gap-2 px-6 text-sm lg:w-12 lg:px-0"
+              >
+                <Search className="h-4.5 w-4.5 shrink-0" strokeWidth={2.25} />
+                <span className="lg:hidden">Search</span>
+              </button>
             </div>
           </form>
         </Reveal>
