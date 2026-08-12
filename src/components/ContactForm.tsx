@@ -22,7 +22,7 @@ export default function ContactForm() {
       <div className="flex h-full flex-col items-center justify-center gap-4 rounded-2xl border border-forest-950/8 bg-ivory-50 p-10 text-center">
         <CheckCircle2 className="h-10 w-10 text-terracotta-600" strokeWidth={1.5} />
         <h3 className="font-serif-luxury text-2xl text-forest-950">Message sent</h3>
-        <p className="max-w-sm text-sm text-forest-900/60">
+        <p className="max-w-sm text-sm text-forest-900/80">
           We&apos;ve opened WhatsApp with your message pre-filled — just hit
           send and our team will get back to you within the hour.
         </p>

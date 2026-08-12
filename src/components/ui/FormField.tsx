@@ -3,7 +3,7 @@ const fieldClasses =
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="text-xs font-medium uppercase tracking-wide text-forest-900/50">
+    <span className="text-xs font-medium uppercase tracking-wide text-forest-900/70">
       {children}
     </span>
   );

@@ -63,7 +63,7 @@ export default function Timeline() {
 
               const content = (
                 <>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ivory/40">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ivory/55">
                     Milestone {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="mt-2 font-serif-luxury text-3xl text-ivory sm:text-4xl">

@@ -55,7 +55,7 @@ export default function Testimonials() {
                   </blockquote>
                   <figcaption className="mt-auto text-sm">
                     <p className="font-semibold text-forest-950">{t.name}</p>
-                    <p className="text-forest-900/55">{t.context}</p>
+                    <p className="text-forest-900/75">{t.context}</p>
                   </figcaption>
                 </figure>
               </Tilt>

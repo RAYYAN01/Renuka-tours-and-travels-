@@ -126,6 +126,11 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01" 1, "cv11" 1;
   -webkit-font-smoothing: antialiased;
+  /* Base reading rhythm — headings override this with their own explicit
+     tracking-tight (already tighter than -0.01em), so this only affects
+     body copy and anything that doesn't set its own line-height/tracking. */
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 ::selection {

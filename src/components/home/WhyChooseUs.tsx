@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
             <div className="surface-raised absolute bottom-6 left-8 right-8 rounded-2xl">
               <div className="flex items-center gap-3 p-5">
                 <p className="font-serif-luxury text-2xl text-forest-950">4.9 / 5</p>
-                <p className="text-xs uppercase tracking-[0.2em] text-forest-900/60">
+                <p className="text-xs uppercase tracking-[0.2em] text-forest-900/70">
                   Average rating across 2,400+ trips
                 </p>
               </div>

@@ -147,7 +147,7 @@ function Field({
         type={type}
         min={min}
         placeholder={placeholder}
-        className="w-full border-none bg-transparent p-0 text-sm font-medium text-forest-900 placeholder:text-forest-900/40 focus:outline-none focus:ring-0"
+        className="w-full border-none bg-transparent p-0 text-sm font-medium text-forest-900 placeholder:text-forest-900/55 focus:outline-none focus:ring-0"
       />
     </label>
   );

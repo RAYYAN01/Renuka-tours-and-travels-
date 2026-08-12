@@ -140,7 +140,7 @@ export default async function FleetDetailPage({
               {specs.map((spec) => (
                 <div key={spec.label} className="flex flex-col gap-1.5">
                   <spec.icon className="h-5 w-5 text-terracotta-600" strokeWidth={1.5} />
-                  <span className="text-[11px] uppercase tracking-wide text-forest-900/50">
+                  <span className="text-[11px] uppercase tracking-wide text-forest-900/70">
                     {spec.label}
                   </span>
                   <span className="text-sm font-medium text-forest-950">{spec.value}</span>
@@ -187,7 +187,7 @@ export default async function FleetDetailPage({
           {suitedDestinations.length > 0 && (
             <Reveal delay={340}>
               <div className="flex flex-col gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-900/50">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-900/70">
                   Well suited for
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -208,7 +208,7 @@ export default async function FleetDetailPage({
           <Reveal delay={360}>
             <Link
               href="/fleet"
-              className="text-sm font-medium text-forest-900/60 underline-offset-4 hover:text-terracotta-600 hover:underline"
+              className="text-sm font-medium text-forest-900/75 underline-offset-4 hover:text-terracotta-600 hover:underline"
             >
               ← Back to full fleet
             </Link>

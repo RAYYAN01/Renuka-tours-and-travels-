@@ -23,7 +23,7 @@ export default function Breadcrumbs({
                     className={
                       tone === "light"
                         ? "text-ivory/60 transition-colors hover:text-ivory"
-                        : "text-forest-900/50 transition-colors hover:text-forest-950"
+                        : "text-forest-900/70 transition-colors hover:text-forest-950"
                     }
                   >
                     {item.label}

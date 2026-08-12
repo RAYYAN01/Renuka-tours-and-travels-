@@ -79,7 +79,7 @@ export default function BookingForm() {
           {prefill.date && <Row label="Date" value={prefill.date} />}
           {prefill.passengers && <Row label="Passengers" value={prefill.passengers} />}
           {!vehicle && !service && !prefill.pickup && (
-            <p className="text-forest-900/50">
+            <p className="text-forest-900/75">
               Fill in the form and we&apos;ll match you with the right vehicle.
             </p>
           )}
@@ -123,7 +123,7 @@ export default function BookingForm() {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-forest-950/8 pb-3">
-      <dt className="text-forest-900/50">{label}</dt>
+      <dt className="text-forest-900/70">{label}</dt>
       <dd className="font-medium text-forest-950">{value}</dd>
     </div>
   );

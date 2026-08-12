@@ -42,7 +42,7 @@ export default function FleetGrid() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="mt-10 text-center text-forest-900/60">
+          <p className="mt-10 text-center text-forest-900/80">
             No vehicles in this category yet.
           </p>
         )}

@@ -104,7 +104,7 @@ export default function AboutPage() {
                   <span className="font-serif-luxury text-2xl text-terracotta-300">
                     {item.year}
                   </span>
-                  <p className="text-sm text-ivory/80">{item.text}</p>
+                  <p className="text-base text-ivory/80">{item.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 <div className="flex flex-col gap-3">
                   <item.icon className="h-7 w-7 text-terracotta-600" strokeWidth={1.5} />
                   <h3 className="font-serif-luxury text-lg text-forest-950">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-forest-900/75">{item.text}</p>
+                  <p className="text-base leading-relaxed text-forest-900/75">{item.text}</p>
                 </div>
               </Reveal>
             ))}

@@ -77,7 +77,7 @@ export default function ServicesPage() {
                     <div className="rounded-2xl border border-forest-950/8 bg-ivory-50 p-7">
                       <ul className="flex flex-col gap-3">
                         {service.features.map((f) => (
-                          <li key={f} className="flex items-start gap-3 text-sm text-forest-900/75">
+                          <li key={f} className="flex items-start gap-3 text-base text-forest-900/75">
                             <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracotta-600" strokeWidth={2} />
                             {f}
                           </li>

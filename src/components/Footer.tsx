@@ -92,7 +92,7 @@ export default function Footer() {
 
           {columns.map((col) => (
             <div key={col.title} className="flex flex-col gap-4">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-950/60">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-950/70">
                 {col.title}
               </h3>
               <ul className="flex flex-col gap-2.5">
@@ -111,7 +111,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-forest-950/10 pt-6 text-xs text-forest-900/50 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-forest-950/10 pt-6 text-xs text-forest-900/70 sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>

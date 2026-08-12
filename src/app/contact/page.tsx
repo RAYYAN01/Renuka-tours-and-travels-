@@ -48,7 +48,7 @@ export default function ContactPage() {
                   <div className="flex items-start gap-4 rounded-2xl border border-forest-950/8 bg-ivory-50 p-5">
                     <d.icon className="mt-0.5 h-5 w-5 shrink-0 text-terracotta-600" strokeWidth={1.75} />
                     <div>
-                      <p className="text-[11px] uppercase tracking-wide text-forest-900/50">
+                      <p className="text-[11px] uppercase tracking-wide text-forest-900/70">
                         {d.label}
                       </p>
                       <p className="text-sm font-medium text-forest-950">{d.value}</p>

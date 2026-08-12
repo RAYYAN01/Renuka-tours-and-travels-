@@ -35,7 +35,7 @@ export default function NotFound() {
         </div>
         <Link
           href="/"
-          className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-forest-900/40"
+          className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-forest-900/70"
         >
           Renuka Tours &amp; Travels
         </Link>
