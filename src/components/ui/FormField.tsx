@@ -1,7 +1,7 @@
 const fieldClasses =
   "rounded-xl border border-forest-950/12 bg-ivory px-4 py-3 text-sm text-forest-950 outline-none transition-colors focus:border-terracotta-500";
 
-export function FieldLabel({ children }: { children: React.ReactNode }) {
+function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
     <span className="text-xs font-medium uppercase tracking-wide text-forest-900/50">
       {children}

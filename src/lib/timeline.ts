@@ -1,6 +1,6 @@
 import { site } from "@/lib/site";
 
-export interface TimelineMilestone {
+interface TimelineMilestone {
   year: string;
   text: string;
 }

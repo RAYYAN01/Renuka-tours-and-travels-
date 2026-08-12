@@ -14,22 +14,37 @@ export default function Tilt({
   max?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  // Raw pointermove can fire well above 60Hz on modern mice/trackpads;
+  // getBoundingClientRect() + animate() on every single event is wasted
+  // work between frames. Coalesce to one update per animation frame.
+  const frameId = useRef<number | null>(null);
 
   function handleMove(e: PointerEvent<HTMLDivElement>) {
-    if (!ref.current || e.pointerType !== "mouse") return;
-    const rect = ref.current.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    animate(ref.current, {
-      rotateX: -py * max,
-      rotateY: px * max,
-      translateY: -4,
-      duration: 400,
-      ease: "out(3)",
+    if (e.pointerType !== "mouse") return;
+    const { clientX, clientY } = e;
+
+    if (frameId.current !== null) return;
+    frameId.current = requestAnimationFrame(() => {
+      frameId.current = null;
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const px = (clientX - rect.left) / rect.width - 0.5;
+      const py = (clientY - rect.top) / rect.height - 0.5;
+      animate(ref.current, {
+        rotateX: -py * max,
+        rotateY: px * max,
+        translateY: -4,
+        duration: 400,
+        ease: "out(3)",
+      });
     });
   }
 
   function handleLeave() {
+    if (frameId.current !== null) {
+      cancelAnimationFrame(frameId.current);
+      frameId.current = null;
+    }
     if (!ref.current) return;
     animate(ref.current, {
       rotateX: 0,
