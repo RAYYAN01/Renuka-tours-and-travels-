@@ -28,6 +28,7 @@ const columns = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "Destinations", href: "/destinations" },
+      { label: "Gallery", href: "/gallery" },
       { label: "Contact", href: "/contact" },
     ],
   },
