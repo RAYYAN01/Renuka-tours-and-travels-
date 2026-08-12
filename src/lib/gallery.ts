@@ -270,4 +270,25 @@ export const galleryImages: GalleryImage[] = [
     category: "trips",
     aspect: "landscape",
   },
+  {
+    src: "/gallery/misty-hills-panorama.jpg",
+    title: "Misty Hills Panorama",
+    alt: "A green mountain peak rising above dense forest under a cloudy monsoon sky",
+    category: "trips",
+    aspect: "portrait",
+  },
+  {
+    src: "/gallery/forest-waterfall-view.jpg",
+    title: "Forest Waterfall Along the Route",
+    alt: "A waterfall cascading through dense forest beside a hairpin ghat road",
+    category: "trips",
+    aspect: "portrait",
+  },
+  {
+    src: "/gallery/foggy-hill-road-03.jpg",
+    title: "Winding Road Through the Mist",
+    alt: "A winding hill road disappearing into thick fog, lined with trees",
+    category: "trips",
+    aspect: "portrait",
+  },
 ];
