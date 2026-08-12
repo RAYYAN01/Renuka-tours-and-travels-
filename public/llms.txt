@@ -2,6 +2,8 @@
 
 > Premium self-drive and chauffeur-driven car, SUV, tempo traveller and coach rentals based in Bengaluru, serving outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours across South India.
 
+Website: https://www.renukatoursandtravel.com
+
 Renuka Tours & Travels has operated since 2011, running a fleet of 40+ vehicles across five categories (sedans, SUVs, tempo travellers, luxury vans and mini coaches) with verified, background-checked drivers and transparent, upfront per-kilometre or per-package pricing — no surge pricing, no hidden fees. Available 24×7.
 
 ## Key pages
@@ -9,6 +11,7 @@ Renuka Tours & Travels has operated since 2011, running a fleet of 40+ vehicles 
 - [Fleet](/fleet): Full vehicle lineup with seating capacity, luggage space, AC/fuel type and starting price per km for each vehicle.
 - [Services](/services): Airport transfers, outstation trips, corporate travel, wedding transport, group & pilgrimage tours, school/college trips, hourly local rentals, and self-drive cars.
 - [Destinations](/destinations): Popular weekend and multi-day routes from Bengaluru with estimated cost and recommended vehicle for each.
+- [Gallery](/gallery): Photos from past trips, the fleet, and destinations across South India.
 - [Booking](/booking): Request a booking online — pre-fills a WhatsApp message to the operations team.
 - [About](/about): Company history, fleet growth timeline, and safety/verification standards (driver checks, licensing, insurance, sanitisation).
 - [Contact](/contact): Phone, WhatsApp, email and office address.
@@ -16,8 +19,54 @@ Renuka Tours & Travels has operated since 2011, running a fleet of 40+ vehicles 
 ## Facts
 
 - Founded: 2011
-- Fleet size: 40+ vehicles across sedans, SUVs, tempo travellers (12–17 seater), luxury vans and mini coaches (26–35 seater)
+- Fleet size: 40+ vehicles across sedans, SUVs, tempo travellers (12–17 seater), luxury vans (12–17 seater) and mini coaches (26–35 seater)
 - Coverage: Bengaluru city and outstation trips across South India
-- Pricing model: per-kilometre for outstation trips, flat packages for local/hourly rentals, custom quotes for corporate/wedding/group bookings
-- Driver: included by default on all vehicles; unchauffeured self-drive cars also available
-- Contact channels: phone, WhatsApp, email, and an online booking form
+- Pricing model: per-kilometre for outstation trips (from ₹11/km for a sedan), flat packages for local/hourly rentals, custom quotes for corporate/wedding/group bookings
+- Driver: included by default on all vehicles; unchauffeured self-drive cars also available with a refundable security deposit
+- Insurance & verification: every vehicle carries valid insurance covering passengers and third parties; every driver is background-checked, licence-validated and interviewed before joining the fleet
+- Address: 97/3, First Floor, Veerappa Compound, 14 E Acres, Nagavarapalya, CV Raman Nagar, Bengaluru, Karnataka 560093, India
+- Phone / WhatsApp: +91 95133 30099
+- Email: renukatourstravels01@gmail.com
+- Hours: Open 24×7
+
+## Popular routes from Bengaluru
+
+| Destination | Distance | Duration | Estimated cost | Recommended vehicle |
+|---|---|---|---|---|
+| Mysuru (Heritage City) | 145 km | ~3.5 hrs | ₹3,200 – ₹4,500 | Sedan or SUV |
+| Coorg (Hill Station) | 260 km | ~6 hrs | ₹5,500 – ₹7,800 | SUV or Tempo Traveller |
+| Ooty (Hill Station) | 270 km | ~6.5 hrs | ₹5,800 – ₹8,200 | SUV or Tempo Traveller |
+| Wayanad (Hill Station) | 285 km | ~6.5 hrs | ₹5,800 – ₹8,300 | SUV or Tempo Traveller |
+| Tirupati (Pilgrimage) | 255 km | ~5.5 hrs | ₹5,200 – ₹7,500 | SUV, Tempo Traveller or Coach |
+| Hampi (Heritage Site) | 340 km | ~6.5 hrs | ₹6,800 – ₹9,500 | SUV or Tempo Traveller |
+| Kodaikanal (Hill Station) | 460 km | ~9 hrs | ₹9,200 – ₹13,200 | SUV or Tempo Traveller |
+| Munnar (Hill Station) | 480 km | ~9.5 hrs | ₹9,600 – ₹13,800 | SUV or Tempo Traveller |
+| Goa (Beach Getaway) | 560 km | ~10 hrs | ₹11,000 – ₹16,000 | SUV or Luxury Van |
+
+Full detail pages, live pricing and booking: https://www.renukatoursandtravel.com/destinations
+
+## Frequently asked questions
+
+**How is pricing calculated for outstation trips?**
+Outstation trips are billed per kilometre, starting from ₹11/km for a sedan. Tolls, driver allowance and any interstate permit charges are shown upfront before you confirm — there's no surge pricing, ever.
+
+**Do your vehicles come with a driver?**
+Yes, every vehicle in the fleet is chauffeur-driven by default with a verified, background-checked driver. If you'd rather drive yourself, self-drive cars are also available with a refundable security deposit.
+
+**What types of vehicles do you have?**
+The fleet spans five categories: sedans (4-seater), SUVs (7-seater), tempo travellers (12–17 seater), luxury vans (12–17 seater) and mini coaches (26–35 seater) — so there's a fit whether it's a solo airport run or a 35-person pilgrimage group.
+
+**How do I book a ride?**
+Use the search bar on the homepage or the booking form at /booking to share your pickup, destination, date and passenger count. The team confirms the vehicle, price and pickup time by phone or WhatsApp, usually within the hour.
+
+**Which cities and routes do you cover?**
+Based in Bengaluru, covering local city travel plus outstation trips across South India, including Mysuru, Coorg, Ooty, Hampi, Tirupati, Goa, Wayanad, Kodaikanal and Munnar.
+
+**Is airport pickup tracked against my flight?**
+Yes. Airport transfers include live flight tracking and free waiting time if your flight is delayed, so a late landing never means a missed ride.
+
+**Are your vehicles insured and drivers verified?**
+Every vehicle carries valid insurance covering passengers and third parties, and every driver goes through background checks, licence validation and an in-person interview before joining the fleet.
+
+**Can I book for a corporate account or a wedding?**
+Yes — corporate travel is available with monthly billing and a dedicated account manager, and wedding transport includes fleet decoration on request plus multi-vehicle coordination for multi-day functions.
