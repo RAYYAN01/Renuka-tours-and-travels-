@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 // Single source of truth for the production origin — update once here if a
 // custom domain goes live later, and metadataBase / sitemap / robots /
 // JSON-LD all follow automatically.
-export const siteUrl = "https://renuka-tours-travels.vercel.app";
+export const siteUrl = "https://www.renukatoursandtravel.com";
 
 export function absoluteUrl(path: string) {
   return new URL(path, siteUrl).toString();
