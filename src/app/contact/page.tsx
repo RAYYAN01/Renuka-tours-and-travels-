@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Renuka Tours & Travels for bookings and enquiries — phone, WhatsApp, email or our quick contact form. Available 24×7.",
+  keywords: [
+    "contact Renuka Tours & Travels",
+    "car rental enquiry Bengaluru",
+    "book a cab Bengaluru",
+  ],
   alternates: {
     canonical: "/contact",
   },

@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Airport transfers, outstation trips, corporate travel, weddings, pilgrimage tours and self-drive rentals — explore all Renuka Tours & Travels services.",
+  keywords: [
+    "airport transfer Bengaluru",
+    "outstation cab booking Bengaluru",
+    "corporate travel Bengaluru",
+    "wedding car rental Bengaluru",
+    "pilgrimage tour Bengaluru",
+    "self drive car rental Bengaluru",
+  ],
   alternates: {
     canonical: "/services",
   },

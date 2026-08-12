@@ -26,6 +26,12 @@ export async function generateMetadata({
   return {
     title: destination.name,
     description: destination.description,
+    keywords: [
+      `Bengaluru to ${destination.name} taxi`,
+      `Bengaluru to ${destination.name} cab`,
+      `${destination.name} trip from Bengaluru`,
+      `${destination.name} tour package`,
+    ],
     alternates: {
       canonical: `/destinations/${destination.slug}`,
     },

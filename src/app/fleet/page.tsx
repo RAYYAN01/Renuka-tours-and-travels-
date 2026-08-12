@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   title: "Our Fleet",
   description:
     "Browse our full fleet of sedans, SUVs, tempo travellers, luxury vans and coaches — all with verified drivers and transparent pricing.",
+  keywords: [
+    "car fleet Bengaluru",
+    "SUV rental Bengaluru",
+    "tempo traveller rental",
+    "luxury van rental Bengaluru",
+    "mini coach rental Bengaluru",
+    "sedan rental Bengaluru",
+  ],
   alternates: {
     canonical: "/fleet",
   },

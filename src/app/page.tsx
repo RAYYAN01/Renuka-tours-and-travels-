@@ -15,6 +15,16 @@ export const metadata: Metadata = {
   title: "Car, SUV & Tempo Traveller Rentals in Bengaluru",
   description:
     "Book cars, SUVs, tempo travellers, luxury vans and coaches in Bengaluru with verified drivers and transparent per-km pricing. Outstation trips, airport transfers, weddings, corporate travel and pilgrimages — confirmed within the hour.",
+  keywords: [
+    "car rental Bengaluru",
+    "tempo traveller rental Bengaluru",
+    "SUV rental Bengaluru",
+    "outstation cab Bengaluru",
+    "airport taxi Bengaluru",
+    "luxury van rental Bengaluru",
+    "coach rental Bengaluru",
+    "self drive cars Bengaluru",
+  ],
   alternates: {
     canonical: "/",
   },

@@ -11,6 +11,12 @@ const bookingDescription =
 export const metadata: Metadata = {
   title: "Book a Ride",
   description: bookingDescription,
+  keywords: [
+    "book a cab online Bengaluru",
+    "car rental booking Bengaluru",
+    "outstation trip booking",
+    "tempo traveller booking",
+  ],
   alternates: {
     canonical: "/booking",
   },

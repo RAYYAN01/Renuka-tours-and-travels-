@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   title: "Destinations",
   description:
     "Popular weekend trips, hill stations, beach getaways and pilgrimage routes from Bengaluru — with estimated cost and recommended vehicle.",
+  keywords: [
+    "Bengaluru to Mysuru cab",
+    "Bengaluru to Coorg taxi",
+    "Bengaluru to Ooty cab",
+    "Bengaluru to Goa taxi",
+    "Bengaluru to Tirupati taxi",
+    "Bengaluru to Hampi cab",
+    "Bengaluru to Wayanad taxi",
+    "Bengaluru to Kodaikanal cab",
+    "Bengaluru to Munnar taxi",
+    "weekend trips from Bengaluru",
+  ],
   alternates: {
     canonical: "/destinations",
   },

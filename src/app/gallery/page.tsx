@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   title: "Gallery",
   description:
     "Browse photos of our fleet, past trips and destinations across South India — Renuka Tours & Travels.",
+  keywords: [
+    "Renuka Tours photo gallery",
+    "South India road trip photos",
+    "Bengaluru travel agency photos",
+  ],
   alternates: {
     canonical: "/gallery",
   },

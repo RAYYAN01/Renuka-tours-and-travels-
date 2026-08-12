@@ -27,6 +27,12 @@ export async function generateMetadata({
   return {
     title: vehicle.name,
     description: `${vehicle.tagline} — ${vehicle.seats} seats, starting from ₹${vehicle.priceFrom} ${vehicle.priceUnit}.`,
+    keywords: [
+      `${vehicle.name} rental Bengaluru`,
+      `${vehicle.name} hire Bengaluru`,
+      `${vehicle.categoryLabel} rental Bengaluru`,
+      `${vehicle.name} with driver Bengaluru`,
+    ],
     alternates: {
       canonical: `/fleet/${vehicle.slug}`,
     },

@@ -18,6 +18,12 @@ const aboutDescription = `Renuka Tours & Travels has been moving families, corpo
 export const metadata: Metadata = {
   title: "About Us",
   description: aboutDescription,
+  keywords: [
+    "about Renuka Tours & Travels",
+    "car rental company Bengaluru",
+    "trusted travel agency Bengaluru",
+    "verified drivers Bengaluru",
+  ],
   alternates: {
     canonical: "/about",
   },
