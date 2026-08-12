@@ -24,6 +24,12 @@ export const metadata: Metadata = pageMetadata({
     "Bengaluru to Kodaikanal cab",
     "Bengaluru to Munnar taxi",
     "weekend trips from Bengaluru",
+    "one way cab Bengaluru to Goa",
+    "same day Tirupati darshan cab from Bengaluru",
+    "Bengaluru to Coorg tour package by car",
+    "hill station trips near Bengaluru by road",
+    "multi day outstation trip from Bengaluru",
+    "South India road trip cab hire",
   ],
 });
 

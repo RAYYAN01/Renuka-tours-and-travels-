@@ -33,6 +33,10 @@ export async function generateMetadata({
       `${vehicle.name} hire Bengaluru`,
       `${vehicle.categoryLabel} rental Bengaluru`,
       `${vehicle.name} with driver Bengaluru`,
+      `${vehicle.name} price per km Bengaluru`,
+      `${vehicle.name} for outstation trip`,
+      `book ${vehicle.name} online Bengaluru`,
+      `${vehicle.seats} seater ${vehicle.categoryLabel.toLowerCase()} rental Bengaluru`,
     ],
   });
 }

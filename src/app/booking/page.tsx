@@ -16,6 +16,11 @@ export const metadata: Metadata = pageMetadata({
     "car rental booking Bengaluru",
     "outstation trip booking",
     "tempo traveller booking",
+    "instant cab booking Bengaluru",
+    "book SUV online Bengaluru",
+    "advance cab booking for trip Bengaluru",
+    "wedding car booking Bengaluru",
+    "corporate cab booking Bengaluru",
   ],
 });
 

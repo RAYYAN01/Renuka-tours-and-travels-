@@ -18,6 +18,14 @@ export const metadata: Metadata = pageMetadata({
     "luxury van rental Bengaluru",
     "mini coach rental Bengaluru",
     "sedan rental Bengaluru",
+    "Innova Crysta rental with driver Bengaluru",
+    "AC tempo traveller hire Bengaluru",
+    "17 seater Force Traveller rental",
+    "26 seater coach rental Bengaluru",
+    "self drive SUV rental Bengaluru",
+    "7 seater SUV rental with driver Bengaluru",
+    "luxury van hire for family Bengaluru",
+    "vehicle rental price list Bengaluru",
   ],
 });
 

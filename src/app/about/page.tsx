@@ -24,6 +24,12 @@ export const metadata: Metadata = pageMetadata({
     "car rental company Bengaluru",
     "trusted travel agency Bengaluru",
     "verified drivers Bengaluru",
+    "car rental company since 2011 Bengaluru",
+    "licensed travel agency Bengaluru",
+    "insured car rental fleet Bengaluru",
+    "background verified drivers Bengaluru",
+    "reliable outstation taxi operator Bengaluru",
+    "CV Raman Nagar travel agency",
   ],
 });
 

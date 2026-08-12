@@ -32,6 +32,11 @@ export async function generateMetadata({
       `Bengaluru to ${destination.name} cab`,
       `${destination.name} trip from Bengaluru`,
       `${destination.name} tour package`,
+      `Bengaluru to ${destination.name} distance by road`,
+      `Bengaluru to ${destination.name} one way cab fare`,
+      `${destination.name} cab price from Bengaluru`,
+      `best vehicle for ${destination.name} trip`,
+      `Bengaluru to ${destination.name} outstation cab booking`,
     ],
   });
 }

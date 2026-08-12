@@ -18,6 +18,10 @@ export const metadata: Metadata = pageMetadata({
     "contact Renuka Tours & Travels",
     "car rental enquiry Bengaluru",
     "book a cab Bengaluru",
+    "car rental phone number Bengaluru",
+    "WhatsApp cab booking Bengaluru",
+    "travel agency CV Raman Nagar Bengaluru",
+    "car rental customer support Bengaluru",
   ],
 });
 

@@ -15,6 +15,9 @@ export const metadata: Metadata = pageMetadata({
     "Renuka Tours photo gallery",
     "South India road trip photos",
     "Bengaluru travel agency photos",
+    "outstation trip photos South India",
+    "car rental fleet photos Bengaluru",
+    "Wayanad Munnar Kodaikanal trip photos",
   ],
 });
 

@@ -23,6 +23,15 @@ export const metadata: Metadata = pageMetadata({
     "wedding car rental Bengaluru",
     "pilgrimage tour Bengaluru",
     "self drive car rental Bengaluru",
+    "Bengaluru airport pickup drop service",
+    "flight tracked airport taxi Bengaluru",
+    "corporate cab service monthly billing Bengaluru",
+    "wedding car decoration rental Bengaluru",
+    "school van rental Bengaluru",
+    "college trip bus rental Bengaluru",
+    "group pilgrimage tour cab Bengaluru",
+    "hourly local car rental Bengaluru",
+    "self drive car rental with security deposit",
   ],
 });
 
