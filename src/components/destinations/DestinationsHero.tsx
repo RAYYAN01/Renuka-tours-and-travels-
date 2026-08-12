@@ -10,6 +10,7 @@ export default function DestinationsHero() {
       chip={`${destinations.length} Hand-Picked Routes`}
       title="Where our travellers go"
       description="Hand-picked routes from Bengaluru, each with an estimated cost and the right vehicle already worked out for you."
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "Destinations" }]}
     />
   );
 }

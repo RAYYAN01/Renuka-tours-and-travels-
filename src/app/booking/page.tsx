@@ -37,6 +37,7 @@ export default function BookingPage() {
         eyebrow="Book a Ride"
         title="Let's get you moving"
         description="Share a few details and our team will confirm your vehicle, price and pickup time — usually within the hour."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Book a Ride" }]}
       />
       <section className="bg-ivory pb-24 sm:pb-32">
         <Container>

@@ -10,6 +10,7 @@ export default function FleetHero() {
       chip={`40+ Vehicles · ${fleetCategories.length} Categories`}
       title="A vehicle for every journey"
       description="Sedans, SUVs, tempo travellers, luxury vans and coaches — all well-maintained and ready to go. Filter by type below to find the right fit for your trip."
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "Our Fleet" }]}
     />
   );
 }

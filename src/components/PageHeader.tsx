@@ -1,20 +1,29 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/SplitReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import type { BreadcrumbItem } from "@/lib/seo";
 
 export default function PageHeader({
   eyebrow,
   title,
   description,
+  breadcrumbs,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }) {
   return (
     <section className="relative overflow-hidden bg-[var(--md-surface)] pb-16 pt-36 sm:pb-20 sm:pt-44">
       <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[var(--md-primary-container)]/70 blur-[100px]" />
       <Container className="relative flex flex-col gap-5">
+        {breadcrumbs && (
+          <Reveal>
+            <Breadcrumbs items={breadcrumbs} tone="dark" />
+          </Reveal>
+        )}
         <Reveal>
           <p className="md-eyebrow flex items-center gap-2">
             <span className="h-px w-8 bg-[var(--md-primary)]" />

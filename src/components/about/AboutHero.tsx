@@ -11,6 +11,7 @@ export default function AboutHero() {
       chip={`Since ${site.founded} · Trusted Across South India`}
       title="Built on trust, one trip at a time"
       description={`Since ${site.founded}, ${site.name} has grown from two sedans to a fleet of 40+ vehicles — without losing sight of what got us here: reliability, honesty and care.`}
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
     />
   );
 }

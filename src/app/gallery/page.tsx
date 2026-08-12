@@ -20,7 +20,12 @@ const galleryJsonLd = {
   "@type": "ImageGallery",
   name: `${site.name} Photo Gallery`,
   url: absoluteUrl("/gallery"),
-  image: galleryImages.map((img) => absoluteUrl(img.src)),
+  image: galleryImages.map((img) => ({
+    "@type": "ImageObject",
+    contentUrl: absoluteUrl(img.src),
+    name: img.title,
+    caption: img.alt,
+  })),
 };
 
 export default function GalleryPage() {
@@ -31,6 +36,7 @@ export default function GalleryPage() {
         eyebrow="Gallery"
         title="Moments from the road"
         description="Our fleet, our trips and the destinations we've taken travellers to across South India."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
       />
       <section className="bg-ivory pb-24 pt-4 sm:pb-32">
         <Container>

@@ -10,6 +10,7 @@ export default function ServicesHero() {
       chip={`${services.length} Services · Transparent Pricing`}
       title="Every kind of journey, handled with care"
       description="From a two-hour airport run to a multi-day pilgrimage circuit — here's everything we offer, with transparent pricing."
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
     />
   );
 }

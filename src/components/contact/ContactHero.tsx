@@ -10,6 +10,7 @@ export default function ContactHero() {
       chip={site.hours}
       title="Let's plan your next trip"
       description="Reach out for a quote, a custom itinerary, or just to ask a question — we typically respond within the hour."
+      breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
     />
   );
 }

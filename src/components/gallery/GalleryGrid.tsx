@@ -57,6 +57,7 @@ export default function GalleryGrid() {
             <button
               key={img.src}
               type="button"
+              title={img.title}
               onClick={() => setLightboxIndex(i)}
               className={cn(
                 "group relative mb-4 block w-full overflow-hidden rounded-2xl bg-forest-950/5",
@@ -70,8 +71,9 @@ export default function GalleryGrid() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute inset-0 flex items-center justify-center bg-forest-950/0 opacity-0 transition-all duration-300 group-hover:bg-forest-950/30 group-hover:opacity-100">
+              <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-forest-950/0 px-4 opacity-0 transition-all duration-300 group-hover:bg-forest-950/40 group-hover:opacity-100">
                 <Expand className="h-6 w-6 text-ivory" strokeWidth={1.75} />
+                <span className="text-center text-sm font-medium text-ivory">{img.title}</span>
               </span>
             </button>
           ))}
@@ -121,7 +123,7 @@ function Lightbox({
   onClose,
   onNav,
 }: {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; title: string }[];
   index: number;
   onClose: () => void;
   onNav: (index: number) => void;
@@ -173,10 +175,13 @@ function Lightbox({
       )}
 
       <div
-        className="relative h-[80vh] w-full max-w-4xl"
+        className="flex max-h-[85vh] w-full max-w-4xl flex-col items-center gap-3"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image src={img.src} alt={img.alt} fill sizes="90vw" className="object-contain" />
+        <div className="relative h-[75vh] w-full">
+          <Image src={img.src} alt={img.alt} fill sizes="90vw" className="object-contain" />
+        </div>
+        <p className="text-center text-sm font-medium text-ivory/85">{img.title}</p>
       </div>
     </div>
   );

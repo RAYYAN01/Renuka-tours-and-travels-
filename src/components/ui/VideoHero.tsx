@@ -4,7 +4,9 @@ import type { ReactNode } from "react";
 import Container from "@/components/ui/Container";
 import SplitReveal from "@/components/ui/SplitReveal";
 import Reveal from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { cn } from "@/lib/cn";
+import type { BreadcrumbItem } from "@/lib/seo";
 
 /** Shared full-screen video hero used by every top-level page (Home, Fleet,
  * Destinations, Services, About, Contact) — same layout/gradient/reveal
@@ -21,6 +23,7 @@ export default function VideoHero({
   title,
   description,
   videoClassName,
+  breadcrumbs,
 }: {
   videoSrc: string;
   icon: ReactNode;
@@ -28,6 +31,7 @@ export default function VideoHero({
   title: string;
   description: ReactNode;
   videoClassName?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }) {
   return (
     <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-forest-950">
@@ -45,6 +49,11 @@ export default function VideoHero({
       <div className="absolute inset-0 bg-gradient-to-r from-forest-950/60 via-transparent to-forest-950/50" />
 
       <Container className="relative z-10 flex flex-col gap-7 pb-40 pt-40 sm:pb-48 sm:pt-48">
+        {breadcrumbs && (
+          <Reveal>
+            <Breadcrumbs items={breadcrumbs} />
+          </Reveal>
+        )}
         <Reveal>
           <p className="glass-chip inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em]">
             {icon}
