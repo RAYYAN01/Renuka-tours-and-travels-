@@ -13,7 +13,7 @@ export default function FeaturedFleet() {
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <SectionHeading
             eyebrow="Our Fleet"
-            title="A vehicle for every journey"
+            title="What vehicles does Renuka Tours & Travels offer?"
             description="From nimble sedans for the city to luxury vans for the whole family — every vehicle is sanitised, serviced and driven by a verified chauffeur."
           />
           <Reveal delay={200}>

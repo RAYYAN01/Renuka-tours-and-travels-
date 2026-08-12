@@ -75,7 +75,7 @@ export default function AboutPage() {
           <div className="flex flex-col gap-6">
             <SectionHeading
               eyebrow="Our Story"
-              title="From two sedans to a full-service fleet"
+              title="How did Renuka Tours & Travels get started?"
               description="What started as a small self-drive rental for Bengaluru's tech corridor has grown into a full-service travel partner for families, corporates and pilgrimage groups across South India — while keeping the same founder-led attention to every booking."
             />
             <Reveal delay={100}>
@@ -95,7 +95,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Milestones"
             tone="light"
-            title="A decade-plus on the road"
+            title="How has Renuka Tours & Travels grown since 2011?"
           />
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
             {timeline.map((item, i) => (
@@ -116,7 +116,7 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="Safety Standards"
-            title="Non-negotiables, on every single trip"
+            title="What safety standards does Renuka Tours & Travels follow?"
           />
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {safety.map((item, i) => (

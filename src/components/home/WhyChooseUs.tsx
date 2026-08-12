@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
           <SectionHeading
             eyebrow="Why Renuka"
             tone="light"
-            title="The details you don't see, matter most"
+            title="Why choose Renuka Tours & Travels?"
             description="Award-worthy service isn't a slogan here — it's verified drivers, honest pricing and a fleet we'd trust with our own families."
           />
 

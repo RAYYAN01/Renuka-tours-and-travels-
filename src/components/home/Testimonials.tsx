@@ -32,7 +32,7 @@ export default function Testimonials() {
         <SectionHeading
           eyebrow="Word of Mouth"
           align="center"
-          title="Trusted by thousands of happy travellers"
+          title="What do our travellers say about us?"
           description="Real feedback from families, corporates and travel groups who've ridden with us."
         />
 

@@ -44,7 +44,7 @@ export default function Timeline() {
           eyebrow="Our Journey"
           tone="light"
           align="center"
-          title="A decade-plus on the road"
+          title="How long has Renuka Tours & Travels been in business?"
           description="Scroll through the milestones — from two sedans to a full-service fleet trusted across South India."
         />
 

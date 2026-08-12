@@ -13,7 +13,7 @@ export default function Destinations() {
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <SectionHeading
             eyebrow="Popular Destinations"
-            title="Where our travellers go"
+            title="Where can you travel with Renuka Tours & Travels?"
             description="Hand-picked routes from Bengaluru with the right vehicle and estimated cost pre-calculated for you."
           />
           <Reveal delay={200}>
