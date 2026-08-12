@@ -1,4 +1,3 @@
-// Placeholder business details — replace with real details before launch.
 export const site = {
   name: "Renuka Tours & Travels",
   shortName: "Renuka Travels",
@@ -10,13 +9,14 @@ export const site = {
   whatsapp: "+919513330099",
   email: "renukatourstravels01@gmail.com",
   address: {
-    line1: "12, MG Road",
+    line1: "97/3, First Floor, Veerappa Compound, 14 E Acres, Nagavarapalya, CV Raman Nagar",
     city: "Bengaluru",
     state: "Karnataka",
-    pin: "560001",
+    pin: "560093",
     country: "India",
   },
   hours: "Available 24 × 7",
+  // Social links are still placeholders — swap in real profile URLs when available.
   social: {
     instagram: "https://instagram.com",
     facebook: "https://facebook.com",
