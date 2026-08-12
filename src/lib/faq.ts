@@ -30,7 +30,7 @@ export const faqs: FAQItem[] = [
   {
     question: "Which cities and routes do you cover?",
     answer:
-      "We're based in Bengaluru and cover local city travel plus outstation trips across South India, including popular routes to Mysuru, Coorg, Ooty, Hampi, Tirupati and Goa.",
+      "We're based in Bengaluru and cover local city travel plus outstation trips across South India, including popular routes to Mysuru, Coorg, Ooty, Hampi, Tirupati, Goa, Wayanad, Kodaikanal and Munnar.",
   },
   {
     question: "Is airport pickup tracked against my flight?",

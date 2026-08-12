@@ -104,4 +104,40 @@ export const destinations: Destination[] = [
     description:
       "UNESCO ruins amid boulder-strewn landscapes — a favourite for heritage groups and photography tours.",
   },
+  {
+    slug: "wayanad",
+    name: "Wayanad",
+    kind: "Hill Station",
+    distance: "285 km",
+    duration: "~6.5 hrs",
+    estimatedCost: "₹5,800 – ₹8,300",
+    recommendedVehicle: "SUV or Tempo Traveller",
+    image: "/wayand.webp",
+    description:
+      "Wildlife sanctuaries, spice plantations and misty hills in Kerala's green north — a favourite for a nature-focused weekend trip.",
+  },
+  {
+    slug: "kodaikanal",
+    name: "Kodaikanal",
+    kind: "Hill Station",
+    distance: "460 km",
+    duration: "~9 hrs",
+    estimatedCost: "₹9,200 – ₹13,200",
+    recommendedVehicle: "SUV or Tempo Traveller",
+    image: "/kodaikanal.webp",
+    description:
+      "The Princess of Hill Stations — a cool-climate lake town in Tamil Nadu, best done as a comfortable multi-day group getaway.",
+  },
+  {
+    slug: "munnar",
+    name: "Munnar",
+    kind: "Hill Station",
+    distance: "480 km",
+    duration: "~9.5 hrs",
+    estimatedCost: "₹9,600 – ₹13,800",
+    recommendedVehicle: "SUV or Tempo Traveller",
+    image: "/munnar.webp",
+    description:
+      "Rolling tea estates and cool Western Ghats air in Kerala — one of our most-requested multi-day hill station routes.",
+  },
 ];
