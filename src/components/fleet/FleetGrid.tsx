@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import VehicleCard from "@/components/fleet/VehicleCard";
@@ -9,9 +8,25 @@ import { cn } from "@/lib/cn";
 import { fleet, fleetCategories, type FleetCategory } from "@/lib/fleet";
 
 export default function FleetGrid() {
-  const searchParams = useSearchParams();
-  const initial = searchParams.get("category") as FleetCategory | null;
-  const [active, setActive] = useState<FleetCategory | "all">(initial ?? "all");
+  const [active, setActive] = useState<FleetCategory | "all">("all");
+
+  // Deep-linked filtering (e.g. Footer's "/fleet?category=sedan" links)
+  // is applied client-side after mount rather than via `useSearchParams()`,
+  // which would force this whole grid — including every vehicle card's
+  // link — out of the static/server-rendered HTML and into a Suspense
+  // fallback that ships empty. Reading the query string directly here
+  // keeps the full vehicle grid (and its links) present in the initial
+  // HTML for crawlers, at the cost of a same-tick re-filter on mount for
+  // the deep-link case.
+  useEffect(() => {
+    const category = new URLSearchParams(window.location.search).get("category") as FleetCategory | null;
+    if (category && fleetCategories.some((c) => c.id === category)) {
+      // Syncing from window.location, a browser-only API with no SSR-safe
+      // read; the one-render flash is the intentional tradeoff above.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setActive(category);
+    }
+  }, []);
 
   const filtered = useMemo(
     () => (active === "all" ? fleet : fleet.filter((v) => v.category === active)),

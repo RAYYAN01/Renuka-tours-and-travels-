@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { FormField, FormTextArea } from "@/components/ui/FormField";
@@ -14,22 +14,45 @@ const tripLabels: Record<string, string> = {
   airport: "Airport Transfer",
 };
 
-export default function BookingForm() {
-  const params = useSearchParams();
+const emptyPrefill = { pickup: "", destination: "", date: "", passengers: "", trip: "" };
 
-  const vehicleSlug = params.get("vehicle");
-  const serviceId = params.get("service");
+export default function BookingForm() {
+  // Query-param prefill (from "/booking?vehicle=…", the QuickSearch bar,
+  // etc.) is read client-side after mount rather than via
+  // `useSearchParams()`, which would require wrapping this form in a
+  // Suspense boundary — and a statically-rendered page ships that
+  // boundary's fallback in its HTML, not the real content. That was
+  // shipping this entire form (every field, every label) as empty to
+  // anyone/anything reading the server-rendered HTML, including
+  // crawlers. Reading `window.location.search` here instead keeps the
+  // full form in the initial HTML; deep-link prefill just applies a
+  // tick later, keyed onto the affected inputs so their `defaultValue`
+  // picks up the real value once it's known.
+  const [prefill, setPrefill] = useState(emptyPrefill);
+  const [vehicleSlug, setVehicleSlug] = useState<string | null>(null);
+  const [serviceId, setServiceId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    // Syncing from window.location, a browser-only API with no SSR-safe
+    // read; the one-render flash is the intentional tradeoff — see the
+    // comment on the state declarations above.
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setPrefill({
+      pickup: params.get("pickup") ?? "",
+      destination: params.get("destination") ?? "",
+      date: params.get("date") ?? "",
+      passengers: params.get("passengers") ?? "",
+      trip: params.get("trip") ?? "",
+    });
+    setVehicleSlug(params.get("vehicle"));
+    setServiceId(params.get("service"));
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, []);
+
   const vehicle = fleet.find((v) => v.slug === vehicleSlug);
   const service = services.find((s) => s.id === serviceId);
-  const isLocal = params.get("trip") === "local";
-
-  const prefill = {
-    pickup: params.get("pickup") ?? "",
-    destination: params.get("destination") ?? "",
-    date: params.get("date") ?? "",
-    passengers: params.get("passengers") ?? "",
-    trip: params.get("trip") ?? "",
-  };
+  const isLocal = prefill.trip === "local";
 
   const { sent: confirmed, handleSubmit } = useWhatsAppSubmit((form) => {
     const lines = [
@@ -95,16 +118,34 @@ export default function BookingForm() {
           <FormField label="Phone Number" name="phone" type="tel" required />
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          <FormField label="Pickup Location" name="pickup" defaultValue={prefill.pickup} />
+          <FormField
+            label="Pickup Location"
+            name="pickup"
+            value={prefill.pickup}
+            onChange={(v) => setPrefill((p) => ({ ...p, pickup: v }))}
+          />
           <FormField
             label={isLocal ? "Package" : "Drop / Destination"}
             name="destination"
-            defaultValue={prefill.destination}
+            value={prefill.destination}
+            onChange={(v) => setPrefill((p) => ({ ...p, destination: v }))}
           />
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          <FormField label="Date" name="date" type="date" defaultValue={prefill.date} />
-          <FormField label="Passengers" name="passengers" type="number" defaultValue={prefill.passengers} />
+          <FormField
+            label="Date"
+            name="date"
+            type="date"
+            value={prefill.date}
+            onChange={(v) => setPrefill((p) => ({ ...p, date: v }))}
+          />
+          <FormField
+            label="Passengers"
+            name="passengers"
+            type="number"
+            value={prefill.passengers}
+            onChange={(v) => setPrefill((p) => ({ ...p, passengers: v }))}
+          />
         </div>
         <FormTextArea label="Additional Notes" name="notes" rows={3} />
         <Button

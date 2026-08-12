@@ -113,7 +113,11 @@ async function run(line) {
         break;
       }
       case "eval": {
-        const result = await page.evaluate(new Function(`return (${rest})`)());
+        // Pass the function itself to page.evaluate (which serializes
+        // and runs it inside the browser) — do NOT invoke it here, that
+        // would run `rest` in Node's context, where `document`/`window`
+        // don't exist. (An earlier version did exactly that.)
+        const result = await page.evaluate(new Function(`return (${rest})`));
         console.log("ok:", JSON.stringify(result));
         break;
       }

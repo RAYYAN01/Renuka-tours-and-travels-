@@ -6,12 +6,13 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import DestinationCard from "@/components/DestinationCard";
 import { destinations } from "@/lib/destinations";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Destinations",
   description:
     "Popular weekend trips, hill stations, beach getaways and pilgrimage routes from Bengaluru — with estimated cost and recommended vehicle.",
+  path: "/destinations",
   keywords: [
     "Bengaluru to Mysuru cab",
     "Bengaluru to Coorg taxi",
@@ -24,10 +25,7 @@ export const metadata: Metadata = {
     "Bengaluru to Munnar taxi",
     "weekend trips from Bengaluru",
   ],
-  alternates: {
-    canonical: "/destinations",
-  },
-};
+});
 
 // Font pairing 3/6: Cormorant Garamond + Manrope — refined boutique elegance
 const heading = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"] });

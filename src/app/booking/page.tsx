@@ -1,26 +1,23 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import PageHeader from "@/components/PageHeader";
 import Container from "@/components/ui/Container";
 import BookingForm from "@/components/BookingForm";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 const bookingDescription =
   "Book your car, SUV, tempo traveller or coach with Renuka Tours & Travels — transparent pricing, verified drivers, confirmed within the hour.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Book a Ride",
   description: bookingDescription,
+  path: "/booking",
   keywords: [
     "book a cab online Bengaluru",
     "car rental booking Bengaluru",
     "outstation trip booking",
     "tempo traveller booking",
   ],
-  alternates: {
-    canonical: "/booking",
-  },
-};
+});
 
 const bookingJsonLd = {
   "@context": "https://schema.org",
@@ -47,9 +44,7 @@ export default function BookingPage() {
       />
       <section className="bg-ivory pb-24 sm:pb-32">
         <Container>
-          <Suspense fallback={null}>
-            <BookingForm />
-          </Suspense>
+          <BookingForm />
         </Container>
       </section>
     </>

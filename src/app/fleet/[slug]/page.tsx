@@ -10,7 +10,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { fleet, vehicleImageAlt } from "@/lib/fleet";
 import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
 import { whatsappHref } from "@/lib/site";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return fleet.map((v) => ({ slug: v.slug }));
@@ -24,19 +24,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const vehicle = fleet.find((v) => v.slug === slug);
   if (!vehicle) return {};
-  return {
+  return pageMetadata({
     title: vehicle.name,
     description: `${vehicle.tagline} — ${vehicle.seats} seats, starting from ₹${vehicle.priceFrom} ${vehicle.priceUnit}.`,
+    path: `/fleet/${vehicle.slug}`,
     keywords: [
       `${vehicle.name} rental Bengaluru`,
       `${vehicle.name} hire Bengaluru`,
       `${vehicle.categoryLabel} rental Bengaluru`,
       `${vehicle.name} with driver Bengaluru`,
     ],
-    alternates: {
-      canonical: `/fleet/${vehicle.slug}`,
-    },
-  };
+  });
 }
 
 export default async function FleetDetailPage({

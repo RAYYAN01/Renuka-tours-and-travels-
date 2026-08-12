@@ -15,6 +15,8 @@ export function FormField({
   type = "text",
   required,
   defaultValue,
+  value,
+  onChange,
   placeholder,
 }: {
   label: string;
@@ -22,8 +24,15 @@ export function FormField({
   type?: string;
   required?: boolean;
   defaultValue?: string;
+  /** Pass `value` + `onChange` together for a controlled field (e.g. one
+   * whose initial content depends on data only known after mount, like a
+   * URL query param) — otherwise this falls back to an uncontrolled
+   * field using `defaultValue`. */
+  value?: string;
+  onChange?: (value: string) => void;
   placeholder?: string;
 }) {
+  const isControlled = value !== undefined;
   return (
     <label className="flex flex-col gap-1.5">
       <FieldLabel>{label}</FieldLabel>
@@ -31,7 +40,9 @@ export function FormField({
         name={name}
         type={type}
         required={required}
-        defaultValue={defaultValue}
+        {...(isControlled
+          ? { value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value) }
+          : { defaultValue })}
         placeholder={placeholder}
         className={fieldClasses}
       />

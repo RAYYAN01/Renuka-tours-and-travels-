@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Playfair_Display, Work_Sans } from "next/font/google";
 import PageFontScope from "@/components/PageFontScope";
 import FleetHero from "@/components/fleet/FleetHero";
 import FleetGrid from "@/components/fleet/FleetGrid";
 import { fleet } from "@/lib/fleet";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Our Fleet",
   description:
     "Browse our full fleet of sedans, SUVs, tempo travellers, luxury vans and coaches — all with verified drivers and transparent pricing.",
+  path: "/fleet",
   keywords: [
     "car fleet Bengaluru",
     "SUV rental Bengaluru",
@@ -19,10 +19,7 @@ export const metadata: Metadata = {
     "mini coach rental Bengaluru",
     "sedan rental Bengaluru",
   ],
-  alternates: {
-    canonical: "/fleet",
-  },
-};
+});
 
 // Font pairing 2/6: Playfair Display + Work Sans — classic magazine luxury
 const heading = Playfair_Display({ subsets: ["latin"], weight: ["500", "600"] });
@@ -49,9 +46,7 @@ export default function FleetPage() {
     <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(fleetJsonLd)} />
       <FleetHero />
-      <Suspense fallback={null}>
-        <FleetGrid />
-      </Suspense>
+      <FleetGrid />
     </PageFontScope>
   );
 }

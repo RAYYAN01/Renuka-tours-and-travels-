@@ -7,20 +7,19 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ContactForm";
 import { site, telHref, whatsappHref } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
     "Get in touch with Renuka Tours & Travels for bookings and enquiries — phone, WhatsApp, email or our quick contact form. Available 24×7.",
+  path: "/contact",
   keywords: [
     "contact Renuka Tours & Travels",
     "car rental enquiry Bengaluru",
     "book a cab Bengaluru",
   ],
-  alternates: {
-    canonical: "/contact",
-  },
-};
+});
 
 const details = [
   { icon: Phone, label: "Phone", value: site.phone, href: telHref },

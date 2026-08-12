@@ -9,7 +9,7 @@ import SplitReveal from "@/components/ui/SplitReveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
-import { absoluteUrl, jsonLdScriptProps, parseLowerBoundPrice } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata, parseLowerBoundPrice } from "@/lib/seo";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -23,19 +23,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const destination = destinations.find((d) => d.slug === slug);
   if (!destination) return {};
-  return {
+  return pageMetadata({
     title: destination.name,
     description: destination.description,
+    path: `/destinations/${destination.slug}`,
     keywords: [
       `Bengaluru to ${destination.name} taxi`,
       `Bengaluru to ${destination.name} cab`,
       `${destination.name} trip from Bengaluru`,
       `${destination.name} tour package`,
     ],
-    alternates: {
-      canonical: `/destinations/${destination.slug}`,
-    },
-  };
+  });
 }
 
 export default async function DestinationDetailPage({

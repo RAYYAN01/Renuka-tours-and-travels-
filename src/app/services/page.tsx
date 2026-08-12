@@ -9,12 +9,13 @@ import Button from "@/components/ui/Button";
 import FAQSection from "@/components/FAQSection";
 import { services } from "@/lib/services";
 import { site, whatsappHref } from "@/lib/site";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Airport transfers, outstation trips, corporate travel, weddings, pilgrimage tours and self-drive rentals — explore all Renuka Tours & Travels services.",
+  path: "/services",
   keywords: [
     "airport transfer Bengaluru",
     "outstation cab booking Bengaluru",
@@ -23,10 +24,7 @@ export const metadata: Metadata = {
     "pilgrimage tour Bengaluru",
     "self drive car rental Bengaluru",
   ],
-  alternates: {
-    canonical: "/services",
-  },
-};
+});
 
 const servicesJsonLd = {
   "@context": "https://schema.org",

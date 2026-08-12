@@ -4,21 +4,19 @@ import Container from "@/components/ui/Container";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import { galleryImages } from "@/lib/gallery";
 import { site } from "@/lib/site";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gallery",
   description:
     "Browse photos of our fleet, past trips and destinations across South India — Renuka Tours & Travels.",
+  path: "/gallery",
   keywords: [
     "Renuka Tours photo gallery",
     "South India road trip photos",
     "Bengaluru travel agency photos",
   ],
-  alternates: {
-    canonical: "/gallery",
-  },
-};
+});
 
 const galleryJsonLd = {
   "@context": "https://schema.org",

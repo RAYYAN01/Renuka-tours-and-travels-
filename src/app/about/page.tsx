@@ -11,23 +11,21 @@ import StatBlock from "@/components/StatBlock";
 import { site } from "@/lib/site";
 import { coreStats } from "@/lib/stats";
 import { timeline } from "@/lib/timeline";
-import { absoluteUrl, jsonLdScriptProps } from "@/lib/seo";
+import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 const aboutDescription = `Renuka Tours & Travels has been moving families, corporates and pilgrims across South India since ${site.founded} — verified drivers, insured fleet, honest pricing.`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description: aboutDescription,
+  path: "/about",
   keywords: [
     "about Renuka Tours & Travels",
     "car rental company Bengaluru",
     "trusted travel agency Bengaluru",
     "verified drivers Bengaluru",
   ],
-  alternates: {
-    canonical: "/about",
-  },
-};
+});
 
 const aboutJsonLd = {
   "@context": "https://schema.org",
