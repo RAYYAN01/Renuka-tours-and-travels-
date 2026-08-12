@@ -40,13 +40,6 @@ export const galleryImages: GalleryImage[] = [
     aspect: "landscape",
   },
   {
-    src: "/gallery/safari-jeep-tiger-sighting-02.jpg",
-    title: "Safari Convoy on Forest Trail",
-    alt: "A convoy of safari vehicles watching a tiger cross a forest trail",
-    category: "trips",
-    aspect: "landscape",
-  },
-  {
     src: "/gallery/safari-jeep-tiger-sighting-03.jpg",
     title: "Tourists Photographing Tiger",
     alt: "Tourists in safari jeeps photographing a tiger walking near the tree line",

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import { cn } from "@/lib/cn";
+import Reveal from "@/components/ui/Reveal";
 import { galleryCategories, galleryImages, type GalleryCategory } from "@/lib/gallery";
 
 const aspectClass: Record<(typeof galleryImages)[number]["aspect"], string> = {
@@ -54,28 +55,29 @@ export default function GalleryGrid() {
       ) : (
         <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
           {filtered.map((img, i) => (
-            <button
-              key={img.src}
-              type="button"
-              title={img.title}
-              onClick={() => setLightboxIndex(i)}
-              className={cn(
-                "group relative mb-4 block w-full overflow-hidden rounded-2xl bg-forest-950/5",
-                aspectClass[img.aspect]
-              )}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-forest-950/0 px-4 opacity-0 transition-all duration-300 group-hover:bg-forest-950/40 group-hover:opacity-100">
-                <Expand className="h-6 w-6 text-ivory" strokeWidth={1.75} />
-                <span className="text-center text-sm font-medium text-ivory">{img.title}</span>
-              </span>
-            </button>
+            <Reveal key={img.src} delay={60 * (i % 3)} className="mb-4 block">
+              <button
+                type="button"
+                title={img.title}
+                onClick={() => setLightboxIndex(i)}
+                className={cn(
+                  "group relative block w-full overflow-hidden rounded-2xl bg-forest-950/5",
+                  aspectClass[img.aspect]
+                )}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-forest-950/0 px-4 opacity-0 transition-all duration-300 group-hover:bg-forest-950/40 group-hover:opacity-100">
+                  <Expand className="h-6 w-6 text-ivory" strokeWidth={1.75} />
+                  <span className="text-center text-sm font-medium text-ivory">{img.title}</span>
+                </span>
+              </button>
+            </Reveal>
           ))}
         </div>
       )}
