@@ -42,7 +42,7 @@ export default function VideoHero({
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
       />
       {/* Legibility gradient — darkest at the bottom where the heading sits */}
       <div className="absolute inset-0 bg-gradient-to-t from-forest-950/95 via-forest-950/50 to-forest-950/15" />
