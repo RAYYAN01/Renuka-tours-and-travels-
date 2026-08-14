@@ -13,6 +13,7 @@
 //   wait <ms>                 - pause (use after wait-for, to let the
 //                                site's anime.js scroll-reveal animations
 //                                finish before a screenshot — see Gotchas)
+//   scroll <y>                - window.scrollTo(0, y)
 //   screenshot [name]         - save PNG to ./screenshots/
 //   console --errors          - print captured console.error / pageerror messages
 //   eval <js-expression>      - page.evaluate and print the result
@@ -95,6 +96,12 @@ async function run(line) {
       case "press": {
         await page.keyboard.press(rest);
         console.log(`ok: pressed ${rest}`);
+        break;
+      }
+      case "scroll": {
+        const y = Number(rest) || 0;
+        await page.evaluate((amount) => window.scrollTo(0, amount), y);
+        console.log(`ok: scrolled to ${y}`);
         break;
       }
       case "screenshot": {

@@ -5,7 +5,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import VehicleCard from "@/components/fleet/VehicleCard";
 import { cn } from "@/lib/cn";
-import { fleet, fleetCategories, type FleetCategory } from "@/lib/fleet";
+import { fleet, fleetCategories, sortFleetByName, type FleetCategory } from "@/lib/fleet";
 
 export default function FleetGrid() {
   const [active, setActive] = useState<FleetCategory | "all">("all");
@@ -29,7 +29,7 @@ export default function FleetGrid() {
   }, []);
 
   const filtered = useMemo(
-    () => (active === "all" ? fleet : fleet.filter((v) => v.category === active)),
+    () => sortFleetByName(active === "all" ? fleet : fleet.filter((v) => v.category === active)),
     [active]
   );
 

@@ -49,16 +49,25 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
 
             <div className="flex items-end justify-between border-t border-white/15 pt-2.5">
               <div>
-                <p className="text-[10px] uppercase tracking-wide text-ivory/50">From</p>
-                <p className="font-serif-luxury text-base text-ivory">
-                  ₹{vehicle.priceFrom}
-                  <span className="ml-1 text-[11px] font-sans font-normal text-ivory/55">
-                    /{vehicle.priceUnit}
-                  </span>
-                </p>
+                {vehicle.priceOnRequest ? (
+                  <p className="font-serif-luxury text-base text-ivory">Price on Request</p>
+                ) : (
+                  <>
+                    <p className="text-[10px] uppercase tracking-wide text-ivory/50">From</p>
+                    <p className="font-serif-luxury text-base text-ivory">
+                      ₹{vehicle.priceFrom}
+                      <span className="ml-1 text-[11px] font-sans font-normal text-ivory/55">
+                        /{vehicle.priceUnit}
+                      </span>
+                    </p>
+                    {vehicle.minKmPerDay !== null && (
+                      <p className="text-[10px] text-ivory/50">Min {vehicle.minKmPerDay} km/day</p>
+                    )}
+                  </>
+                )}
               </div>
               <span className="glass-chip-light flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold">
-                <span>Book Now</span>
+                <span>{vehicle.priceOnRequest ? "Get Quote" : "Book Now"}</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </div>

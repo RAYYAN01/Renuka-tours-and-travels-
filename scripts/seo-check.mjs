@@ -45,8 +45,13 @@ async function main() {
   if (/Disallow:\s*\/\s*$/im.test(robotsBody)) fail("robots.txt disallows the entire site (Disallow: /)");
   console.log(`robots.txt: HTTP ${robotsRes.status}, sitemap declared: ${sitemapLine ? sitemapLine[1] : "MISSING"}`);
 
-  // 2. sitemap.xml
-  const sitemapUrl = sitemapLine ? sitemapLine[1] : `${BASE_URL}/sitemap.xml`;
+  // 2. sitemap.xml — always fetched from BASE_URL, never from whatever
+  // absolute URL robots.txt happens to declare. robots.txt's Sitemap: line
+  // always points at the production origin (siteUrl in lib/seo.ts) even
+  // when this script is run against localhost, so blindly following it
+  // here would silently validate the last-deployed production sitemap
+  // instead of the build actually being tested.
+  const sitemapUrl = `${BASE_URL}/sitemap.xml`;
   const sitemapRes = await fetch(sitemapUrl);
   const sitemapBody = await sitemapRes.text();
   if (sitemapRes.status !== 200) fail(`sitemap.xml returned HTTP ${sitemapRes.status}`);
@@ -57,13 +62,20 @@ async function main() {
   const dupUrls = sitemapUrls.filter((u, i) => sitemapUrls.indexOf(u) !== i);
   if (dupUrls.length) fail(`sitemap.xml has duplicate URLs: ${[...new Set(dupUrls)].join(", ")}`);
 
+  // The <loc> entries themselves always carry the hardcoded production
+  // origin (siteUrl in lib/seo.ts, used for metadataBase/canonical
+  // resolution) regardless of what host actually served this sitemap —
+  // so derive the origin to strip from the entries themselves, not from
+  // BASE_URL/sitemapUrl, which only tells us where THIS script fetched from.
+  const sitemapEntryOrigin = sitemapUrls.length ? new URL(sitemapUrls[0]).origin : BASE_URL;
+
   // 3. Crawl every sitemap URL
   const seenTitles = new Map();
   const seenDescriptions = new Map();
   const internalLinksFound = new Set();
 
   for (const sitemapEntryUrl of sitemapUrls) {
-    const localUrl = sitemapEntryUrl.replace(sitemapUrl.replace("/sitemap.xml", ""), BASE_URL);
+    const localUrl = sitemapEntryUrl.replace(sitemapEntryOrigin, BASE_URL);
     const { res, body } = await fetchText(localUrl);
     const path = localUrl.replace(BASE_URL, "") || "/";
 
@@ -118,7 +130,7 @@ async function main() {
 
   // 4. Orphan-page check: every sitemap page should be reachable via
   // at least one internal <a href> found while crawling the site.
-  const sitemapPaths = new Set(sitemapUrls.map((u) => u.replace(sitemapUrl.replace("/sitemap.xml", ""), "") || "/"));
+  const sitemapPaths = new Set(sitemapUrls.map((u) => u.replace(sitemapEntryOrigin, "") || "/"));
   for (const p of sitemapPaths) {
     if (p === "/") continue; // homepage is the crawl root, never "linked to" itself
     if (!internalLinksFound.has(p)) {

@@ -8,6 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { fleet, vehicleImageAlt } from "@/lib/fleet";
+import PricingDetails from "@/components/fleet/PricingDetails";
 import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
 import { whatsappHref } from "@/lib/site";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
@@ -26,7 +27,9 @@ export async function generateMetadata({
   if (!vehicle) return {};
   return pageMetadata({
     title: vehicle.name,
-    description: `${vehicle.tagline} — ${vehicle.seats} seats, starting from ₹${vehicle.priceFrom} ${vehicle.priceUnit}.`,
+    description: vehicle.priceOnRequest
+      ? `${vehicle.tagline} — ${vehicle.seats} seats. Price on request — contact us for a custom quote.`
+      : `${vehicle.tagline} — ${vehicle.seats} seats, starting from ₹${vehicle.priceFrom} ${vehicle.priceUnit}.`,
     path: `/fleet/${vehicle.slug}`,
     keywords: [
       `${vehicle.name} rental Bengaluru`,
@@ -58,18 +61,24 @@ export default async function FleetDetailPage({
     fuelType: vehicle.fuel,
     image: absoluteUrl(vehicle.image),
     url: absoluteUrl(`/fleet/${vehicle.slug}`),
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      price: vehicle.priceFrom,
-      availability: "https://schema.org/InStock",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: vehicle.priceFrom,
-        priceCurrency: "INR",
-        unitText: vehicle.priceUnit,
-      },
-    },
+    // Price-on-request vehicles have no confirmed rate — omit `offers`
+    // entirely rather than emit a fake or zero price.
+    ...(vehicle.priceOnRequest
+      ? {}
+      : {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "INR",
+            price: vehicle.priceFrom,
+            availability: "https://schema.org/InStock",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: vehicle.priceFrom,
+              priceCurrency: "INR",
+              unitText: vehicle.priceUnit,
+            },
+          },
+        }),
   };
 
   const specs = [
@@ -158,37 +167,47 @@ export default async function FleetDetailPage({
           </Reveal>
 
           <Reveal delay={260}>
-            <div className="flex items-end justify-between rounded-2xl bg-forest-950 p-6 text-ivory">
-              <div>
-                <p className="text-xs uppercase tracking-wide text-ivory/50">Starting from</p>
-                <p className="font-serif-luxury text-3xl">
-                  ₹{vehicle.priceFrom}
-                  <span className="ml-1 text-sm font-sans font-normal text-ivory/60">
-                    / {vehicle.priceUnit}
-                  </span>
-                </p>
-              </div>
-            </div>
+            <PricingDetails vehicle={vehicle} />
           </Reveal>
 
           <Reveal delay={320}>
             <div className="flex flex-wrap gap-4">
-              <Button
-                href={`/booking?vehicle=${vehicle.slug}`}
-                size="lg"
-                icon={<ArrowRight className="h-4 w-4" />}
-              >
-                Book This Vehicle
-              </Button>
-              <Button
-                href={whatsappHref(`Hi, I'd like to enquire about the ${vehicle.name}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="whatsapp"
-                size="lg"
-              >
-                Ask on WhatsApp
-              </Button>
+              {vehicle.priceOnRequest ? (
+                <>
+                  <Button
+                    href={whatsappHref(`Hi, I'd like a quote for the ${vehicle.name}.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="whatsapp"
+                    size="lg"
+                    icon={<ArrowRight className="h-4 w-4" />}
+                  >
+                    Get Quote on WhatsApp
+                  </Button>
+                  <Button href={`/booking?vehicle=${vehicle.slug}`} variant="outlined" size="lg">
+                    Request a Quote
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    href={`/booking?vehicle=${vehicle.slug}`}
+                    size="lg"
+                    icon={<ArrowRight className="h-4 w-4" />}
+                  >
+                    Book This Vehicle
+                  </Button>
+                  <Button
+                    href={whatsappHref(`Hi, I'd like to enquire about the ${vehicle.name}.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="whatsapp"
+                    size="lg"
+                  >
+                    Ask on WhatsApp
+                  </Button>
+                </>
+              )}
             </div>
           </Reveal>
 

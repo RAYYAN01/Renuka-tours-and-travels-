@@ -19,8 +19,19 @@ export interface FleetVehicle {
   ac: boolean;
   fuel: string;
   driverIncluded: boolean;
-  priceFrom: number;
+  /** Per-km rate, or null when priceOnRequest is true. */
+  priceFrom: number | null;
   priceUnit: string;
+  /** Minimum billable running distance per day, or null if not confirmed
+   * for this vehicle (see priceOnRequest / legacy-priced vehicles below). */
+  minKmPerDay: number | null;
+  /** Driver allowance per day, or null if not confirmed for this vehicle. */
+  driverBata: number | null;
+  dutyStart: string | null;
+  dutyEnd: string | null;
+  /** True for vehicles with no confirmed per-km rate — show "Price on
+   * Request" and a quote CTA instead of a number. */
+  priceOnRequest: boolean;
   image: string;
   gallery: string[];
   featured?: boolean;
@@ -38,8 +49,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 11,
+    priceFrom: 13,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 400,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/etios-front-01.jpeg",
     gallery: [
       "/fleet/etios-front-01.jpeg",
@@ -61,8 +77,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Petrol",
     driverIncluded: true,
-    priceFrom: 12,
+    priceFrom: 13,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 400,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/dzire-front-01.jpeg",
     gallery: [
       "/fleet/dzire-front-01.jpeg",
@@ -83,8 +104,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 16,
+    priceFrom: 19,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 400,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/innova-crysta-front-01.jpeg",
     gallery: [
       "/fleet/innova-crysta-front-01.jpeg",
@@ -104,8 +130,16 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Hybrid",
     driverIncluded: true,
+    // Not covered by the confirmed per-km price sheet — left unchanged
+    // rather than guessing a tier. No minimum-km/driver-bata figures are
+    // shown for this vehicle for the same reason.
     priceFrom: 21,
     priceUnit: "per km",
+    minKmPerDay: null,
+    driverBata: null,
+    dutyStart: null,
+    dutyEnd: null,
+    priceOnRequest: false,
     image: "/fleet/innova-hycross-front-01.jpeg",
     gallery: [
       "/fleet/innova-hycross-front-01.jpeg",
@@ -127,8 +161,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 14,
+    priceFrom: 17,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 400,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/innova-2011-front-01.jpeg",
     gallery: [
       "/fleet/innova-2011-front-01.jpeg",
@@ -151,8 +190,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 24,
+    priceFrom: 22,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 500,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/force-traveller-c-front-01.jpeg",
     gallery: [
       "/fleet/force-traveller-c-front-01.jpeg",
@@ -176,8 +220,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 22,
+    priceFrom: 30,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 600,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/force-traveller-yaksha-front-01.jpeg",
     gallery: [
       "/fleet/force-traveller-yaksha-front-01.jpeg",
@@ -201,8 +250,13 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
-    priceFrom: 32,
+    priceFrom: 38,
     priceUnit: "per km",
+    minKmPerDay: 300,
+    driverBata: 700,
+    dutyStart: "6:00 AM",
+    dutyEnd: "10:00 PM",
+    priceOnRequest: false,
     image: "/fleet/force-urbania-front-01.jpeg",
     gallery: [
       "/fleet/force-urbania-front-01.jpeg",
@@ -229,8 +283,15 @@ export const fleet: FleetVehicle[] = [
     ac: true,
     fuel: "Diesel",
     driverIncluded: true,
+    // Not covered by the confirmed price sheet (which only specifies
+    // 21-seater and 50-seater buses) — left unchanged rather than guessing.
     priceFrom: 45,
     priceUnit: "per km",
+    minKmPerDay: null,
+    driverBata: null,
+    dutyStart: null,
+    dutyEnd: null,
+    priceOnRequest: false,
     image: "/fleet/coach-sgr-front-01.jpeg",
     gallery: [
       "/fleet/coach-sgr-front-01.jpeg",
@@ -243,9 +304,55 @@ export const fleet: FleetVehicle[] = [
       "/fleet/coach-sgr-rear-02.jpeg",
     ],
   },
+  {
+    slug: "bus-21-seater",
+    name: "21-Seater Bus",
+    tagline: "Mid-size coach for group outings and pilgrimages",
+    category: "coach",
+    categoryLabel: "Coach · 21 Seater",
+    seats: 21,
+    luggage: "Under-deck hold",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: null,
+    priceUnit: "per km",
+    minKmPerDay: null,
+    driverBata: null,
+    dutyStart: null,
+    dutyEnd: null,
+    priceOnRequest: true,
+    // Placeholder — reuses SGR Coach photography until real photos of this
+    // vehicle are available.
+    image: "/fleet/coach-sgr-front-02.jpeg",
+    gallery: ["/fleet/coach-sgr-front-02.jpeg", "/fleet/coach-sgr-interior-02.jpeg"],
+  },
+  {
+    slug: "bus-50-seater",
+    name: "50-Seater Bus",
+    tagline: "Full-size coach for large groups and long-distance tours",
+    category: "coach",
+    categoryLabel: "Coach · 50 Seater",
+    seats: 50,
+    luggage: "Under-deck hold",
+    ac: true,
+    fuel: "Diesel",
+    driverIncluded: true,
+    priceFrom: null,
+    priceUnit: "per km",
+    minKmPerDay: null,
+    driverBata: null,
+    dutyStart: null,
+    dutyEnd: null,
+    priceOnRequest: true,
+    // Placeholder — reuses SGR Coach photography until real photos of this
+    // vehicle are available.
+    image: "/fleet/coach-sgr-front-03.jpeg",
+    gallery: ["/fleet/coach-sgr-front-03.jpeg", "/fleet/coach-sgr-interior-03.jpeg"],
+  },
 ];
 
-export const featuredFleet = fleet.filter((v) => v.featured);
+export const featuredFleet = sortFleetByName(fleet.filter((v) => v.featured));
 
 const VIEW_LABELS: Record<string, string> = {
   front: "front exterior",
@@ -263,4 +370,32 @@ export function vehicleImageAlt(vehicle: Pick<FleetVehicle, "name">, imagePath: 
   const match = filename.match(/-(front|side|rear|interior|dashboard)-\d+/);
   const view = match ? VIEW_LABELS[match[1]] : undefined;
   return view ? `${vehicle.name} — ${view}` : vehicle.name;
+}
+
+/** Formats a number as an Indian-grouped rupee amount, e.g. 4300 -> "4,300". */
+export function formatINR(amount: number): string {
+  return new Intl.NumberFormat("en-IN").format(amount);
+}
+
+/** Minimum estimated daily total (per-km rate × minimum km + driver bata),
+ * or null when any figure needed for the calculation isn't confirmed for
+ * this vehicle (price-on-request, or a legacy price with no bata/minimum
+ * on record). Never invents a number from a partial figure. */
+export function getMinimumDailyTotal(vehicle: FleetVehicle): number | null {
+  if (
+    vehicle.priceOnRequest ||
+    vehicle.priceFrom === null ||
+    vehicle.minKmPerDay === null ||
+    vehicle.driverBata === null
+  ) {
+    return null;
+  }
+  return vehicle.priceFrom * vehicle.minKmPerDay + vehicle.driverBata;
+}
+
+/** Reusable alphabetical sort by display name — ascending, case-insensitive,
+ * locale-aware, so a newly added vehicle is placed correctly without
+ * touching this function or any hard-coded order. */
+export function sortFleetByName<T extends { name: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 }

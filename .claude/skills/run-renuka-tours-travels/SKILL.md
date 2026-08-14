@@ -73,6 +73,7 @@ Screenshots land in `.claude/skills/run-renuka-tours-travels/screenshots/<name>.
 | `fill <selector> <value>` | fill an input; value is the rest of the line |
 | `press <key>` | `page.keyboard.press`, e.g. `Enter` |
 | `wait <ms>` | pause — see Gotchas, this matters here |
+| `scroll <y>` | `window.scrollTo(0, y)` — useful before a screenshot of below-the-fold content |
 | `screenshot [name]` | save PNG, default name `shot-NN` |
 | `console --errors` | print every captured `console.error`/`pageerror` since launch |
 | `eval <js-expression>` | `page.evaluate`, prints the JSON result |

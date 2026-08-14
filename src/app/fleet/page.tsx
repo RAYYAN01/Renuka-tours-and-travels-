@@ -3,7 +3,7 @@ import { Playfair_Display, Work_Sans } from "next/font/google";
 import PageFontScope from "@/components/PageFontScope";
 import FleetHero from "@/components/fleet/FleetHero";
 import FleetGrid from "@/components/fleet/FleetGrid";
-import { fleet } from "@/lib/fleet";
+import { fleet, sortFleetByName } from "@/lib/fleet";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -36,7 +36,7 @@ const body = Work_Sans({ subsets: ["latin"], weight: ["400", "500"] });
 const fleetJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  itemListElement: fleet.map((vehicle, i) => ({
+  itemListElement: sortFleetByName(fleet).map((vehicle, i) => ({
     "@type": "ListItem",
     position: i + 1,
     url: absoluteUrl(`/fleet/${vehicle.slug}`),
