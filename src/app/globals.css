@@ -336,11 +336,11 @@ body {
 /* Filled/whatsapp fills are mixed toward white first — a muted, dusty tone
    rather than the raw saturated brand color — then blended to translucent. */
 .md-btn-filled {
-  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 85%, white) 78%, transparent);
+  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 90%, white) 96%, transparent);
   color: #ffffff;
 }
 .md-btn-filled:hover {
-  background: color-mix(in srgb, color-mix(in srgb, var(--md-primary) 85%, white) 86%, transparent);
+  background: color-mix(in srgb, var(--md-primary) 96%, white);
 }
 
 .md-btn-tonal {
