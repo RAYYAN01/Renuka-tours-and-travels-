@@ -1,9 +1,8 @@
-export type GalleryCategory = "fleet" | "trips" | "events";
+export type GalleryCategory = "fleet" | "trips";
 
 export const galleryCategories: { id: GalleryCategory; label: string }[] = [
   { id: "fleet", label: "Our Fleet" },
   { id: "trips", label: "Trips & Destinations" },
-  { id: "events", label: "Events & Weddings" },
 ];
 
 export type GalleryImage = {
