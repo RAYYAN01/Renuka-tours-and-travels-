@@ -491,3 +491,18 @@ export function getMinimumDailyTotal(vehicle: FleetVehicle): number | null {
 export function sortFleetByName<T extends { name: string }>(items: T[]): T[] {
   return [...items].sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 }
+
+/** Category display order for the "All Vehicles" grid: cars (sedans, then
+ * SUVs) first, then tempo travellers, then luxury vans, then coaches/buses
+ * last — matching how customers actually shop (small → large). */
+const CATEGORY_DISPLAY_ORDER: FleetCategory[] = ["sedan", "suv", "traveller", "luxury-van", "coach"];
+
+/** Groups the "All Vehicles" grid by category in a fixed, size-ascending
+ * order (cars, then tempo travellers, then luxury vans, then coaches/buses),
+ * alphabetically by name within each group — rather than mixing every
+ * category together in one flat A-Z list. */
+export function sortFleetForDisplay(items: FleetVehicle[]): FleetVehicle[] {
+  return sortFleetByName(items).sort(
+    (a, b) => CATEGORY_DISPLAY_ORDER.indexOf(a.category) - CATEGORY_DISPLAY_ORDER.indexOf(b.category)
+  );
+}

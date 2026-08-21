@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import FleetHero from "@/components/fleet/FleetHero";
 import FleetGrid from "@/components/fleet/FleetGrid";
-import { fleet, sortFleetByName } from "@/lib/fleet";
+import { fleet, sortFleetForDisplay } from "@/lib/fleet";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -29,7 +29,7 @@ export const metadata: Metadata = pageMetadata({
 const fleetJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  itemListElement: sortFleetByName(fleet).map((vehicle, i) => ({
+  itemListElement: sortFleetForDisplay(fleet).map((vehicle, i) => ({
     "@type": "ListItem",
     position: i + 1,
     url: absoluteUrl(`/fleet/${vehicle.slug}`),
