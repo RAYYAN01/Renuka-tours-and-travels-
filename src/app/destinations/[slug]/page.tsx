@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Clock, Wallet, Car, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Wallet, Car, ArrowRight, ExternalLink } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/SplitReveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
+import { destinations, recommendedVehicleCategories, OFFICIAL_TOURISM_LINKS } from "@/lib/destinations";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata, parseLowerBoundPrice } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -161,9 +161,20 @@ export default async function DestinationDetailPage({
         </Reveal>
 
         <Reveal delay={380}>
-          <Link href="/destinations" className="text-sm text-ivory/60 hover:text-ivory">
-            ← Back to destinations
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <Link href="/destinations" className="text-sm text-ivory/60 hover:text-ivory">
+              ← Back to destinations
+            </Link>
+            <a
+              href={OFFICIAL_TOURISM_LINKS[destination.officialTourismBoard].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-ivory/60 hover:text-ivory"
+            >
+              {OFFICIAL_TOURISM_LINKS[destination.officialTourismBoard].label}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </Reveal>
       </Container>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(tripJsonLd)} />

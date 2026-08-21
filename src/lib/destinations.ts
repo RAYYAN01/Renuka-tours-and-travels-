@@ -33,11 +33,31 @@ export interface Destination {
    * "Popular Destinations" teaser. The full A-Z list still shows every
    * destination on /destinations regardless of this flag. */
   featured?: boolean;
+  /** Official state tourism board name, for linking out to an authoritative
+   * source on the destination detail page. Verified real government URLs
+   * only — see OFFICIAL_TOURISM_LINKS below. */
+  officialTourismBoard: keyof typeof OFFICIAL_TOURISM_LINKS;
 }
+
+/** Verified official government tourism URLs — checked against each
+ * board's real domain before use, since this is an outbound link shown
+ * to real visitors. Tirupati gets the TTD booking portal specifically
+ * (more useful than the general AP tourism site) rather than the
+ * "Andhra Pradesh" entry, which covers Mantralaya instead. */
+export const OFFICIAL_TOURISM_LINKS = {
+  Karnataka: { label: "Karnataka Tourism", url: "https://karnatakatourism.org/en" },
+  Kerala: { label: "Kerala Tourism", url: "https://www.keralatourism.org/" },
+  "Tamil Nadu": { label: "Tamil Nadu Tourism", url: "https://www.tamilnadutourism.tn.gov.in" },
+  Goa: { label: "Goa Tourism", url: "https://goatourism.gov.in/" },
+  Puducherry: { label: "Puducherry Tourism", url: "https://tourism.py.gov.in/" },
+  "Andhra Pradesh": { label: "Andhra Pradesh Tourism", url: "https://tourism.ap.gov.in/" },
+  TTD: { label: "TTD Official Darshan Booking", url: "https://tirupatibalaji.ap.gov.in/" },
+} as const;
 
 export const destinations: Destination[] = [
   {
     slug: "alleppey",
+    officialTourismBoard: "Kerala",
     name: "Alleppey",
     kind: "Backwaters",
     distance: "660 km",
@@ -52,6 +72,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "chikmagalur",
+    officialTourismBoard: "Karnataka",
     name: "Chikmagalur",
     kind: "Hill Station",
     distance: "245 km",
@@ -66,6 +87,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "coonoor",
+    officialTourismBoard: "Tamil Nadu",
     name: "Coonoor",
     kind: "Hill Station",
     distance: "265 km",
@@ -80,6 +102,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "coorg",
+    officialTourismBoard: "Karnataka",
     name: "Coorg",
     kind: "Hill Station",
     distance: "260 km",
@@ -93,6 +116,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "dharmasthala-kukke-subramanya",
+    officialTourismBoard: "Karnataka",
     name: "Dharmasthala & Kukke Subramanya",
     kind: "Pilgrimage",
     distance: "285 km",
@@ -107,6 +131,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "goa",
+    officialTourismBoard: "Goa",
     name: "Goa",
     kind: "Beach Getaway",
     distance: "560 km",
@@ -120,6 +145,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "gokarna",
+    officialTourismBoard: "Karnataka",
     name: "Gokarna",
     kind: "Beach Getaway",
     distance: "480 km",
@@ -134,6 +160,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "hampi",
+    officialTourismBoard: "Karnataka",
     name: "Hampi",
     kind: "Heritage Site",
     distance: "340 km",
@@ -147,6 +174,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "kanyakumari",
+    officialTourismBoard: "Tamil Nadu",
     name: "Kanyakumari",
     kind: "Beach Getaway",
     distance: "730 km",
@@ -161,6 +189,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "kodaikanal",
+    officialTourismBoard: "Tamil Nadu",
     name: "Kodaikanal",
     kind: "Hill Station",
     distance: "460 km",
@@ -174,6 +203,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "kumarakom",
+    officialTourismBoard: "Kerala",
     name: "Kumarakom",
     kind: "Backwaters",
     distance: "680 km",
@@ -188,6 +218,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "mantralaya",
+    officialTourismBoard: "Andhra Pradesh",
     name: "Mantralaya",
     kind: "Pilgrimage",
     distance: "350 km",
@@ -202,6 +233,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "munnar",
+    officialTourismBoard: "Kerala",
     name: "Munnar",
     kind: "Hill Station",
     distance: "480 km",
@@ -215,6 +247,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "mysuru",
+    officialTourismBoard: "Karnataka",
     name: "Mysuru",
     kind: "Heritage City",
     distance: "145 km",
@@ -228,6 +261,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "nandi-hills",
+    officialTourismBoard: "Karnataka",
     name: "Nandi Hills",
     kind: "Hill Station",
     distance: "60 km",
@@ -242,6 +276,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "ooty",
+    officialTourismBoard: "Tamil Nadu",
     name: "Ooty",
     kind: "Hill Station",
     distance: "270 km",
@@ -255,6 +290,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "pondicherry",
+    officialTourismBoard: "Puducherry",
     name: "Pondicherry",
     kind: "Heritage & Beach",
     distance: "320 km",
@@ -269,6 +305,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "rameshwaram",
+    officialTourismBoard: "Tamil Nadu",
     name: "Rameshwaram",
     kind: "Pilgrimage",
     distance: "570 km",
@@ -283,6 +320,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "sakleshpur",
+    officialTourismBoard: "Karnataka",
     name: "Sakleshpur",
     kind: "Hill Station",
     distance: "220 km",
@@ -297,6 +335,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "tirupati",
+    officialTourismBoard: "TTD",
     name: "Tirupati",
     kind: "Pilgrimage",
     distance: "255 km",
@@ -310,6 +349,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "trivandrum-kovalam",
+    officialTourismBoard: "Kerala",
     name: "Trivandrum & Kovalam",
     kind: "Beach Getaway",
     distance: "730 km",
@@ -324,6 +364,7 @@ export const destinations: Destination[] = [
   },
   {
     slug: "wayanad",
+    officialTourismBoard: "Kerala",
     name: "Wayanad",
     kind: "Hill Station",
     distance: "285 km",
