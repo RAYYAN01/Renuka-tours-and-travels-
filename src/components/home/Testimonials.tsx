@@ -50,7 +50,7 @@ export default function Testimonials() {
                       />
                     ))}
                   </div>
-                  <blockquote className="font-serif-luxury text-lg leading-snug text-forest-950">
+                  <blockquote className="text-lg leading-snug text-forest-950">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-auto text-sm">

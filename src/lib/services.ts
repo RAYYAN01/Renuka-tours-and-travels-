@@ -2,11 +2,9 @@ import {
   Plane,
   Building2,
   Heart,
-  School,
   MapPinned,
   Users2,
   Clock4,
-  Car,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,6 +15,8 @@ export interface Service {
   description: string;
   features: string[];
   pricingNote: string;
+  image: string;
+  imageAlt: string;
 }
 
 export const services: Service[] = [
@@ -32,6 +32,8 @@ export const services: Service[] = [
       "Fixed fares — no surge pricing",
     ],
     pricingNote: "Starting from ₹649 within city limits",
+    image: "/fleet/etios-front-01.jpeg",
+    imageAlt: "Toyota Etios used for airport transfers",
   },
   {
     id: "outstation",
@@ -45,6 +47,8 @@ export const services: Service[] = [
       "Toll & driver allowance shown upfront",
     ],
     pricingNote: "Starting from ₹11 / km",
+    image: "/gallery/ghat-road-mountain-viewpoint-01.jpg",
+    imageAlt: "Mountain ghat road on an outstation route",
   },
   {
     id: "corporate",
@@ -58,6 +62,8 @@ export const services: Service[] = [
       "Priority vehicle availability",
     ],
     pricingNote: "Custom corporate rates on request",
+    image: "/fleet/innova-crysta-front-01.jpeg",
+    imageAlt: "Toyota Innova Crysta used for corporate travel",
   },
   {
     id: "wedding",
@@ -71,19 +77,8 @@ export const services: Service[] = [
       "Dedicated event-day coordinator",
     ],
     pricingNote: "Custom packages based on fleet size",
-  },
-  {
-    id: "school",
-    icon: School,
-    title: "School & College Trips",
-    description:
-      "Safe, supervised transport for educational tours with verified, background-checked drivers.",
-    features: [
-      "Background-verified drivers",
-      "First-aid equipped vehicles",
-      "Group discounts for institutions",
-    ],
-    pricingNote: "Custom quotes based on group size",
+    image: "/fleet/force-urbania-front-01.jpeg",
+    imageAlt: "Force Urbania luxury van used for wedding transport",
   },
   {
     id: "pilgrimage",
@@ -97,6 +92,8 @@ export const services: Service[] = [
       "Multi-day pilgrimage circuits",
     ],
     pricingNote: "Starting from ₹24 / km",
+    image: "/gallery/tirupati-temple-entrance-01.jpg",
+    imageAlt: "Vehicles at the base of the Tirupati temple hills on a pilgrimage trip",
   },
   {
     id: "local",
@@ -110,18 +107,7 @@ export const services: Service[] = [
       "Same driver for the full package",
     ],
     pricingNote: "Starting from ₹1,499 for 8 hrs / 80 km",
-  },
-  {
-    id: "self-drive",
-    icon: Car,
-    title: "Self Drive Cars",
-    description:
-      "Unchauffeured rentals for the independent traveller, with a clean vehicle and a full tank.",
-    features: [
-      "Valid driving licence required",
-      "Refundable security deposit",
-      "24×7 roadside assistance",
-    ],
-    pricingNote: "Starting from ₹1,799 / day",
+    image: "/fleet/dzire-front-01.jpeg",
+    imageAlt: "Maruti Suzuki Dzire used for hourly and local rentals",
   },
 ];

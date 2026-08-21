@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Work_Sans } from "next/font/google";
-import PageFontScope from "@/components/PageFontScope";
 import FleetHero from "@/components/fleet/FleetHero";
 import FleetGrid from "@/components/fleet/FleetGrid";
 import { fleet, sortFleetByName } from "@/lib/fleet";
@@ -22,16 +20,11 @@ export const metadata: Metadata = pageMetadata({
     "AC tempo traveller hire Bengaluru",
     "17 seater Force Traveller rental",
     "26 seater coach rental Bengaluru",
-    "self drive SUV rental Bengaluru",
     "7 seater SUV rental with driver Bengaluru",
     "luxury van hire for family Bengaluru",
     "vehicle rental price list Bengaluru",
   ],
 });
-
-// Font pairing 2/6: Playfair Display + Work Sans — classic magazine luxury
-const heading = Playfair_Display({ subsets: ["latin"], weight: ["500", "600"] });
-const body = Work_Sans({ subsets: ["latin"], weight: ["400", "500"] });
 
 const fleetJsonLd = {
   "@context": "https://schema.org",
@@ -51,10 +44,10 @@ const fleetJsonLd = {
 
 export default function FleetPage() {
   return (
-    <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(fleetJsonLd)} />
       <FleetHero />
       <FleetGrid />
-    </PageFontScope>
+    </>
   );
 }

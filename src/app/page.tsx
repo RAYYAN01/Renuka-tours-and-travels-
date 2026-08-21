@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     "airport taxi Bengaluru",
     "luxury van rental Bengaluru",
     "coach rental Bengaluru",
-    "self drive cars Bengaluru",
     "cab booking Bengaluru with driver",
     "one way cab Bengaluru",
     "round trip cab Bengaluru",

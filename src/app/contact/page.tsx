@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
-import { Instrument_Serif, Inter } from "next/font/google";
-import PageFontScope from "@/components/PageFontScope";
 import ContactHero from "@/components/contact/ContactHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
@@ -37,13 +35,9 @@ const details = [
   { icon: Clock, label: "Hours", value: site.hours },
 ];
 
-// Font pairing 6/6: Instrument Serif + Inter — contemporary, distinctive
-const heading = Instrument_Serif({ subsets: ["latin"], weight: ["400"] });
-const body = Inter({ subsets: ["latin"], weight: ["400", "500"] });
-
 export default function ContactPage() {
   return (
-    <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
+    <>
       <ContactHero />
 
       <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
@@ -97,6 +91,6 @@ export default function ContactPage() {
           </Reveal>
         </Container>
       </section>
-    </PageFontScope>
+    </>
   );
 }

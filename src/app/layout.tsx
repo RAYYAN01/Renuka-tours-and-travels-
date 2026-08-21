@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Anton, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
@@ -9,10 +9,10 @@ import { site } from "@/lib/site";
 import { siteUrl, organizationJsonLd, jsonLdScriptProps } from "@/lib/seo";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const anton = Anton({
+  variable: "--font-display",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: "400",
 });
 
 const inter = Inter({
@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     "airport transfer Bengaluru",
     "wedding car rental",
     "corporate travel Bengaluru",
-    "self drive cars",
     "luxury car rental",
   ],
   alternates: {
@@ -75,7 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${anton.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <script

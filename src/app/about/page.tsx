@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ShieldCheck, FileCheck, Stethoscope, BadgeCheck } from "lucide-react";
-import { Libre_Caslon_Display, Public_Sans } from "next/font/google";
-import PageFontScope from "@/components/PageFontScope";
 import AboutHero from "@/components/about/AboutHero";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -51,13 +49,9 @@ const safety = [
   { icon: BadgeCheck, title: "Comprehensive Insurance", text: "All vehicles carry valid insurance covering passengers and third parties." },
 ];
 
-// Font pairing 5/6: Libre Caslon Display + Public Sans — timeless heritage travel
-const heading = Libre_Caslon_Display({ subsets: ["latin"], weight: ["400"] });
-const body = Public_Sans({ subsets: ["latin"], weight: ["400", "500"] });
-
 export default function AboutPage() {
   return (
-    <PageFontScope heading={heading.style.fontFamily} body={body.style.fontFamily}>
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(aboutJsonLd)} />
       <AboutHero />
 
@@ -141,6 +135,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-    </PageFontScope>
+    </>
   );
 }

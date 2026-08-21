@@ -3,7 +3,7 @@ export const site = {
   shortName: "Renuka Travels",
   tagline: "Journeys, Chauffeured to Perfection",
   description:
-    "Premium self-drive and chauffeur-driven car rentals, tempo travellers and coaches for outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours.",
+    "Premium chauffeur-driven car rentals, tempo travellers and coaches for outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours.",
   phone: "+91 95133 30099",
   phoneRaw: "+919513330099",
   whatsapp: "+919513330099",

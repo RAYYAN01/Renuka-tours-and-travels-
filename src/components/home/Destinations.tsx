@@ -4,7 +4,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import DestinationCard from "@/components/DestinationCard";
-import { destinations } from "@/lib/destinations";
+import { featuredDestinations } from "@/lib/destinations";
 
 export default function Destinations() {
   return (
@@ -24,7 +24,7 @@ export default function Destinations() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {destinations.map((d, i) => (
+          {featuredDestinations.map((d, i) => (
             <Reveal key={d.slug} delay={60 * (i % 3)}>
               <DestinationCard destination={d} />
             </Reveal>

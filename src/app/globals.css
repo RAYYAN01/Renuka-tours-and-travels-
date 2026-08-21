@@ -106,7 +106,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-serif: var(--font-fraunces);
+  --font-serif: var(--font-display);
   --font-sans: var(--font-inter);
 
   --container-8xl: 96rem;
@@ -161,8 +161,8 @@ body {
 }
 
 .font-serif-luxury {
-  font-family: var(--font-serif), ui-serif, Georgia, serif;
-  font-optical-sizing: auto;
+  font-family: var(--font-serif), Impact, ui-sans-serif, sans-serif;
+  text-transform: uppercase;
 }
 
 /* ── Glassmorphism core ─────────────────────────────────────── */
@@ -386,11 +386,11 @@ body {
 }
 
 .md-btn-whatsapp {
-  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 50%, transparent);
+  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 88%, white) 96%, transparent);
   color: #ffffff;
 }
 .md-btn-whatsapp:hover {
-  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 58%, transparent);
+  background: color-mix(in srgb, var(--color-whatsapp) 96%, white);
 }
 
 /* Floating action button — flat */
@@ -437,7 +437,7 @@ body {
 }
 .md-fab-whatsapp {
   border-radius: 9999px;
-  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 65%, white) 56%, transparent);
+  background: color-mix(in srgb, color-mix(in srgb, var(--color-whatsapp) 88%, white) 96%, transparent);
 }
 
 /* ── Filter chip (Material) ─────────────────────────────────── */

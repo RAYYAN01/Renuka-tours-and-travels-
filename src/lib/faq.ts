@@ -15,7 +15,7 @@ export const faqs: FAQItem[] = [
   {
     question: "Do your vehicles come with a driver?",
     answer:
-      "Yes, every vehicle in the fleet is chauffeur-driven by default with a verified, background-checked driver. If you'd rather drive yourself, self-drive cars are also available with a refundable security deposit.",
+      "Yes, every vehicle in the fleet is chauffeur-driven by a verified, background-checked driver — we don't offer self-drive/unchauffeured rentals.",
   },
   {
     question: "What types of vehicles do you have?",

@@ -13,7 +13,7 @@ export default function Hero() {
         </>
       }
       title="Journeys, chauffeured to perfection."
-      description="Self-drive and chauffeur-driven cars, SUVs, tempo travellers and coaches — for airport runs, weddings, corporate travel and pilgrimages across India. Verified drivers, transparent pricing, no surprises."
+      description="Chauffeur-driven cars, SUVs, tempo travellers and coaches — for airport runs, weddings, corporate travel and pilgrimages across India. Verified drivers, transparent pricing, no surprises."
     />
   );
 }
