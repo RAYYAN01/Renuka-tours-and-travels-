@@ -47,4 +47,14 @@ export const faqs: FAQItem[] = [
     answer:
       "Yes — corporate travel is available with monthly billing and a dedicated account manager, and wedding transport includes fleet decoration on request plus multi-vehicle coordination for multi-day functions.",
   },
+  {
+    question: "Which areas within Bengaluru do you pick up from?",
+    answer:
+      "All of Bengaluru — Whitefield, Electronic City, Koramangala, Indiranagar, HSR Layout, Marathahalli, Sarjapur Road, JP Nagar, Hebbal, Yelahanka, CV Raman Nagar and Kempegowda International Airport included. If it's within city limits, we can pick you up.",
+  },
+  {
+    question: "Do you serve towns near Bengaluru like Hosur, Tumkur or Ramanagara?",
+    answer:
+      "Yes — beyond city limits, we regularly cover nearby towns including Hosur, Tumkur, Ramanagara, Kolar, Nelamangala and Channapatna, in addition to every outstation route across South India.",
+  },
 ];

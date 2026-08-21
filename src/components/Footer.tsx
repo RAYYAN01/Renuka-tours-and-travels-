@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Container from "@/components/ui/Container";
-import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 import { fleetCategories } from "@/lib/fleet";
 import { services } from "@/lib/services";
 import { site, telHref } from "@/lib/site";
@@ -32,12 +31,6 @@ const columns = [
       { label: "Contact", href: "/contact" },
     ],
   },
-];
-
-const socialLinks = [
-  { Icon: InstagramIcon, label: "Instagram", href: site.social.instagram },
-  { Icon: FacebookIcon, label: "Facebook", href: site.social.facebook },
-  { Icon: YoutubeIcon, label: "YouTube", href: site.social.youtube },
 ];
 
 export default function Footer() {
@@ -74,20 +67,6 @@ export default function Footer() {
                 {site.address.line1}, {site.address.city}, {site.address.state}{" "}
                 {site.address.pin}
               </span>
-            </div>
-            <div className="flex items-center gap-2 pt-1">
-              {socialLinks.map(({ Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-forest-900/65 transition-colors hover:bg-forest-900/10 hover:text-terracotta-700"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
             </div>
           </div>
 

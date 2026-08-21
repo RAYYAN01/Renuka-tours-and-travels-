@@ -88,10 +88,24 @@ export function organizationJsonLd() {
       postalCode: site.address.pin,
       addressCountry: "IN",
     },
-    areaServed: {
-      "@type": "State",
-      name: "Karnataka",
-    },
+    areaServed: [
+      { "@type": "City", name: "Bengaluru" },
+      { "@type": "State", name: "Karnataka" },
+      { "@type": "Place", name: "Whitefield" },
+      { "@type": "Place", name: "Electronic City" },
+      { "@type": "Place", name: "Koramangala" },
+      { "@type": "Place", name: "Indiranagar" },
+      { "@type": "Place", name: "HSR Layout" },
+      { "@type": "Place", name: "Marathahalli" },
+      { "@type": "Place", name: "Sarjapur Road" },
+      { "@type": "Place", name: "JP Nagar" },
+      { "@type": "Place", name: "Hebbal" },
+      { "@type": "Place", name: "Yelahanka" },
+      { "@type": "Place", name: "CV Raman Nagar" },
+      { "@type": "City", name: "Hosur" },
+      { "@type": "City", name: "Tumkur" },
+      { "@type": "City", name: "Ramanagara" },
+    ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
@@ -106,7 +120,12 @@ export function organizationJsonLd() {
       opens: "00:00",
       closes: "23:59",
     },
-    sameAs: [site.social.instagram, site.social.facebook, site.social.youtube],
+    // sameAs intentionally omitted — no confirmed real social profile URLs
+    // exist yet (see src/lib/site.ts). Emitting placeholder homepages here
+    // would tell Google this business's official Instagram/Facebook/YouTube
+    // IS instagram.com/facebook.com/youtube.com, which is wrong and can
+    // actively hurt entity trust. Add this back once real profile URLs are
+    // confirmed.
   };
 }
 

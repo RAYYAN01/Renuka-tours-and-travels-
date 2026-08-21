@@ -1,17 +1,17 @@
 # Renuka Tours & Travels
 
-> Premium self-drive and chauffeur-driven car, SUV, tempo traveller and coach rentals based in Bengaluru, serving outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours across South India.
+> Premium chauffeur-driven car, SUV, tempo traveller and coach rentals based in Bengaluru, serving local city travel, outstation trips, airport transfers, weddings, corporate travel and pilgrimage tours across South India.
 
 Website: https://www.renukatoursandtravel.com
 
-Renuka Tours & Travels has operated since 2011, running a fleet of 40+ vehicles across five categories (sedans, SUVs, tempo travellers, luxury vans and mini coaches) with verified, background-checked drivers and transparent, upfront per-kilometre or per-package pricing — no surge pricing, no hidden fees. Available 24×7.
+Renuka Tours & Travels has operated since 2011, running a fleet of sedans, SUVs, tempo travellers, luxury vans and mini coaches — all chauffeur-driven by verified, background-checked drivers — with transparent, upfront per-kilometre or per-package pricing and no surge pricing or hidden fees. Available 24×7. Renuka Tours & Travels does not offer self-drive/unchauffeured rentals — every vehicle comes with a driver.
 
 ## Key pages
 
-- [Fleet](/fleet): Full vehicle lineup with seating capacity, luggage space, AC/fuel type and starting price per km for each vehicle.
-- [Services](/services): Airport transfers, outstation trips, corporate travel, wedding transport, group & pilgrimage tours, school/college trips, hourly local rentals, and self-drive cars.
-- [Destinations](/destinations): Popular weekend and multi-day routes from Bengaluru with estimated cost and recommended vehicle for each.
-- [Gallery](/gallery): Photos from past trips, the fleet, and destinations across South India.
+- [Fleet](/fleet): Full vehicle lineup — sedans, SUVs, tempo travellers, a luxury van and mini coaches/buses — with seating capacity, luggage space, AC/fuel type and starting price per km for each vehicle.
+- [Services](/services): Airport transfers, outstation trips, corporate travel, wedding transport, group & pilgrimage tours, and hourly local rentals.
+- [Destinations](/destinations): 22 popular weekend and multi-day routes from Bengaluru with estimated cost and recommended vehicle for each.
+- [Gallery](/gallery): Photos from the fleet and from past trips and destinations across South India.
 - [Booking](/booking): Request a booking online — pre-fills a WhatsApp message to the operations team.
 - [About](/about): Company history, fleet growth timeline, and safety/verification standards (driver checks, licensing, insurance, sanitisation).
 - [Contact](/contact): Phone, WhatsApp, email and office address.
@@ -19,48 +19,90 @@ Renuka Tours & Travels has operated since 2011, running a fleet of 40+ vehicles 
 ## Facts
 
 - Founded: 2011
-- Fleet size: 40+ vehicles across sedans, SUVs, tempo travellers (12–17 seater), luxury vans (12–17 seater) and mini coaches (26–35 seater)
-- Coverage: Bengaluru city and outstation trips across South India
-- Pricing model: per-kilometre for outstation trips (from ₹11/km for a sedan), flat packages for local/hourly rentals, custom quotes for corporate/wedding/group bookings
-- Driver: included by default on all vehicles; unchauffeured self-drive cars also available with a refundable security deposit
+- Fleet categories: sedans (4-seater), SUVs (6–7 seater), tempo travellers (9–17 seater), a luxury van (17 seater) and mini coaches/buses (21–50 seater)
+- Coverage: every locality within Bengaluru (Whitefield, Electronic City, Koramangala, Indiranagar, HSR Layout, Marathahalli, Sarjapur Road, JP Nagar, Hebbal, Yelahanka, CV Raman Nagar, Kempegowda International Airport), nearby towns (Hosur, Tumkur, Ramanagara, Kolar, Nelamangala, Channapatna), and outstation trips across South India
+- Pricing model: per-kilometre for outstation trips (from ₹13/km for a sedan), flat packages for local/hourly rentals, custom quotes for corporate/wedding/group bookings and for vehicles marked "price on request"
+- Driver: every vehicle is chauffeur-driven by default — self-drive/unchauffeured rentals are not offered
 - Insurance & verification: every vehicle carries valid insurance covering passengers and third parties; every driver is background-checked, licence-validated and interviewed before joining the fleet
 - Address: 97/3, First Floor, Veerappa Compound, 14 E Acres, Nagavarapalya, CV Raman Nagar, Bengaluru, Karnataka 560093, India
 - Phone / WhatsApp: +91 95133 30099
 - Email: renukatourstravels01@gmail.com
 - Hours: Open 24×7
 
+## Fleet
+
+| Vehicle | Category | Seats | From (₹/km) |
+|---|---|---|---|
+| Maruti Suzuki Dzire | Sedan | 4 | 13 |
+| Toyota Etios | Sedan | 4 | 13 |
+| Maruti Ertiga | SUV | 6 | Price on request |
+| Toyota Fortuner | SUV | 7 | Price on request |
+| Toyota Innova | SUV | 7 | 17 |
+| Toyota Innova Crysta | SUV | 7 | 19 |
+| Toyota Innova HyCross | SUV | 7 | 21 |
+| 9 Seater Tempo Traveller | Tempo Traveller | 9 | Price on request |
+| 17 Seater Tempo Traveller | Tempo Traveller | 17 | Price on request |
+| Force Traveller | Tempo Traveller | 17 | 22 |
+| 12 Seater Luxury Tempo Traveller | Tempo Traveller | 12 | 30 |
+| Force Urbania | Luxury Van | 17 | 38 |
+| SGR Coach | Mini Coach | 26 | 45 |
+| 21-Seater Bus | Coach | 21 | Price on request |
+| 25-Seater Mini Bus | Coach | 25 | Price on request |
+| 50-Seater Bus | Coach | 50 | Price on request |
+
+Full detail pages, live pricing and booking: https://www.renukatoursandtravel.com/fleet
+
 ## Popular routes from Bengaluru
 
-| Destination | Distance | Duration | Estimated cost | Recommended vehicle |
-|---|---|---|---|---|
-| Mysuru (Heritage City) | 145 km | ~3.5 hrs | ₹3,200 – ₹4,500 | Sedan or SUV |
-| Coorg (Hill Station) | 260 km | ~6 hrs | ₹5,500 – ₹7,800 | SUV or Tempo Traveller |
-| Ooty (Hill Station) | 270 km | ~6.5 hrs | ₹5,800 – ₹8,200 | SUV or Tempo Traveller |
-| Wayanad (Hill Station) | 285 km | ~6.5 hrs | ₹5,800 – ₹8,300 | SUV or Tempo Traveller |
-| Tirupati (Pilgrimage) | 255 km | ~5.5 hrs | ₹5,200 – ₹7,500 | SUV, Tempo Traveller or Coach |
-| Hampi (Heritage Site) | 340 km | ~6.5 hrs | ₹6,800 – ₹9,500 | SUV or Tempo Traveller |
-| Kodaikanal (Hill Station) | 460 km | ~9 hrs | ₹9,200 – ₹13,200 | SUV or Tempo Traveller |
-| Munnar (Hill Station) | 480 km | ~9.5 hrs | ₹9,600 – ₹13,800 | SUV or Tempo Traveller |
-| Goa (Beach Getaway) | 560 km | ~10 hrs | ₹11,000 – ₹16,000 | SUV or Luxury Van |
+| Destination | Type | Distance | Duration | Estimated cost | Recommended vehicle |
+|---|---|---|---|---|---|
+| Nandi Hills | Hill Station | 60 km | ~1.5 hrs | ₹1,200 – ₹1,700 | Sedan or SUV |
+| Mysuru | Heritage City | 145 km | ~3.5 hrs | ₹3,200 – ₹4,500 | Sedan or SUV |
+| Sakleshpur | Hill Station | 220 km | ~5 hrs | ₹4,400 – ₹6,400 | SUV or Tempo Traveller |
+| Chikmagalur | Hill Station | 245 km | ~5.5 hrs | ₹4,900 – ₹7,100 | SUV or Tempo Traveller |
+| Tirupati | Pilgrimage | 255 km | ~5.5 hrs | ₹5,200 – ₹7,500 | SUV, Tempo Traveller or Coach |
+| Coorg | Hill Station | 260 km | ~6 hrs | ₹5,500 – ₹7,800 | SUV or Tempo Traveller |
+| Coonoor | Hill Station | 265 km | ~6 hrs | ₹5,300 – ₹7,700 | SUV or Tempo Traveller |
+| Ooty | Hill Station | 270 km | ~6.5 hrs | ₹5,800 – ₹8,200 | SUV or Tempo Traveller |
+| Wayanad | Hill Station | 285 km | ~6.5 hrs | ₹5,800 – ₹8,300 | SUV or Tempo Traveller |
+| Dharmasthala & Kukke Subramanya | Pilgrimage | 285 km | ~6.5 hrs | ₹5,700 – ₹8,300 | SUV, Tempo Traveller or Coach |
+| Pondicherry | Heritage & Beach | 320 km | ~7 hrs | ₹6,400 – ₹9,300 | SUV or Luxury Van |
+| Hampi | Heritage Site | 340 km | ~6.5 hrs | ₹6,800 – ₹9,500 | SUV or Tempo Traveller |
+| Mantralaya | Pilgrimage | 350 km | ~7 hrs | ₹7,000 – ₹10,200 | SUV, Tempo Traveller or Coach |
+| Gokarna | Beach Getaway | 480 km | ~9.5 hrs | ₹9,600 – ₹13,900 | SUV or Luxury Van |
+| Munnar | Hill Station | 480 km | ~9.5 hrs | ₹9,600 – ₹13,800 | SUV or Tempo Traveller |
+| Kodaikanal | Hill Station | 460 km | ~9 hrs | ₹9,200 – ₹13,200 | SUV or Tempo Traveller |
+| Rameshwaram | Pilgrimage | 570 km | ~11 hrs | ₹11,400 – ₹16,500 | SUV, Tempo Traveller or Coach |
+| Goa | Beach Getaway | 560 km | ~10 hrs | ₹11,000 – ₹16,000 | SUV or Luxury Van |
+| Alleppey | Backwaters | 660 km | ~12.5 hrs | ₹13,200 – ₹19,100 | SUV or Luxury Van |
+| Kumarakom | Backwaters | 680 km | ~12.5 hrs | ₹13,600 – ₹19,700 | SUV or Luxury Van |
+| Kanyakumari | Beach Getaway | 730 km | ~13.5 hrs | ₹14,600 – ₹21,200 | SUV or Luxury Van |
+| Trivandrum & Kovalam | Beach Getaway | 730 km | ~13.5 hrs | ₹14,600 – ₹21,200 | SUV or Luxury Van |
 
 Full detail pages, live pricing and booking: https://www.renukatoursandtravel.com/destinations
 
 ## Frequently asked questions
 
 **How is pricing calculated for outstation trips?**
-Outstation trips are billed per kilometre, starting from ₹11/km for a sedan. Tolls, driver allowance and any interstate permit charges are shown upfront before you confirm — there's no surge pricing, ever.
+Outstation trips are billed per kilometre, starting from ₹13/km for a sedan. Tolls, driver allowance and any interstate permit charges are shown upfront before you confirm — there's no surge pricing, ever.
 
 **Do your vehicles come with a driver?**
-Yes, every vehicle in the fleet is chauffeur-driven by default with a verified, background-checked driver. If you'd rather drive yourself, self-drive cars are also available with a refundable security deposit.
+Yes, every vehicle in the fleet is chauffeur-driven by a verified, background-checked driver — Renuka Tours & Travels does not offer self-drive/unchauffeured rentals.
 
 **What types of vehicles do you have?**
-The fleet spans five categories: sedans (4-seater), SUVs (7-seater), tempo travellers (12–17 seater), luxury vans (12–17 seater) and mini coaches (26–35 seater) — so there's a fit whether it's a solo airport run or a 35-person pilgrimage group.
+The fleet spans five categories: sedans (4-seater), SUVs (6–7 seater), tempo travellers (9–17 seater), a luxury van (17 seater) and mini coaches/buses (21–50 seater) — so there's a fit whether it's a solo airport run or a 50-person pilgrimage group.
 
 **How do I book a ride?**
 Use the search bar on the homepage or the booking form at /booking to share your pickup, destination, date and passenger count. The team confirms the vehicle, price and pickup time by phone or WhatsApp, usually within the hour.
 
 **Which cities and routes do you cover?**
-Based in Bengaluru, covering local city travel plus outstation trips across South India, including Mysuru, Coorg, Ooty, Hampi, Tirupati, Goa, Wayanad, Kodaikanal and Munnar.
+Based in Bengaluru, covering every locality within the city plus outstation trips across South India, including Mysuru, Coorg, Ooty, Coonoor, Chikmagalur, Sakleshpur, Hampi, Tirupati, Dharmasthala, Mantralaya, Rameshwaram, Goa, Gokarna, Pondicherry, Kanyakumari, Trivandrum, Wayanad, Alleppey, Kumarakom, Kodaikanal, Munnar and Nandi Hills.
+
+**Which areas within Bengaluru do you pick up from?**
+All of Bengaluru — Whitefield, Electronic City, Koramangala, Indiranagar, HSR Layout, Marathahalli, Sarjapur Road, JP Nagar, Hebbal, Yelahanka, CV Raman Nagar and Kempegowda International Airport included.
+
+**Do you serve towns near Bengaluru like Hosur, Tumkur or Ramanagara?**
+Yes — beyond city limits, coverage regularly extends to nearby towns including Hosur, Tumkur, Ramanagara, Kolar, Nelamangala and Channapatna, in addition to every outstation route across South India.
 
 **Is airport pickup tracked against my flight?**
 Yes. Airport transfers include live flight tracking and free waiting time if your flight is delayed, so a late landing never means a missed ride.

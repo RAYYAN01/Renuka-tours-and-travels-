@@ -23,6 +23,11 @@ export const metadata: Metadata = pageMetadata({
     "7 seater SUV rental with driver Bengaluru",
     "luxury van hire for family Bengaluru",
     "vehicle rental price list Bengaluru",
+    "car rental Whitefield Bengaluru",
+    "tempo traveller hire Electronic City",
+    "SUV rental Koramangala",
+    "9 seater tempo traveller Bengaluru",
+    "mini bus rental Bengaluru outer areas",
   ],
 });
 

@@ -20,6 +20,11 @@ export const metadata: Metadata = pageMetadata({
     "WhatsApp cab booking Bengaluru",
     "travel agency CV Raman Nagar Bengaluru",
     "car rental customer support Bengaluru",
+    "cab booking Whitefield",
+    "car rental enquiry Electronic City",
+    "tempo traveller booking Indiranagar",
+    "cab service Sarjapur Road",
+    "travel agency near Yelahanka",
   ],
 });
 

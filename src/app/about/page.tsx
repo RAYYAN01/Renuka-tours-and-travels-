@@ -28,6 +28,8 @@ export const metadata: Metadata = pageMetadata({
     "background verified drivers Bengaluru",
     "reliable outstation taxi operator Bengaluru",
     "CV Raman Nagar travel agency",
+    "travel agency serving Whitefield to Electronic City",
+    "Bengaluru travel company for outstation and local trips",
   ],
 });
 

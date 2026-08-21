@@ -28,6 +28,10 @@ export const metadata: Metadata = pageMetadata({
     "hill station trips near Bengaluru by road",
     "multi day outstation trip from Bengaluru",
     "South India road trip cab hire",
+    "Whitefield to Coorg cab",
+    "Electronic City to Mysuru taxi",
+    "Bengaluru to Hosur cab fare",
+    "Bengaluru to Nandi Hills sunrise trip cab",
   ],
 });
 

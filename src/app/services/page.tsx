@@ -27,6 +27,10 @@ export const metadata: Metadata = pageMetadata({
     "wedding car decoration rental Bengaluru",
     "group pilgrimage tour cab Bengaluru",
     "hourly local car rental Bengaluru",
+    "corporate cab service Whitefield",
+    "wedding car rental Indiranagar",
+    "airport transfer from Electronic City",
+    "outstation cab Hosur road",
   ],
 });
 
