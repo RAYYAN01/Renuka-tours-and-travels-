@@ -257,7 +257,7 @@ export const fleet: FleetVehicle[] = [
   },
   {
     slug: "force-traveller-b",
-    name: "Force Traveller II",
+    name: "17 Seater Tempo Traveller",
     tagline: "A second 17-seater on standby for back-to-back group bookings",
     category: "traveller",
     categoryLabel: "Tempo Traveller · 17 Seater",
