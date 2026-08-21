@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Anton, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -81,6 +82,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLdScriptProps(organizationJsonLd())}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5VLBDC2QJF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5VLBDC2QJF');
+          `}
+        </Script>
         <SmoothScroll />
         <Navbar />
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>

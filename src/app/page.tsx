@@ -14,7 +14,7 @@ import CtaBanner from "@/components/home/CtaBanner";
 export const metadata: Metadata = {
   title: "Car, SUV & Tempo Traveller Rentals in Bengaluru",
   description:
-    "Book cars, SUVs, tempo travellers, luxury vans and coaches in Bengaluru with verified drivers and transparent per-km pricing. Outstation trips, airport transfers, weddings, corporate travel and pilgrimages — confirmed within the hour.",
+    "Book cars, SUVs, tempo travellers and coaches in Bengaluru with verified drivers and transparent per-km pricing — confirmed within the hour.",
   keywords: [
     "car rental Bengaluru",
     "tempo traveller rental Bengaluru",

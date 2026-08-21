@@ -25,7 +25,7 @@ export async function generateMetadata({
   const post = getBlogPost(slug);
   if (!post) return {};
   return pageMetadata({
-    title: post.title,
+    title: post.metaTitle ?? post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,

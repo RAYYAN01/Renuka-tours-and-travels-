@@ -6,6 +6,11 @@ export interface BlogSection {
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Shorter title for the <title> tag / SERP display — the full `title`
+   * is used for the on-page H1 and card display, but at 84-94 characters
+   * it was well past Google's ~60-char truncation point once the site
+   * name is appended. Falls back to `title` if not set. */
+  metaTitle?: string;
   excerpt: string;
   category: string;
   publishedDate: string;
@@ -20,8 +25,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "best-time-to-visit-coorg-from-bangalore",
     title: "Best Time to Visit Coorg from Bangalore: A Season-by-Season Guide",
+    metaTitle: "Best Time to Visit Coorg from Bangalore",
     excerpt:
-      "Coorg looks completely different in July than it does in December. Here's when to go depending on whether you want waterfalls, clear viewpoints, or coffee-blossom season.",
+      "Coorg looks different in July than in December — here's when to go for waterfalls, clear viewpoints, or coffee-blossom season.",
     category: "Destination Guide",
     publishedDate: "2026-01-15",
     readingTime: "6 min read",
@@ -70,8 +76,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "bangalore-to-mysuru-road-trip-guide",
     title: "Bangalore to Mysuru Road Trip: Route, Stops and Travel Tips",
+    metaTitle: "Bangalore to Mysuru Road Trip Guide",
     excerpt:
-      "Mysuru is one of the easiest day trips from Bangalore — but a few well-timed stops turn a 3-hour drive into a proper day out. Here's the route, the worthwhile detours, and what to see once you arrive.",
+      "Mysuru is an easy day trip from Bangalore — a few well-timed stops turn the 3-hour drive into a proper day out.",
     category: "Destination Guide",
     publishedDate: "2026-02-03",
     readingTime: "5 min read",
@@ -119,8 +126,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "tirupati-pilgrimage-trip-from-bangalore-guide",
     title: "Planning a Tirupati Pilgrimage Trip from Bangalore: A Practical Guide",
+    metaTitle: "Tirupati Pilgrimage Trip from Bangalore",
     excerpt:
-      "A same-day Tirupati darshan trip from Bangalore is doable, but the timing matters more than almost any other route on this list. Here's how to plan it so you're not standing in a queue at 2am.",
+      "A same-day Tirupati darshan trip from Bangalore is doable — timing matters more than on almost any other route on this list.",
     category: "Pilgrimage",
     publishedDate: "2026-02-20",
     readingTime: "6 min read",
@@ -168,8 +176,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ooty-vs-coorg-which-hill-station",
     title: "Ooty vs Coorg: Which Hill Station Should You Choose from Bangalore?",
+    metaTitle: "Ooty vs Coorg: Which Hill Station to Choose?",
     excerpt:
-      "Both are classic weekend hill-station trips from Bangalore, but they're not interchangeable. Here's how to decide based on what you actually want out of the trip.",
+      "Both are classic weekend trips from Bangalore, but they're not interchangeable — here's how to decide which one fits your trip.",
     category: "Travel Tips",
     publishedDate: "2026-03-05",
     readingTime: "5 min read",
