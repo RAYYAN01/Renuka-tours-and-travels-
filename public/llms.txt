@@ -11,6 +11,7 @@ Renuka Tours & Travels has operated since 2011, running a fleet of sedans, SUVs,
 - [Fleet](/fleet): Full vehicle lineup — sedans, SUVs, tempo travellers, a luxury van and mini coaches/buses — with seating capacity, luggage space, AC/fuel type and starting price per km for each vehicle.
 - [Services](/services): Airport transfers, outstation trips, corporate travel, wedding transport, group & pilgrimage tours, and hourly local rentals.
 - [Destinations](/destinations): 22 popular weekend and multi-day routes from Bengaluru with estimated cost and recommended vehicle for each.
+- [Blog](/blog): Travel guides and planning tips — best time to visit, road-trip routes, pilgrimage logistics.
 - [Gallery](/gallery): Photos from the fleet and from past trips and destinations across South India.
 - [Booking](/booking): Request a booking online — pre-fills a WhatsApp message to the operations team.
 - [About](/about): Company history, fleet growth timeline, and safety/verification standards (driver checks, licensing, insurance, sanitisation).

@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 
 const BASE = "http://localhost:3000";
-const pages = ["/", "/fleet", "/fleet/toyota-etios", "/destinations", "/destinations/goa", "/services", "/about", "/contact", "/gallery", "/booking"];
+const pages = ["/", "/fleet", "/fleet/toyota-etios", "/destinations", "/destinations/goa", "/services", "/about", "/contact", "/gallery", "/booking", "/blog", "/blog/best-time-to-visit-coorg-from-bangalore"];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
