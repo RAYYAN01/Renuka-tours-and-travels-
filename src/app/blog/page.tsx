@@ -3,7 +3,7 @@ import PageHeader from "@/components/PageHeader";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import BlogCard from "@/components/blog/BlogCard";
-import { blogPosts, sortBlogPostsByDate } from "@/lib/blog";
+import { getBlogPosts } from "@/lib/blog-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -22,24 +22,24 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
-const sortedPosts = sortBlogPostsByDate(blogPosts);
+export default async function BlogIndexPage() {
+  const sortedPosts = await getBlogPosts();
 
-const blogJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "Renuka Tours & Travels — Travel Guides & Tips",
-  url: absoluteUrl("/blog"),
-  blogPost: sortedPosts.map((post) => ({
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    url: absoluteUrl(`/blog/${post.slug}`),
-    datePublished: post.publishedDate,
-    image: absoluteUrl(post.coverImage),
-  })),
-};
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Renuka Tours & Travels — Travel Guides & Tips",
+    url: absoluteUrl("/blog"),
+    blogPost: sortedPosts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      datePublished: post.publishedDate,
+      image: absoluteUrl(post.coverImage),
+    })),
+  };
 
-export default function BlogIndexPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(blogJsonLd)} />

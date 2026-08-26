@@ -2,39 +2,41 @@ import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { fleetCategories } from "@/lib/fleet";
-import { services } from "@/lib/services";
+import { getServices } from "@/lib/services-data";
 import { site, telHref } from "@/lib/site";
 
 const featuredServiceIds = ["airport", "outstation", "corporate", "wedding", "pilgrimage"];
 
-const columns = [
-  {
-    title: "Fleet",
-    links: fleetCategories.map((c) => ({
-      label: c.label,
-      href: `/fleet?category=${c.id}`,
-    })),
-  },
-  {
-    title: "Services",
-    links: featuredServiceIds
-      .map((id) => services.find((s) => s.id === id))
-      .filter((s): s is (typeof services)[number] => Boolean(s))
-      .map((s) => ({ label: s.title, href: `/services#${s.id}` })),
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
-      { label: "Destinations", href: "/destinations" },
-      { label: "Blog", href: "/blog" },
-      { label: "Gallery", href: "/gallery" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-];
+export default async function Footer() {
+  const services = await getServices();
 
-export default function Footer() {
+  const columns = [
+    {
+      title: "Fleet",
+      links: fleetCategories.map((c) => ({
+        label: c.label,
+        href: `/fleet?category=${c.id}`,
+      })),
+    },
+    {
+      title: "Services",
+      links: featuredServiceIds
+        .map((id) => services.find((s) => s.id === id))
+        .filter((s): s is (typeof services)[number] => Boolean(s))
+        .map((s) => ({ label: s.title, href: `/services#${s.id}` })),
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About Us", href: "/about" },
+        { label: "Destinations", href: "/destinations" },
+        { label: "Blog", href: "/blog" },
+        { label: "Gallery", href: "/gallery" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+  ];
+
   return (
     <footer className="relative overflow-hidden bg-[var(--md-surface-container)] text-forest-900">
       <div className="md-divider-strong absolute inset-x-0 top-0 h-px" />

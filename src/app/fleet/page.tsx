@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import FleetHero from "@/components/fleet/FleetHero";
 import FleetGrid from "@/components/fleet/FleetGrid";
-import { fleet, sortFleetForDisplay } from "@/lib/fleet";
+import { sortFleetForDisplay } from "@/lib/fleet";
+import { getFleet } from "@/lib/fleet-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -31,28 +32,30 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
-const fleetJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: sortFleetForDisplay(fleet).map((vehicle, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    url: absoluteUrl(`/fleet/${vehicle.slug}`),
-    item: {
-      "@type": "Vehicle",
-      name: vehicle.name,
-      image: absoluteUrl(vehicle.image),
-      url: absoluteUrl(`/fleet/${vehicle.slug}`),
-    },
-  })),
-};
+export default async function FleetPage() {
+  const fleet = await getFleet();
 
-export default function FleetPage() {
+  const fleetJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: sortFleetForDisplay(fleet).map((vehicle, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: absoluteUrl(`/fleet/${vehicle.slug}`),
+      item: {
+        "@type": "Vehicle",
+        name: vehicle.name,
+        image: absoluteUrl(vehicle.image),
+        url: absoluteUrl(`/fleet/${vehicle.slug}`),
+      },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(fleetJsonLd)} />
       <FleetHero />
-      <FleetGrid />
+      <FleetGrid fleet={fleet} />
     </>
   );
 }

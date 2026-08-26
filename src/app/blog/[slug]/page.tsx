@@ -8,12 +8,13 @@ import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/SplitReveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { blogPosts, getBlogPost } from "@/lib/blog";
+import { getBlogSlugs, getBlogPost } from "@/lib/blog-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata, siteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await getBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -22,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) return {};
   return pageMetadata({
     title: post.metaTitle ?? post.title,
@@ -38,7 +39,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) notFound();
 
   const postJsonLd = {

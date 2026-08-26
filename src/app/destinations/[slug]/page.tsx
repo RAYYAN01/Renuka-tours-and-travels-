@@ -8,11 +8,13 @@ import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/SplitReveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { destinations, recommendedVehicleCategories, OFFICIAL_TOURISM_LINKS } from "@/lib/destinations";
+import { recommendedVehicleCategories, OFFICIAL_TOURISM_LINKS } from "@/lib/destinations";
+import { getDestinationSlugs, getDestinationBySlug } from "@/lib/destinations-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata, parseLowerBoundPrice } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return destinations.map((d) => ({ slug: d.slug }));
+export async function generateStaticParams() {
+  const slugs = await getDestinationSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -21,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const destination = destinations.find((d) => d.slug === slug);
+  const destination = await getDestinationBySlug(slug);
   if (!destination) return {};
   return pageMetadata({
     title: destination.name,
@@ -47,7 +49,7 @@ export default async function DestinationDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const destination = destinations.find((d) => d.slug === slug);
+  const destination = await getDestinationBySlug(slug);
   if (!destination) notFound();
 
   const tripJsonLd = {

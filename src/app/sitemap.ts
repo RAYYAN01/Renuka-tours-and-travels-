@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { fleet } from "@/lib/fleet";
-import { destinations } from "@/lib/destinations";
-import { blogPosts } from "@/lib/blog";
+import { getFleet } from "@/lib/fleet-data";
+import { getDestinations } from "@/lib/destinations-data";
+import { getBlogPosts } from "@/lib/blog-data";
 import { siteUrl } from "@/lib/seo";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = (
@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: `${siteUrl}/blog`, changeFrequency: "weekly", priority: 0.7 },
     ] as const
   ).map((route) => ({ ...route, lastModified: now }));
+
+  const [fleet, destinations, blogPosts] = await Promise.all([
+    getFleet(),
+    getDestinations(),
+    getBlogPosts(),
+  ]);
 
   const fleetRoutes: MetadataRoute.Sitemap = fleet.map((v) => ({
     url: `${siteUrl}/fleet/${v.slug}`,

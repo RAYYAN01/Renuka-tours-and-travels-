@@ -5,9 +5,15 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import VehicleCard from "@/components/fleet/VehicleCard";
 import { cn } from "@/lib/cn";
-import { fleet, fleetCategories, sortFleetByName, sortFleetForDisplay, type FleetCategory } from "@/lib/fleet";
+import {
+  fleetCategories,
+  sortFleetByName,
+  sortFleetForDisplay,
+  type FleetCategory,
+  type FleetVehicle,
+} from "@/lib/fleet";
 
-export default function FleetGrid() {
+export default function FleetGrid({ fleet }: { fleet: FleetVehicle[] }) {
   const [active, setActive] = useState<FleetCategory | "all">("all");
 
   // Deep-linked filtering (e.g. Footer's "/fleet?category=sedan" links)
@@ -33,7 +39,7 @@ export default function FleetGrid() {
       active === "all"
         ? sortFleetForDisplay(fleet)
         : sortFleetByName(fleet.filter((v) => v.category === active)),
-    [active]
+    [active, fleet]
   );
 
   return (

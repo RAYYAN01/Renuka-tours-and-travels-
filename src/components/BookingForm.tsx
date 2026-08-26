@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { FormField, FormTextArea } from "@/components/ui/FormField";
-import { fleet } from "@/lib/fleet";
-import { services } from "@/lib/services";
+import type { FleetVehicle } from "@/lib/fleet";
+import type { Service } from "@/lib/services";
 import { useWhatsAppSubmit } from "@/lib/useWhatsAppSubmit";
 
 const tripLabels: Record<string, string> = {
@@ -16,7 +16,13 @@ const tripLabels: Record<string, string> = {
 
 const emptyPrefill = { pickup: "", destination: "", date: "", passengers: "", trip: "" };
 
-export default function BookingForm() {
+export default function BookingForm({
+  fleet,
+  services,
+}: {
+  fleet: FleetVehicle[];
+  services: Service[];
+}) {
   // Query-param prefill (from "/booking?vehicle=…", the QuickSearch bar,
   // etc.) is read client-side after mount rather than via
   // `useSearchParams()`, which would require wrapping this form in a

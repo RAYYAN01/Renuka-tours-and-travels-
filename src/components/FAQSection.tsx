@@ -2,23 +2,25 @@ import { ChevronDown } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import { faqs } from "@/lib/faq";
+import { getFaqs } from "@/lib/faq-data";
 import { jsonLdScriptProps } from "@/lib/seo";
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+export default async function FAQSection({ includeJsonLd = true }: { includeJsonLd?: boolean }) {
+  const faqs = await getFaqs();
 
-export default function FAQSection({ includeJsonLd = true }: { includeJsonLd?: boolean }) {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <section className="bg-ivory-50 py-24 sm:py-32">
       <Container className="flex flex-col items-center">

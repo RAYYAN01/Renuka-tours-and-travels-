@@ -3,7 +3,8 @@ import DestinationsHero from "@/components/destinations/DestinationsHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import DestinationCard from "@/components/DestinationCard";
-import { destinations, sortDestinationsByName } from "@/lib/destinations";
+import { sortDestinationsByName } from "@/lib/destinations";
+import { getDestinations } from "@/lib/destinations-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -35,29 +36,30 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
-const sortedDestinations = sortDestinationsByName(destinations);
+export default async function DestinationsPage() {
+  const destinations = await getDestinations();
+  const sortedDestinations = sortDestinationsByName(destinations);
 
-const destinationsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: sortedDestinations.map((d, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    url: absoluteUrl(`/destinations/${d.slug}`),
-    item: {
-      "@type": "TouristTrip",
-      name: `${d.name} trip from Bengaluru`,
-      image: absoluteUrl(d.image),
+  const destinationsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: sortedDestinations.map((d, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
       url: absoluteUrl(`/destinations/${d.slug}`),
-    },
-  })),
-};
+      item: {
+        "@type": "TouristTrip",
+        name: `${d.name} trip from Bengaluru`,
+        image: absoluteUrl(d.image),
+        url: absoluteUrl(`/destinations/${d.slug}`),
+      },
+    })),
+  };
 
-export default function DestinationsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(destinationsJsonLd)} />
-      <DestinationsHero />
+      <DestinationsHero count={sortedDestinations.length} />
       <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
         <Container>
           <h2 className="sr-only">Popular Destinations from Bengaluru</h2>

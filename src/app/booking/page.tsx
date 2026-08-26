@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import Container from "@/components/ui/Container";
 import BookingForm from "@/components/BookingForm";
+import { getFleet } from "@/lib/fleet-data";
+import { getServices } from "@/lib/services-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 const bookingDescription =
@@ -37,7 +39,9 @@ const bookingJsonLd = {
   },
 };
 
-export default function BookingPage() {
+export default async function BookingPage() {
+  const [fleet, services] = await Promise.all([getFleet(), getServices()]);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(bookingJsonLd)} />
@@ -49,7 +53,7 @@ export default function BookingPage() {
       />
       <section className="bg-ivory pb-24 sm:pb-32">
         <Container>
-          <BookingForm />
+          <BookingForm fleet={fleet} services={services} />
         </Container>
       </section>
     </>

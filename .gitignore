@@ -47,3 +47,5 @@ next-env.d.ts
 
 # agent-driver output — regenerated each run, not source
 .claude/skills/*/screenshots/
+
+.env*

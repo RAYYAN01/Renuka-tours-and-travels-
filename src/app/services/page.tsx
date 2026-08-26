@@ -6,7 +6,8 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import FAQSection from "@/components/FAQSection";
-import { services } from "@/lib/services";
+import { getServices } from "@/lib/services-data";
+import { ICON_REGISTRY } from "@/lib/icon-registry";
 import { site, whatsappHref } from "@/lib/site";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
@@ -34,28 +35,32 @@ export const metadata: Metadata = pageMetadata({
   ],
 });
 
-const servicesJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: services.map((service, i) => ({
-    "@type": "Service",
-    position: i + 1,
-    name: service.title,
-    description: service.description,
-    provider: { "@type": "TravelAgency", name: site.name },
-    url: absoluteUrl(`/services#${service.id}`),
-  })),
-};
+export default async function ServicesPage() {
+  const services = await getServices();
 
-export default function ServicesPage() {
+  const servicesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: services.map((service, i) => ({
+      "@type": "Service",
+      position: i + 1,
+      name: service.title,
+      description: service.description,
+      provider: { "@type": "TravelAgency", name: site.name },
+      url: absoluteUrl(`/services#${service.id}`),
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(servicesJsonLd)} />
-      <ServicesHero />
+      <ServicesHero count={services.length} />
       <section className="bg-ivory pb-24 pt-10 sm:pb-32 sm:pt-14">
         <Container>
           <div className="flex flex-col gap-10">
-            {services.map((service, i) => (
+            {services.map((service, i) => {
+              const ServiceIcon = ICON_REGISTRY[service.icon];
+              return (
               <div key={service.id} id={service.id} className="scroll-mt-28">
                 <Reveal delay={i % 2 === 0 ? 0 : 40}>
                   <div className="grid overflow-hidden rounded-3xl border border-forest-950/8 bg-ivory-50 shadow-luxury lg:grid-cols-[0.9fr_1.1fr]">
@@ -70,7 +75,7 @@ export default function ServicesPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-forest-950/92 via-forest-950/45 to-forest-950/10" />
 
                       <div className="relative flex flex-col gap-4">
-                        <service.icon className="h-9 w-9 text-terracotta-300" strokeWidth={1.5} />
+                        {ServiceIcon && <ServiceIcon className="h-9 w-9 text-terracotta-300" strokeWidth={1.5} />}
                         <h2 className="font-serif-luxury text-3xl text-ivory">{service.title}</h2>
                         <p className="text-ivory/75">{service.description}</p>
                         <div className="flex flex-wrap gap-3 pt-2">
@@ -109,7 +114,8 @@ export default function ServicesPage() {
                   </div>
                 </Reveal>
               </div>
-            ))}
+              );
+            })}
           </div>
         </Container>
       </section>

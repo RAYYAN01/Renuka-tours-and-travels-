@@ -7,14 +7,17 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { fleet, vehicleImageAlt } from "@/lib/fleet";
+import { vehicleImageAlt } from "@/lib/fleet";
+import { getFleetSlugs, getVehicleBySlug } from "@/lib/fleet-data";
 import PricingDetails from "@/components/fleet/PricingDetails";
-import { destinations, recommendedVehicleCategories } from "@/lib/destinations";
+import { getDestinations } from "@/lib/destinations-data";
+import { recommendedVehicleCategories } from "@/lib/destinations";
 import { whatsappHref } from "@/lib/site";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return fleet.map((v) => ({ slug: v.slug }));
+export async function generateStaticParams() {
+  const slugs = await getFleetSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -23,7 +26,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const vehicle = fleet.find((v) => v.slug === slug);
+  const vehicle = await getVehicleBySlug(slug);
   if (!vehicle) return {};
   return pageMetadata({
     title: vehicle.name,
@@ -50,7 +53,7 @@ export default async function FleetDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const vehicle = fleet.find((v) => v.slug === slug);
+  const vehicle = await getVehicleBySlug(slug);
   if (!vehicle) notFound();
 
   const vehicleJsonLd = {
@@ -93,6 +96,7 @@ export default async function FleetDetailPage({
     },
   ];
 
+  const destinations = await getDestinations();
   const suitedDestinations = destinations.filter((d) =>
     recommendedVehicleCategories(d.recommendedVehicle).some((v) => v.category === vehicle.category)
   );

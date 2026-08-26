@@ -4,9 +4,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import VehicleCard from "@/components/fleet/VehicleCard";
-import { featuredFleet } from "@/lib/fleet";
+import { getFeaturedFleet } from "@/lib/fleet-data";
 
-export default function FeaturedFleet() {
+export default async function FeaturedFleet() {
+  const featuredFleet = await getFeaturedFleet();
+
   return (
     <section className="bg-ivory py-24 sm:py-32">
       <Container>

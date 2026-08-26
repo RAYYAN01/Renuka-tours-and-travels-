@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
+import SiteChromeGate from "@/components/SiteChromeGate";
 import { site } from "@/lib/site";
 import { siteUrl, organizationJsonLd, jsonLdScriptProps } from "@/lib/seo";
 import "./globals.css";
@@ -94,12 +95,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             gtag('config', 'G-5VLBDC2QJF');
           `}
         </Script>
-        <SmoothScroll />
-        <Navbar />
+        <SiteChromeGate>
+          <SmoothScroll />
+          <Navbar />
+        </SiteChromeGate>
         <main className="flex-1 pb-16 lg:pb-0">{children}</main>
-        <Footer />
-        <MobileCtaBar />
-        <WhatsAppButton />
+        <SiteChromeGate>
+          <Footer />
+          <MobileCtaBar />
+          <WhatsAppButton />
+        </SiteChromeGate>
       </body>
     </html>
   );

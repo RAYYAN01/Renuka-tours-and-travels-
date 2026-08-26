@@ -4,9 +4,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import DestinationCard from "@/components/DestinationCard";
-import { featuredDestinations } from "@/lib/destinations";
+import { getFeaturedDestinations } from "@/lib/destinations-data";
 
-export default function Destinations() {
+export default async function Destinations() {
+  const featuredDestinations = await getFeaturedDestinations();
+
   return (
     <section className="bg-ivory py-24 sm:py-32">
       <Container>
