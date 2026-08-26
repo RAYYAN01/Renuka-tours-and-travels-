@@ -1,6 +1,6 @@
 import "server-only";
 import { sql } from "@/lib/db";
-import { sortFleetByName, type FleetVehicle } from "@/lib/fleet";
+import { sortFleetForDisplay, type FleetVehicle } from "@/lib/fleet";
 
 function rowToVehicle(row: Record<string, unknown>): FleetVehicle {
   return {
@@ -34,7 +34,7 @@ export async function getFleet(): Promise<FleetVehicle[]> {
 
 export async function getFeaturedFleet(): Promise<FleetVehicle[]> {
   const rows = await sql`SELECT * FROM fleet_vehicles WHERE featured = true`;
-  return sortFleetByName(rows.map(rowToVehicle));
+  return sortFleetForDisplay(rows.map(rowToVehicle));
 }
 
 export async function getVehicleBySlug(slug: string): Promise<FleetVehicle | null> {
