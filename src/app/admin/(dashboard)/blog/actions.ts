@@ -17,6 +17,7 @@ function str(formData: FormData, key: string): string {
 
 function revalidatePublicPages() {
   revalidatePath("/blog");
+  revalidatePath("/sitemap.xml");
   revalidatePath("/", "layout");
 }
 

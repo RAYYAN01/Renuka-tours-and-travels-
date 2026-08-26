@@ -28,6 +28,7 @@ function bool(formData: FormData, key: string): boolean {
 
 function revalidatePublicPages() {
   revalidatePath("/fleet");
+  revalidatePath("/sitemap.xml");
   revalidatePath("/", "layout");
 }
 

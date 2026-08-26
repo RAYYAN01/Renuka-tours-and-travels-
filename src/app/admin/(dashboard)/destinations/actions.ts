@@ -20,6 +20,7 @@ function bool(formData: FormData, key: string): boolean {
 
 function revalidatePublicPages() {
   revalidatePath("/destinations");
+  revalidatePath("/sitemap.xml");
   revalidatePath("/", "layout");
 }
 
