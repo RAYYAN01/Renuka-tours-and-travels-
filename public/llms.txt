@@ -36,15 +36,15 @@ Renuka Tours & Travels has operated since 2011, running a fleet of sedans, SUVs,
 |---|---|---|---|
 | Maruti Suzuki Dzire | Sedan | 4 | 13 |
 | Toyota Etios | Sedan | 4 | 13 |
-| Maruti Ertiga | SUV | 6 | Price on request |
+| Maruti Ertiga | SUV | 6 | 16 |
 | Toyota Fortuner | SUV | 7 | Price on request |
 | Toyota Innova | SUV | 7 | 17 |
 | Toyota Innova Crysta | SUV | 7 | 19 |
 | Toyota Innova HyCross | SUV | 7 | 21 |
-| 9 Seater Tempo Traveller | Tempo Traveller | 9 | Price on request |
-| 17 Seater Tempo Traveller | Tempo Traveller | 17 | Price on request |
-| Force Traveller | Tempo Traveller | 17 | 22 |
-| 12 Seater Luxury Tempo Traveller | Tempo Traveller | 12 | 30 |
+| 9 Seater Tempo Traveller | Tempo Traveller | 9 | 28 |
+| 17 Seater Tempo Traveller | Tempo Traveller | 17 | 30 |
+| Force Traveller | Tempo Traveller | 17 | 30 |
+| 12 Seater Luxury Tempo Traveller | Tempo Traveller | 12 | 22 |
 | Force Urbania | Luxury Van | 17 | 38 |
 | SGR Coach | Mini Coach | 26 | 45 |
 | 21-Seater Bus | Coach | 21 | Price on request |
