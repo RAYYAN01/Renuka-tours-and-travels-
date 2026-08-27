@@ -70,8 +70,8 @@ export default function WhyChooseUs() {
             <div className="frame-skeuo rounded-[2rem]">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.4rem] lg:aspect-[3/4]">
                 <Image
-                  src="/fleet/force-urbania-interior-01.jpeg"
-                  alt="Plush interior of the Force Urbania luxury van"
+                  src="/kudremukh.jpg"
+                  alt="Rolling green peaks of Kudremukh, Karnataka's Western Ghats"
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover"
