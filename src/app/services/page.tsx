@@ -81,6 +81,7 @@ export default async function ServicesPage() {
                         <div className="flex flex-wrap gap-3 pt-2">
                           <Button
                             href={`/booking?service=${service.id}`}
+                            variant="shine"
                             icon={<ArrowRight className="h-4 w-4" />}
                           >
                             Book This Service

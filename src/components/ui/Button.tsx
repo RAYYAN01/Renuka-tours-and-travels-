@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  variant?: "filled" | "tonal" | "outlined" | "text" | "tertiary" | "whatsapp";
+  variant?: "filled" | "tonal" | "outlined" | "text" | "tertiary" | "whatsapp" | "shine";
   size?: "md" | "lg";
   className?: string;
   target?: string;
@@ -21,6 +21,7 @@ const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   outlined: "md-btn md-btn-outlined text-[0.875rem]",
   text: "md-btn-text md-btn text-[0.875rem]",
   whatsapp: "md-btn md-btn-whatsapp text-[0.875rem]",
+  shine: "md-btn md-btn-shine text-[0.875rem]",
 };
 
 const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {

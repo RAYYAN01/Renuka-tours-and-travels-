@@ -35,6 +35,10 @@ CREATE TABLE IF NOT EXISTS fleet_vehicles (
   duty_end TEXT,
   price_on_request BOOLEAN NOT NULL DEFAULT false,
   image TEXT NOT NULL,
+  -- Optional scenic/ambient background for the vehicle's own detail-page
+  -- hero, distinct from `image` (which is also used as the card thumbnail
+  -- everywhere else). Falls back to `image` when not set.
+  hero_image TEXT,
   gallery JSONB NOT NULL DEFAULT '[]',
   featured BOOLEAN NOT NULL DEFAULT false,
   sort_order INTEGER NOT NULL DEFAULT 0,

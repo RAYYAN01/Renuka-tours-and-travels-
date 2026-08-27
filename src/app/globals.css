@@ -393,6 +393,45 @@ body {
   background: color-mix(in srgb, var(--color-whatsapp) 96%, white);
 }
 
+/* Red "shining" booking CTA — same near-opaque fill treatment as the
+   other filled buttons, plus a periodic animated shimmer sweep on top. */
+.md-btn-shine {
+  background: color-mix(in srgb, color-mix(in srgb, #dc2626 90%, white) 96%, transparent);
+  color: #ffffff;
+}
+.md-btn-shine:hover {
+  background: color-mix(in srgb, #dc2626 96%, white);
+}
+.md-btn-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.65) 47%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.65) 53%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: btn-shine-sweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shine-sweep {
+  0% {
+    background-position: 180% 0;
+  }
+  35% {
+    background-position: -80% 0;
+  }
+  100% {
+    background-position: -80% 0;
+  }
+}
+
 /* Floating action button — flat */
 .md-fab {
   position: relative;
@@ -655,6 +694,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
+    animation: none;
+  }
+  .md-btn-shine::before {
     animation: none;
   }
 }

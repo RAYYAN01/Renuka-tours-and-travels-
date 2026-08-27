@@ -118,8 +118,8 @@ export default async function FleetDetailPage({
           <Reveal>
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-luxury">
               <Image
-                src={vehicle.image}
-                alt={vehicleImageAlt(vehicle, vehicle.image)}
+                src={vehicle.heroImage ?? vehicle.image}
+                alt={vehicleImageAlt(vehicle, vehicle.heroImage ?? vehicle.image)}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
@@ -196,6 +196,7 @@ export default async function FleetDetailPage({
                 <>
                   <Button
                     href={`/booking?vehicle=${vehicle.slug}`}
+                    variant="shine"
                     size="lg"
                     icon={<ArrowRight className="h-4 w-4" />}
                   >

@@ -117,7 +117,7 @@ export default function Navbar() {
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             {site.phone}
           </a>
-          <Button href="/booking" size="md">
+          <Button href="/booking" variant="shine" size="md">
             Book a Ride
           </Button>
         </div>
@@ -161,6 +161,7 @@ export default function Navbar() {
               </a>
               <Button
                 href="/booking"
+                variant="shine"
                 size="lg"
                 className="w-full"
                 onClick={() => setOpen(false)}

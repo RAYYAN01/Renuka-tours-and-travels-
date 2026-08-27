@@ -22,6 +22,7 @@ function rowToVehicle(row: Record<string, unknown>): FleetVehicle {
     dutyEnd: row.duty_end as string | null,
     priceOnRequest: row.price_on_request as boolean,
     image: row.image as string,
+    heroImage: row.hero_image as string | null,
     gallery: row.gallery as string[],
     featured: row.featured as boolean,
   };

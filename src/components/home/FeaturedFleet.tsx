@@ -4,13 +4,18 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import VehicleCard from "@/components/fleet/VehicleCard";
-import { getFeaturedFleet } from "@/lib/fleet-data";
+import { getFleet } from "@/lib/fleet-data";
+import { sortFleetForDisplay } from "@/lib/fleet";
 
 export default async function FeaturedFleet() {
-  const featuredFleet = await getFeaturedFleet();
+  const fleet = sortFleetForDisplay(await getFleet());
+  // Doubled so the track can translate exactly -50% and loop seamlessly —
+  // the moment the first copy has scrolled fully offscreen, the second
+  // copy is in the exact position the first started in.
+  const track = [...fleet, ...fleet];
 
   return (
-    <section className="bg-ivory py-24 sm:py-32">
+    <section className="overflow-hidden bg-ivory py-24 sm:py-32">
       <Container>
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <SectionHeading
@@ -24,15 +29,23 @@ export default async function FeaturedFleet() {
             </Button>
           </Reveal>
         </div>
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredFleet.map((vehicle, i) => (
-            <Reveal key={vehicle.slug} delay={80 * (i % 3)}>
-              <VehicleCard vehicle={vehicle} />
-            </Reveal>
-          ))}
-        </div>
       </Container>
+
+      <Reveal delay={100}>
+        <div className="mt-14 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+          {/* Reuses the .marquee-track keyframe/pause-on-hover/
+              reduced-motion handling already defined for TrustBar — only
+              the duration is overridden here since this track is much
+              longer (full fleet, doubled) than TrustBar's short icon strip. */}
+          <div className="marquee-track gap-6 px-6" style={{ animationDuration: "70s" }}>
+            {track.map((vehicle, i) => (
+              <div key={`${vehicle.slug}-${i}`} className="w-[300px] shrink-0 sm:w-[340px]">
+                <VehicleCard vehicle={vehicle} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

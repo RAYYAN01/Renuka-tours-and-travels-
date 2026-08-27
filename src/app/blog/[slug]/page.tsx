@@ -131,7 +131,7 @@ export default async function BlogPostPage({
             <Reveal>
               <div className="flex flex-col gap-4 rounded-2xl bg-forest-950 p-8 text-ivory sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-lg font-medium">Ready to plan this trip?</p>
-                <Button href="/booking" icon={<ArrowRight className="h-4 w-4" />}>
+                <Button href="/booking" variant="shine" icon={<ArrowRight className="h-4 w-4" />}>
                   Book a Ride
                 </Button>
               </div>

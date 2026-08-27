@@ -44,7 +44,7 @@ export async function createVehicle(formData: FormData) {
     INSERT INTO fleet_vehicles
       (slug, name, tagline, category, category_label, seats, luggage, ac, fuel,
        driver_included, price_from, price_unit, min_km_per_day, driver_bata,
-       duty_start, duty_end, price_on_request, image, gallery, featured)
+       duty_start, duty_end, price_on_request, image, hero_image, gallery, featured)
     VALUES
       (${str(formData, "slug")}, ${str(formData, "name")}, ${str(formData, "tagline")},
        ${str(formData, "category")}, ${str(formData, "categoryLabel")}, ${num(formData, "seats")},
@@ -52,7 +52,8 @@ export async function createVehicle(formData: FormData) {
        ${num(formData, "priceFrom")}, ${"per km"}, ${num(formData, "minKmPerDay")},
        ${num(formData, "driverBata")}, ${str(formData, "dutyStart") || null},
        ${str(formData, "dutyEnd") || null}, ${bool(formData, "priceOnRequest")},
-       ${str(formData, "image")}, ${JSON.stringify(gallery)}, ${bool(formData, "featured")})
+       ${str(formData, "image")}, ${str(formData, "heroImage") || null},
+       ${JSON.stringify(gallery)}, ${bool(formData, "featured")})
   `;
 
   revalidatePublicPages();
@@ -85,6 +86,7 @@ export async function updateVehicle(id: number, formData: FormData) {
       duty_end = ${str(formData, "dutyEnd") || null},
       price_on_request = ${bool(formData, "priceOnRequest")},
       image = ${str(formData, "image")},
+      hero_image = ${str(formData, "heroImage") || null},
       gallery = ${JSON.stringify(gallery)},
       featured = ${bool(formData, "featured")},
       updated_at = now()

@@ -25,6 +25,7 @@ export interface FleetFormValues {
   duty_end?: string | null;
   price_on_request?: boolean;
   image?: string;
+  hero_image?: string | null;
   gallery?: string[];
   featured?: boolean;
 }
@@ -92,6 +93,12 @@ export default function FleetForm({
       </div>
 
       <Field label="Main Image Path" name="image" defaultValue={initial?.image} required placeholder="/fleet/example.jpeg" />
+      <Field
+        label="Detail-Page Hero Background (optional)"
+        name="heroImage"
+        defaultValue={initial?.hero_image ?? undefined}
+        placeholder="Leave blank to reuse the main image above — e.g. /hampi.jpg for a scenic backdrop"
+      />
       <TextAreaField
         label="Gallery Image Paths (one per line)"
         name="gallery"

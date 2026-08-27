@@ -33,6 +33,11 @@ export interface FleetVehicle {
    * Request" and a quote CTA instead of a number. */
   priceOnRequest: boolean;
   image: string;
+  /** Optional scenic/ambient background for this vehicle's own detail-page
+   * hero — distinct from `image`, which doubles as the card thumbnail
+   * everywhere else (fleet grid, homepage carousel, admin list). Falls
+   * back to `image` when not set. */
+  heroImage?: string | null;
   gallery: string[];
   featured?: boolean;
 }

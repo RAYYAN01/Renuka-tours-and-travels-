@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Users, Snowflake, ArrowUpRight } from "lucide-react";
 import Tilt from "@/components/ui/Tilt";
+import { cn } from "@/lib/cn";
 import { vehicleImageAlt, type FleetVehicle } from "@/lib/fleet";
 
 export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
@@ -62,7 +63,12 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
                   </>
                 )}
               </div>
-              <span className="glass-chip-light flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold">
+              <span
+                className={cn(
+                  "flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold",
+                  vehicle.priceOnRequest ? "glass-chip-light" : "md-btn md-btn-shine"
+                )}
+              >
                 <span>{vehicle.priceOnRequest ? "Get Quote" : "Book Now"}</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
