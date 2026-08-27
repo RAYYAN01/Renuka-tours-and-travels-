@@ -80,7 +80,13 @@ export function getMinimumDailyTotal(vehicle: FleetVehicle): number | null {
  * locale-aware, so a newly added vehicle is placed correctly without
  * touching this function or any hard-coded order. */
 export function sortFleetByName<T extends { name: string }>(items: T[]): T[] {
-  return [...items].sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+  // numeric: true makes this a "natural sort" — "9 Seater" / "12 Seater" /
+  // "17 Seater" compare the embedded numbers as numbers (9 < 12 < 17)
+  // instead of character-by-character (which would put "12" and "17"
+  // before "9", since "1" < "9").
+  return [...items].sort((a, b) =>
+    a.name.localeCompare(b.name, "en", { sensitivity: "base", numeric: true })
+  );
 }
 
 /** Category display order for the "All Vehicles" grid: cars (sedans, then
