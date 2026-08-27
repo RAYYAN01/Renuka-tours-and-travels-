@@ -2,7 +2,6 @@ import { Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import Tilt from "@/components/ui/Tilt";
 
 const testimonials = [
   {
@@ -39,26 +38,24 @@ export default function Testimonials() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={70 * i}>
-              <Tilt max={4}>
-                <figure className="surface-raised flex h-full flex-col gap-5 rounded-2xl p-8">
-                  <div className="flex gap-1">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <Star
-                        key={idx}
-                        className="h-4 w-4 fill-terracotta-500 text-terracotta-500"
-                        strokeWidth={0}
-                      />
-                    ))}
-                  </div>
-                  <blockquote className="text-lg leading-snug text-forest-950">
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-auto text-sm">
-                    <p className="font-semibold text-forest-950">{t.name}</p>
-                    <p className="text-forest-900/75">{t.context}</p>
-                  </figcaption>
-                </figure>
-              </Tilt>
+              <figure className="surface-raised flex h-full flex-col gap-5 rounded-2xl p-8">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, idx) => (
+                    <Star
+                      key={idx}
+                      className="h-4 w-4 fill-terracotta-500 text-terracotta-500"
+                      strokeWidth={0}
+                    />
+                  ))}
+                </div>
+                <blockquote className="text-lg leading-snug text-forest-950">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-auto text-sm">
+                  <p className="font-semibold text-forest-950">{t.name}</p>
+                  <p className="text-forest-900/75">{t.context}</p>
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>
