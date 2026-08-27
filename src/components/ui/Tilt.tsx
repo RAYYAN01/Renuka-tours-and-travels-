@@ -40,7 +40,15 @@ export default function Tilt({
     });
   }
 
-  function handleLeave() {
+  function handleLeave(e: PointerEvent<HTMLDivElement>) {
+    // Touch/pen "leave" fires on every tap (the pointer lifts, which counts
+    // as leaving), even though handleMove above never applied any tilt for
+    // those pointer types. Without this guard, a hybrid touchscreen device
+    // that had previously tilted the card via a real mouse would replay the
+    // elastic reset animation on every subsequent tap — visible as the card
+    // "shaking" back to flat on press. Mouse is the only pointer type that
+    // ever sets a non-zero tilt, so it's the only one that needs resetting.
+    if (e.pointerType !== "mouse") return;
     if (frameId.current !== null) {
       cancelAnimationFrame(frameId.current);
       frameId.current = null;

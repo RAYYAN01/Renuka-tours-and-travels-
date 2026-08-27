@@ -9,7 +9,7 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
     <Tilt max={6}>
       <Link
         href={`/fleet/${vehicle.slug}`}
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[var(--md-elevation-2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--md-elevation-3)]"
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[var(--md-elevation-2)] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-[var(--md-elevation-3)]"
       >
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-forest-900">
           <Image
@@ -20,10 +20,6 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/10 to-transparent" />
-
-          <span className="glass-chip absolute left-3 top-3 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide">
-            {vehicle.categoryLabel}
-          </span>
 
           {/* Overlaid frosted-glass detail card */}
           <div className="absolute inset-x-3 bottom-3 flex flex-col gap-2.5 rounded-2xl bg-transparent p-3.5">

@@ -9,7 +9,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
     <Tilt max={5}>
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-2xl bg-ivory-50 shadow-[var(--md-elevation-2)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--md-elevation-3)]"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl bg-ivory-50 shadow-[var(--md-elevation-2)] transition-all duration-500 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-[var(--md-elevation-3)]"
       >
         <div className="relative aspect-[16/10] overflow-hidden">
           <Image

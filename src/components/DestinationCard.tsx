@@ -9,7 +9,7 @@ export default function DestinationCard({ destination: d }: { destination: Desti
     <Tilt max={5}>
       <Link
         href={`/destinations/${d.slug}`}
-        className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-4 shadow-[var(--md-elevation-2)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--md-elevation-3)]"
+        className="group relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-4 shadow-[var(--md-elevation-2)] transition-all duration-500 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-[var(--md-elevation-3)]"
       >
         <Image
           src={d.image}
