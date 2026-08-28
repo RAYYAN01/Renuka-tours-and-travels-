@@ -8,8 +8,12 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
 import ConversionTracking from "@/components/ConversionTracking";
 import SiteChromeGate from "@/components/SiteChromeGate";
+import CookieConsent from "@/components/CookieConsent";
+import LeadPopup from "@/components/LeadPopup";
 import { site } from "@/lib/site";
 import { siteUrl, organizationJsonLd, jsonLdScriptProps } from "@/lib/seo";
+import { getFleet } from "@/lib/fleet-data";
+import { sortFleetForDisplay } from "@/lib/fleet";
 import "./globals.css";
 
 const anton = Anton({
@@ -73,7 +77,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const fleet = sortFleetForDisplay(await getFleet());
+  const vehicleNames = fleet.map((v) => v.name);
   return (
     <html
       lang="en"
@@ -106,6 +112,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
           <MobileCtaBar />
           <WhatsAppButton />
+          <CookieConsent />
+          <LeadPopup vehicleNames={vehicleNames} />
         </SiteChromeGate>
       </body>
     </html>
