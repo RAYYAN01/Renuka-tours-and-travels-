@@ -7,8 +7,8 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { vehicleImageAlt } from "@/lib/fleet";
-import { getFleetSlugs, getVehicleBySlug } from "@/lib/fleet-data";
+import { sortFleetByName, vehicleImageAlt } from "@/lib/fleet";
+import { getFleet, getFleetSlugs, getVehicleBySlug } from "@/lib/fleet-data";
 import PricingDetails from "@/components/fleet/PricingDetails";
 import { getDestinations } from "@/lib/destinations-data";
 import { recommendedVehicleCategories } from "@/lib/destinations";
@@ -28,6 +28,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const vehicle = await getVehicleBySlug(slug);
   if (!vehicle) return {};
+
+  // A few Ads-driven search themes are specific to a named model rather
+  // than following the generic per-vehicle pattern below (e.g. the market
+  // commonly searches "Force Urbania" by name, independent of trim/seats).
+  const extraKeywordsBySlug: Record<string, string[]> = {
+    "force-urbania": [
+      "Force Urbania in Bengaluru",
+      "force urbania rental near me",
+      "17 seater force urbania price",
+    ],
+    "force-urbania-12-seater-maharaja": [
+      "luxury 12 seater urbania van",
+      "force urbania rental near me",
+    ],
+  };
+
   return pageMetadata({
     title: vehicle.name,
     description: vehicle.priceOnRequest
@@ -43,6 +59,11 @@ export async function generateMetadata({
       `${vehicle.name} for outstation trip`,
       `book ${vehicle.name} online Bengaluru`,
       `${vehicle.seats} seater ${vehicle.categoryLabel.toLowerCase()} rental Bengaluru`,
+      `${vehicle.name} in Bengaluru`,
+      `${vehicle.name} rental near me`,
+      `outstation ${vehicle.name} hire Bengaluru`,
+      `${vehicle.name} for family weekend trip`,
+      ...(extraKeywordsBySlug[vehicle.slug] ?? []),
     ],
   });
 }
@@ -99,6 +120,15 @@ export default async function FleetDetailPage({
   const destinations = await getDestinations();
   const suitedDestinations = destinations.filter((d) =>
     recommendedVehicleCategories(d.recommendedVehicle).some((v) => v.category === vehicle.category)
+  );
+
+  // Same-category cross-links (e.g. the 12 Seater Maharaja and 16 Seater
+  // Force Urbania linking to each other) — keeps internal link equity
+  // flowing between closely related vehicles instead of dead-ending on
+  // each detail page.
+  const allFleet = await getFleet();
+  const relatedVehicles = sortFleetByName(
+    allFleet.filter((v) => v.category === vehicle.category && v.slug !== vehicle.slug)
   );
 
   return (
@@ -230,6 +260,27 @@ export default async function FleetDetailPage({
                       className="rounded-full border border-forest-950/12 px-3 py-1.5 text-sm font-medium text-forest-900/75 transition-colors hover:border-terracotta-500 hover:text-terracotta-600"
                     >
                       {d.name} trips
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          )}
+
+          {relatedVehicles.length > 0 && (
+            <Reveal delay={350}>
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-forest-900/70">
+                  Also in {vehicle.categoryLabel}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {relatedVehicles.map((v) => (
+                    <Link
+                      key={v.slug}
+                      href={`/fleet/${v.slug}`}
+                      className="rounded-full border border-forest-950/12 px-3 py-1.5 text-sm font-medium text-forest-900/75 transition-colors hover:border-terracotta-500 hover:text-terracotta-600"
+                    >
+                      {v.name}
                     </Link>
                   ))}
                 </div>
