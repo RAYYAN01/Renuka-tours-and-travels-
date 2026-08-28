@@ -7,7 +7,6 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Destinations from "@/components/home/Destinations";
 import Stats from "@/components/home/Stats";
 import Timeline from "@/components/home/Timeline";
-import Testimonials from "@/components/home/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import CtaBanner from "@/components/home/CtaBanner";
 import { getFleet } from "@/lib/fleet-data";
@@ -62,7 +61,6 @@ export default async function Home() {
       <Destinations />
       <Stats />
       <Timeline fleetCount={fleet.length} />
-      <Testimonials />
       <FAQSection />
       <CtaBanner />
     </>
