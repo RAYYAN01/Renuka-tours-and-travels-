@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { whatsappHref } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 /** Shared submit handler for forms that deliver via a WhatsApp deep-link
  * instead of a backend: builds a message from the submitted form data,
@@ -14,6 +15,7 @@ export function useWhatsAppSubmit(buildMessage: (form: FormData) => string) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     window.open(whatsappHref(buildMessage(form)), "_blank", "noopener,noreferrer");
+    trackEvent("generate_lead", { method: "whatsapp_form" });
     setSent(true);
   }
 
