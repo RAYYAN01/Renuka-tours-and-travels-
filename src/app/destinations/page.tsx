@@ -33,6 +33,7 @@ export const metadata: Metadata = pageMetadata({
     "Electronic City to Mysuru taxi",
     "Bengaluru to Hosur cab fare",
     "Bengaluru to Nandi Hills sunrise trip cab",
+    "weekend getaway tempo traveller",
   ],
 });
 

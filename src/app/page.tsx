@@ -43,6 +43,8 @@ export const metadata: Metadata = {
     "cab service near Kempegowda International Airport",
     "Bengaluru to Hosur cab",
     "Bengaluru to Tumkur taxi",
+    "tempo traveller near me",
+    "tempo traveller on rent near me",
   ],
   alternates: {
     canonical: "/",

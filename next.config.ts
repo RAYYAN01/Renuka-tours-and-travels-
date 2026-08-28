@@ -1,6 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Clean, keyword-matching vanity URLs for Google Ads landing pages —
+  // each one 301s to its real canonical /fleet/[slug] page rather than
+  // being a separate thin page, so there's no duplicate-content risk and
+  // all SEO signal still consolidates on the one real page per vehicle.
+  async redirects() {
+    return [
+      { source: "/9-seater-tempo-traveller", destination: "/fleet/tempo-traveller-9-seater", permanent: true },
+      { source: "/12-seater-tempo-traveller", destination: "/fleet/force-traveller-yaksha", permanent: true },
+      { source: "/17-seater-tempo-traveller", destination: "/fleet/force-traveller-b", permanent: true },
+      { source: "/maharaja-seat-tempo-traveller", destination: "/fleet/force-urbania-12-seater-maharaja", permanent: true },
+      { source: "/force-urbania-luxury-van", destination: "/fleet/force-urbania", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

@@ -32,6 +32,8 @@ export const metadata: Metadata = pageMetadata({
     "wedding car rental Indiranagar",
     "airport transfer from Electronic City",
     "outstation cab Hosur road",
+    "tempo traveller for airport pickup",
+    "local sightseeing tempo traveller",
   ],
 });
 

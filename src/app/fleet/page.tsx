@@ -28,6 +28,12 @@ export const metadata: Metadata = pageMetadata({
     "SUV rental Koramangala",
     "9 seater tempo traveller Bengaluru",
     "mini bus rental Bengaluru outer areas",
+    "12 seater tempo traveller",
+    "hire luxury tempo traveller",
+    "family trip tempo traveller hire",
+    "tempo traveller per km rate",
+    "maharaja seat tempo traveller",
+    "force urbania luxury van",
   ],
 });
 
