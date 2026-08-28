@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Users, Briefcase, Snowflake, Fuel, UserCheck, ArrowRight } from "lucide-react";
@@ -10,6 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { sortFleetByName, vehicleImageAlt } from "@/lib/fleet";
 import { getFleet, getFleetSlugs, getVehicleBySlug } from "@/lib/fleet-data";
 import PricingDetails from "@/components/fleet/PricingDetails";
+import VehicleGallery from "@/components/fleet/VehicleGallery";
 import { getDestinations } from "@/lib/destinations-data";
 import { recommendedVehicleCategories } from "@/lib/destinations";
 import { whatsappHref } from "@/lib/site";
@@ -169,32 +169,16 @@ export default async function FleetDetailPage({
         />
       </Container>
       <Container className="mt-6 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-        <div className="flex flex-col gap-4">
-          <Reveal>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-luxury">
-              <Image
-                src={vehicle.heroImage ?? vehicle.image}
-                alt={vehicleImageAlt(vehicle, vehicle.heroImage ?? vehicle.image)}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-          {vehicle.gallery.length > 1 && (
-            <div className="grid grid-cols-4 gap-3 sm:grid-cols-5">
-              {vehicle.gallery.slice(1, 6).map((img) => (
-                <div
-                  key={img}
-                  className="relative aspect-square overflow-hidden rounded-xl border border-forest-950/8"
-                >
-                  <Image src={img} alt={vehicleImageAlt(vehicle, img)} fill sizes="120px" className="object-cover" />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <VehicleGallery
+          heroImage={{
+            src: vehicle.heroImage ?? vehicle.image,
+            alt: vehicleImageAlt(vehicle, vehicle.heroImage ?? vehicle.image),
+          }}
+          thumbnails={vehicle.gallery
+            .slice(1, 6)
+            .map((img) => ({ src: img, alt: vehicleImageAlt(vehicle, img) }))}
+          fullGallery={vehicle.gallery.map((img) => ({ src: img, alt: vehicleImageAlt(vehicle, img) }))}
+        />
 
         <div className="flex flex-col gap-6">
           <Reveal>
