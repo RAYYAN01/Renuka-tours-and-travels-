@@ -7,7 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import StatBlock from "@/components/StatBlock";
 import { site } from "@/lib/site";
-import { coreStats } from "@/lib/stats";
+import { getCoreStats } from "@/lib/stats";
 import { getTimeline } from "@/lib/timeline";
 import { getFleet } from "@/lib/fleet-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
@@ -43,8 +43,6 @@ const aboutJsonLd = {
   mainEntity: { "@id": `${absoluteUrl("/")}#organization` },
 };
 
-const stats = [...coreStats, { value: 60, suffix: "+", label: "Verified Drivers" }];
-
 const safety = [
   { icon: ShieldCheck, title: "Driver Verification", text: "Background checks, licence validation and in-person interviews for every driver." },
   { icon: FileCheck, title: "Licensed Operator", text: "Fully licensed under state transport regulations, with permits renewed annually." },
@@ -55,13 +53,14 @@ const safety = [
 export default async function AboutPage() {
   const fleet = await getFleet();
   const timeline = getTimeline(fleet.length);
+  const stats = getCoreStats(fleet.length);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(aboutJsonLd)} />
       <AboutHero />
 
       <section className="bg-ivory-50 pb-20 pt-14 sm:pt-16">
-        <Container className="grid grid-cols-2 gap-10 lg:grid-cols-4">
+        <Container className="flex flex-wrap justify-center gap-10 sm:gap-16">
           {stats.map((stat, i) => (
             <StatBlock key={stat.label} stat={stat} delay={70 * i} />
           ))}
