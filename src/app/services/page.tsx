@@ -34,6 +34,7 @@ export const metadata: Metadata = pageMetadata({
     "outstation cab Hosur road",
     "tempo traveller for airport pickup",
     "local sightseeing tempo traveller",
+    "premium outstation cab booking",
   ],
 });
 

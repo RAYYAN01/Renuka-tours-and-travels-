@@ -42,6 +42,31 @@ export async function generateMetadata({
       "luxury 12 seater urbania van",
       "force urbania rental near me",
     ],
+    "toyota-innova-2011": [
+      "innova cab for Bengaluru airport",
+      "7 seater innova on rent",
+    ],
+    "toyota-innova-crysta": [
+      "innova cab for Bengaluru airport",
+      "7 seater innova on rent",
+    ],
+    "toyota-innova-hycross": [
+      "innova cab for Bengaluru airport",
+      "7 seater innova on rent",
+    ],
+    "bus-21-seater": [
+      "mini bus on rental",
+      "mini bus in Bengaluru",
+      "21 seater mini bus in Bengaluru",
+    ],
+    "mini-bus-25-seater": [
+      "mini bus on rental",
+      "mini bus in Bengaluru",
+      "25 seater luxury mini bus in Bengaluru",
+    ],
+    "bus-50-seater": [
+      "50 seater luxury bus in Bengaluru",
+    ],
   };
 
   return pageMetadata({
