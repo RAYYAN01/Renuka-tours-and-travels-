@@ -20,7 +20,7 @@ Renuka Tours & Travels has operated since 2011, running a fleet of sedans, SUVs,
 ## Facts
 
 - Founded: 2011
-- Fleet categories: sedans (4-seater), SUVs (6–7 seater), tempo travellers (9–17 seater), a luxury van (17 seater) and mini coaches/buses (21–50 seater)
+- Fleet categories: sedans (4-seater), SUVs (6–7 seater), tempo travellers (9–17 seater), luxury vans (12–16 seater, including a Maharaja-seat configuration) and mini coaches/buses (21–50 seater)
 - Coverage: every locality within Bengaluru (Whitefield, Electronic City, Koramangala, Indiranagar, HSR Layout, Marathahalli, Sarjapur Road, JP Nagar, Hebbal, Yelahanka, CV Raman Nagar, Kempegowda International Airport), nearby towns (Hosur, Tumkur, Ramanagara, Kolar, Nelamangala, Channapatna), and outstation trips across South India
 - Pricing model: per-kilometre for outstation trips (from ₹13/km for a sedan), flat packages for local/hourly rentals, custom quotes for corporate/wedding/group bookings and for vehicles marked "price on request"
 - Driver: every vehicle is chauffeur-driven by default — self-drive/unchauffeured rentals are not offered
@@ -35,23 +35,31 @@ Renuka Tours & Travels has operated since 2011, running a fleet of sedans, SUVs,
 | Vehicle | Category | Seats | From (₹/km) |
 |---|---|---|---|
 | Maruti Suzuki Dzire | Sedan | 4 | 13 |
-| Toyota Etios | Sedan | 4 | 13 |
 | Maruti Ertiga | SUV | 6 | 16 |
-| Toyota Fortuner | SUV | 7 | Price on request |
 | Toyota Innova | SUV | 7 | 17 |
 | Toyota Innova Crysta | SUV | 7 | 19 |
-| Toyota Innova HyCross | SUV | 7 | 21 |
+| Toyota Innova HyCross | SUV | 7 | Price on request |
+| Toyota Fortuner | SUV | 7 | Price on request |
 | 9 Seater Tempo Traveller | Tempo Traveller | 9 | 28 |
-| 17 Seater Tempo Traveller | Tempo Traveller | 17 | 30 |
-| Force Traveller | Tempo Traveller | 17 | 30 |
 | 12 Seater Luxury Tempo Traveller | Tempo Traveller | 12 | 22 |
-| Force Urbania | Luxury Van | 17 | 38 |
-| SGR Coach | Mini Coach | 26 | 45 |
+| 17 Seater Tempo Traveller | Tempo Traveller | 17 | 30 |
+| Force Urbania 12 Seater Maharaja | Luxury Van | 12 | Price on request |
+| Force Urbania 16 Seater | Luxury Van | 16 | 38 |
 | 21-Seater Bus | Coach | 21 | Price on request |
 | 25-Seater Mini Bus | Coach | 25 | Price on request |
 | 50-Seater Bus | Coach | 50 | Price on request |
 
 Full detail pages, live pricing and booking: https://www.renukatoursandtravel.com/fleet
+
+## Google Ads landing pages
+
+Keyword-matched vanity URLs (301 redirects to the canonical fleet page above):
+
+- https://www.renukatoursandtravel.com/9-seater-tempo-traveller
+- https://www.renukatoursandtravel.com/12-seater-tempo-traveller
+- https://www.renukatoursandtravel.com/17-seater-tempo-traveller
+- https://www.renukatoursandtravel.com/maharaja-seat-tempo-traveller
+- https://www.renukatoursandtravel.com/force-urbania-luxury-van
 
 ## Popular routes from Bengaluru
 
