@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Users, Snowflake, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { vehicleImageAlt, type FleetVehicle } from "@/lib/fleet";
+import ImageLightbox from "@/components/ui/ImageLightbox";
 
 const SLIDE_MS = 3200;
 
@@ -15,6 +16,7 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
   const images = vehicle.gallery.length > 0 ? vehicle.gallery : [vehicle.image];
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (images.length < 2 || paused) return;
@@ -25,31 +27,40 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
   }, [images.length, paused]);
 
   return (
-    <Link
-      href={`/fleet/${vehicle.slug}`}
+    <div
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[var(--md-elevation-2)] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-[var(--md-elevation-3)]"
     >
       <div className="relative aspect-[3/2] w-full overflow-hidden bg-forest-900">
-        {images.map((src, i) => (
-          <Image
-            key={src}
-            src={src}
-            alt={vehicleImageAlt(vehicle, src)}
-            fill
-            priority={i === 0}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className={cn(
-              "object-cover transition-opacity duration-700 ease-in-out",
-              i === index ? "opacity-100" : "opacity-0"
-            )}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/10 to-transparent" />
+        {/* Tapping/clicking the photo itself opens a zoomable full-screen
+         * view instead of navigating — the vehicle name/price panel below
+         * remains the link to the detail page. */}
+        <button
+          type="button"
+          aria-label={`View ${vehicle.name} photos`}
+          onClick={() => setLightboxIndex(index)}
+          className="absolute inset-0 z-0 block h-full w-full cursor-zoom-in"
+        >
+          {images.map((src, i) => (
+            <Image
+              key={src}
+              src={src}
+              alt={vehicleImageAlt(vehicle, src)}
+              fill
+              priority={i === 0}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className={cn(
+                "object-cover transition-opacity duration-700 ease-in-out",
+                i === index ? "opacity-100" : "opacity-0"
+              )}
+            />
+          ))}
+        </button>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/10 to-transparent" />
 
         {images.length > 1 && (
-          <div className="absolute left-3 top-3 z-10 flex gap-1">
+          <div className="pointer-events-none absolute left-3 top-3 z-10 flex gap-1">
             {images.map((src, i) => (
               <span
                 key={src}
@@ -62,8 +73,11 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
           </div>
         )}
 
-        {/* Overlaid frosted-glass detail card */}
-        <div className="absolute inset-x-3 bottom-3 flex flex-col gap-2.5 rounded-2xl bg-transparent p-3.5">
+        {/* Overlaid frosted-glass detail card — the actual navigation link */}
+        <Link
+          href={`/fleet/${vehicle.slug}`}
+          className="absolute inset-x-3 bottom-3 z-10 flex flex-col gap-2.5 rounded-2xl bg-transparent p-3.5"
+        >
           <div>
             <h3 className="font-serif-luxury text-lg leading-tight text-ivory">
               {vehicle.name}
@@ -113,8 +127,17 @@ export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </div>
-        </div>
+        </Link>
       </div>
-    </Link>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={images.map((src) => ({ src, alt: vehicleImageAlt(vehicle, src) }))}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNav={setLightboxIndex}
+        />
+      )}
+    </div>
   );
 }
