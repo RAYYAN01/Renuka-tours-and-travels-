@@ -12,7 +12,7 @@ export default function Hero() {
           Since {site.founded} · Bengaluru&apos;s Trusted Fleet
         </>
       }
-      title="Journeys, chauffeured to perfection."
+      title="Car & tempo traveller rentals, chauffeured to perfection."
       description="Chauffeur-driven cars, SUVs, tempo travellers and coaches — for airport runs, weddings, corporate travel and pilgrimages across India. Verified drivers, transparent pricing, no surprises."
     />
   );
