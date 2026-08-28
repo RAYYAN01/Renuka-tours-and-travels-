@@ -98,7 +98,15 @@ export default async function Footer() {
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>Licensed &amp; Insured · {site.hours}</p>
+          <div className="flex items-center gap-5">
+            <Link href="/privacy-policy" className="hover:text-terracotta-700">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-terracotta-700">
+              Terms of Service
+            </Link>
+            <p>Licensed &amp; Insured · {site.hours}</p>
+          </div>
         </div>
       </Container>
     </footer>
