@@ -8,7 +8,7 @@ import { FormField } from "@/components/ui/FormField";
 import { useWhatsAppSubmit } from "@/lib/useWhatsAppSubmit";
 
 const STORAGE_KEY = "lead-popup-dismissed";
-const DELAY_MS = 15000;
+const DELAY_MS = 8000;
 // Pages where a popup asking "want to book?" would be redundant or
 // intrusive — the visitor is either already booking, or this is a legal/
 // admin page that shouldn't show marketing chrome.

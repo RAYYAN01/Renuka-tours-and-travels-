@@ -1,24 +1,66 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Snowflake, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { vehicleImageAlt, type FleetVehicle } from "@/lib/fleet";
 
+const SLIDE_MS = 3200;
+
 export default function VehicleCard({ vehicle }: { vehicle: FleetVehicle }) {
+  // Fall back to just the main photo for vehicles with no gallery on
+  // record — every vehicle always has at least this one.
+  const images = vehicle.gallery.length > 0 ? vehicle.gallery : [vehicle.image];
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (images.length < 2 || paused) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length);
+    }, SLIDE_MS);
+    return () => clearInterval(id);
+  }, [images.length, paused]);
+
   return (
     <Link
       href={`/fleet/${vehicle.slug}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[var(--md-elevation-2)] transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:shadow-[var(--md-elevation-3)]"
     >
       <div className="relative aspect-[3/2] w-full overflow-hidden bg-forest-900">
-        <Image
-          src={vehicle.image}
-          alt={vehicleImageAlt(vehicle, vehicle.image)}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-        />
+        {images.map((src, i) => (
+          <Image
+            key={src}
+            src={src}
+            alt={vehicleImageAlt(vehicle, src)}
+            fill
+            priority={i === 0}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={cn(
+              "object-cover transition-opacity duration-700 ease-in-out",
+              i === index ? "opacity-100" : "opacity-0"
+            )}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/10 to-transparent" />
+
+        {images.length > 1 && (
+          <div className="absolute left-3 top-3 z-10 flex gap-1">
+            {images.map((src, i) => (
+              <span
+                key={src}
+                className={cn(
+                  "h-1.5 rounded-full bg-ivory transition-all duration-300",
+                  i === index ? "w-4 opacity-90" : "w-1.5 opacity-40"
+                )}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Overlaid frosted-glass detail card */}
         <div className="absolute inset-x-3 bottom-3 flex flex-col gap-2.5 rounded-2xl bg-transparent p-3.5">
