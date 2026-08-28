@@ -10,6 +10,7 @@ import Timeline from "@/components/home/Timeline";
 import Testimonials from "@/components/home/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import CtaBanner from "@/components/home/CtaBanner";
+import { getFleet } from "@/lib/fleet-data";
 
 export const metadata: Metadata = {
   title: "Car, SUV & Tempo Traveller Rentals in Bengaluru",
@@ -49,7 +50,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const fleet = await getFleet();
   return (
     <>
       <Hero />
@@ -59,7 +61,7 @@ export default function Home() {
       <WhyChooseUs />
       <Destinations />
       <Stats />
-      <Timeline />
+      <Timeline fleetCount={fleet.length} />
       <Testimonials />
       <FAQSection />
       <CtaBanner />

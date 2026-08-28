@@ -8,7 +8,8 @@ import Reveal from "@/components/ui/Reveal";
 import StatBlock from "@/components/StatBlock";
 import { site } from "@/lib/site";
 import { coreStats } from "@/lib/stats";
-import { timeline } from "@/lib/timeline";
+import { getTimeline } from "@/lib/timeline";
+import { getFleet } from "@/lib/fleet-data";
 import { absoluteUrl, jsonLdScriptProps, pageMetadata } from "@/lib/seo";
 
 const aboutDescription = `Renuka Tours & Travels has been moving families, corporates and pilgrims across South India since ${site.founded} — verified drivers, insured fleet, honest pricing.`;
@@ -51,7 +52,9 @@ const safety = [
   { icon: BadgeCheck, title: "Comprehensive Insurance", text: "All vehicles carry valid insurance covering passengers and third parties." },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const fleet = await getFleet();
+  const timeline = getTimeline(fleet.length);
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScriptProps(aboutJsonLd)} />

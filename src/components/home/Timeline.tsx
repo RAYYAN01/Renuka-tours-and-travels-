@@ -4,14 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
-import { timeline } from "@/lib/timeline";
+import { getTimeline } from "@/lib/timeline";
 
 // Vertical alternating ("zig-zag") timeline: a spine down the middle (left
 // edge on mobile), milestones alternating left/right as you scroll down.
 // The spine fills and each dot lights up as its milestone crosses the
 // viewport centre — an IntersectionObserver drives that, no scroll-jank
 // listeners.
-export default function Timeline() {
+export default function Timeline({ fleetCount }: { fleetCount: number }) {
+  const timeline = getTimeline(fleetCount);
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
