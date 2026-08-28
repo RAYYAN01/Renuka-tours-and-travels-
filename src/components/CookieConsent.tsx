@@ -29,7 +29,12 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="glass-dark fixed inset-x-4 bottom-4 z-[90] flex flex-col gap-3 rounded-2xl p-5 text-ivory shadow-luxury sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm">
+    <div
+      // Bottom offset clears the mobile CTA bar (fixed at the very bottom,
+      // <lg only) on small screens; sm:bottom-6 restores the normal corner
+      // position once that bar no longer exists.
+      className="glass-dark fixed inset-x-4 bottom-24 z-[90] flex flex-col gap-3 rounded-2xl p-5 text-ivory shadow-luxury sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
+    >
       <div className="flex items-start gap-3">
         <Cookie className="mt-0.5 h-5 w-5 shrink-0 text-terracotta-300" strokeWidth={1.75} />
         <p className="text-sm leading-relaxed text-ivory/85">
