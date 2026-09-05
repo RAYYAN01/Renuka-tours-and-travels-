@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Check, ArrowRight, MessageCircle } from "lucide-react";
 import ServicesHero from "@/components/services/ServicesHero";
 import Container from "@/components/ui/Container";
@@ -37,6 +38,15 @@ export const metadata: Metadata = pageMetadata({
     "premium outstation cab booking",
   ],
 });
+
+// Maps a DB service id to its dedicated standalone page, where one exists —
+// used to cross-link from this shared page's anchor sections.
+const SERVICE_DETAIL_PAGES: Record<string, string> = {
+  outstation: "/outstation-car-rental-bangalore",
+  corporate: "/corporate-travel",
+  wedding: "/wedding-transport",
+  pilgrimage: "/pilgrimage-travel",
+};
 
 export default async function ServicesPage() {
   const services = await getServices();
@@ -114,6 +124,14 @@ export default async function ServicesPage() {
                       <p className="mt-5 border-t border-forest-950/8 pt-5 text-sm font-medium text-forest-950">
                         {service.pricingNote}
                       </p>
+                      {SERVICE_DETAIL_PAGES[service.id] && (
+                        <Link
+                          href={SERVICE_DETAIL_PAGES[service.id]}
+                          className="mt-3 text-sm font-medium text-terracotta-600 hover:underline"
+                        >
+                          Full details on {service.title} →
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </Reveal>

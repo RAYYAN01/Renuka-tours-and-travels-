@@ -99,6 +99,7 @@ export function organizationJsonLd() {
       { "@type": "Place", name: "Marathahalli" },
       { "@type": "Place", name: "Sarjapur Road" },
       { "@type": "Place", name: "JP Nagar" },
+      { "@type": "Place", name: "Jayanagar" },
       { "@type": "Place", name: "Hebbal" },
       { "@type": "Place", name: "Yelahanka" },
       { "@type": "Place", name: "CV Raman Nagar" },

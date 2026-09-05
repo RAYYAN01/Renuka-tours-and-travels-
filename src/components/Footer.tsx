@@ -3,9 +3,20 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { fleetCategories } from "@/lib/fleet";
 import { getServices } from "@/lib/services-data";
+import { localities } from "@/lib/locations";
 import { site, telHref } from "@/lib/site";
 
-const featuredServiceIds = ["airport", "outstation", "corporate", "wedding", "pilgrimage"];
+// Dedicated service pages, mapped from the DB service id they draw their
+// features/pricing from — "airport" has no standalone page yet (still an
+// anchor on /services), and group-travel shares the "pilgrimage" DB row
+// (the business's one real "Group & Pilgrimage Tours" service) but gets
+// its own page framed around family/corporate group trips.
+const serviceLinks = [
+  { id: "outstation", href: "/outstation-car-rental-bangalore" },
+  { id: "corporate", href: "/corporate-travel" },
+  { id: "wedding", href: "/wedding-transport" },
+  { id: "pilgrimage", href: "/pilgrimage-travel" },
+];
 
 export default async function Footer() {
   const services = await getServices();
@@ -13,17 +24,35 @@ export default async function Footer() {
   const columns = [
     {
       title: "Fleet",
-      links: fleetCategories.map((c) => ({
-        label: c.label,
-        href: `/fleet?category=${c.id}`,
-      })),
+      links: [
+        ...fleetCategories.map((c) => ({
+          label: c.label,
+          href: `/fleet?category=${c.id}`,
+        })),
+        { label: "Tempo Traveller Rental", href: "/tempo-traveller-rental-bangalore" },
+        { label: "Bus Rental", href: "/bus-rental-bangalore" },
+        { label: "Car Rental", href: "/car-rental-bangalore" },
+      ],
     },
     {
       title: "Services",
-      links: featuredServiceIds
-        .map((id) => services.find((s) => s.id === id))
-        .filter((s): s is (typeof services)[number] => Boolean(s))
-        .map((s) => ({ label: s.title, href: `/services#${s.id}` })),
+      links: [
+        { label: "Airport Transfers", href: "/services#airport" },
+        ...serviceLinks
+          .map(({ id, href }) => {
+            const service = services.find((s) => s.id === id);
+            return service ? { label: service.title, href } : null;
+          })
+          .filter((l): l is { label: string; href: string } => Boolean(l)),
+        { label: "Group Travel", href: "/group-travel" },
+      ],
+    },
+    {
+      title: "Locations",
+      links: [
+        ...localities.slice(0, 5).map((l) => ({ label: l.name, href: `/locations/${l.slug}` })),
+        { label: "View All Areas", href: "/locations" },
+      ],
     },
     {
       title: "Company",
@@ -42,7 +71,7 @@ export default async function Footer() {
       <div className="md-divider-strong absolute inset-x-0 top-0 h-px" />
 
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-5">
             <Link href="/" className="font-serif-luxury text-3xl text-forest-950">
               Renuka

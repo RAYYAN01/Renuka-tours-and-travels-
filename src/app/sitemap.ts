@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getFleet } from "@/lib/fleet-data";
 import { getDestinations } from "@/lib/destinations-data";
 import { getBlogPosts } from "@/lib/blog-data";
+import { localities } from "@/lib/locations";
 import { siteUrl } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -20,6 +21,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${siteUrl}/blog`, changeFrequency: "weekly", priority: 0.7 },
       { url: `${siteUrl}/privacy-policy`, changeFrequency: "yearly", priority: 0.3 },
       { url: `${siteUrl}/terms`, changeFrequency: "yearly", priority: 0.3 },
+      { url: `${siteUrl}/tempo-traveller-rental-bangalore`, changeFrequency: "monthly", priority: 0.85 },
+      { url: `${siteUrl}/bus-rental-bangalore`, changeFrequency: "monthly", priority: 0.8 },
+      { url: `${siteUrl}/car-rental-bangalore`, changeFrequency: "monthly", priority: 0.8 },
+      { url: `${siteUrl}/outstation-car-rental-bangalore`, changeFrequency: "monthly", priority: 0.85 },
+      { url: `${siteUrl}/corporate-travel`, changeFrequency: "monthly", priority: 0.75 },
+      { url: `${siteUrl}/wedding-transport`, changeFrequency: "monthly", priority: 0.75 },
+      { url: `${siteUrl}/pilgrimage-travel`, changeFrequency: "monthly", priority: 0.75 },
+      { url: `${siteUrl}/group-travel`, changeFrequency: "monthly", priority: 0.75 },
+      { url: `${siteUrl}/locations`, changeFrequency: "monthly", priority: 0.8 },
     ] as const
   ).map((route) => ({ ...route, lastModified: now }));
 
@@ -50,5 +60,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...fleetRoutes, ...destinationRoutes, ...blogRoutes];
+  const locationRoutes: MetadataRoute.Sitemap = localities.map((l) => ({
+    url: `${siteUrl}/locations/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...fleetRoutes, ...destinationRoutes, ...blogRoutes, ...locationRoutes];
 }
